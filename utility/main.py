@@ -22,8 +22,14 @@ def list_all_files_and_directory(client):
     ):
         for o in page.contents:
             print(f'Object: {o.key}, {o.size}, {o.last_modified}')
-    
 
+def upload_object(client, filepath, data):
+    return client.put_object(oss.PutObjectRequest(
+        bucket=BUCKET_ID,
+        key=filepath, # path
+        body=data, # bytes, 
+    ))
+    
 def main():
     # pre-configuration of credentials is needed.
     credentials_provider = oss.credentials.EnvironmentVariableCredentialsProvider()
@@ -33,17 +39,15 @@ def main():
     
     client = oss.Client(cfg)
     
-    res = client.put_object(oss.PutObjectRequest(
-        bucket=BUCKET_ID,
-        key="data/first-upload", # path
-        body=sample_data(), # bytes, 
-    ))
+    res = upload_object(
+        client,
+        "data/first-upload", # path
+        sample_data(), # bytes, 
+    )
     
     print(f'status code: {res.status_code}\n'
           f'request id: {res.request_id}\n'
     )
-    
-    # list_all_files_and_directory(client)
     
 if __name__=="__main__":
     main()
