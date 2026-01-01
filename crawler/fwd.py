@@ -1,6 +1,6 @@
 import asyncio
 import os
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 from playwright.async_api import Browser, Locator, Page, async_playwright
 
@@ -59,19 +59,56 @@ async def get_product_containers(page: Page):
     for i in range(count):
         yield containers.nth(i) # generator
 
+async def handle_product_card(browser: Browser, card: Locator, keyword=None):
+    """
+    Extracts the product link from the card and processes the detail page.
+    """
+    if keyword is not None:
+        productTags = card.locator('div[class^="ProductCard__TagLink"]')
+        tags = await productTags.all_inner_texts()
+        if tags is None or not any(keyword in tag for tag in tags):
+            return
+
+    links = card.locator("a")
+    count = await links.count()
+    
+    for i in range(count):
+        href = await links.nth(i).get_attribute("href")
+        if not href:
+            continue
+
+        if '.pdf' in href:
+            href = urljoin(BASE_URL, href)
+            filename = href.split('/')[-1]
+            create_folder_if_not_exist('brochures')
+            download_file_from_url(href, f"brochures/{filename}")
+        else:
+            # urljoin to join BASEURL with partial incomplete path (href)
+            page_url = urljoin(BASE_URL, href)
+            await process_product_page(browser, page_url)
+
 async def process_product_page(browser: Browser, product_url: str):
     """
     Navigates to the product page and downloads the brochure if found.
     """
     context = await browser.new_context()
     page = await context.new_page()
+
+    # it seems there is running JS script in online insurance paths
+    tmp = product_url.replace(BASE_URL, "")
+    if tmp.startswith('online-insurance'): 
+        wait_mode = "load"
+    else:
+        wait_mode = "networkidle"
+
+    parsed = urlparse(product_url)
+    product_url_parsed = urljoin(product_url, parsed.path) # remove query string
     
     try:
-        await page.goto(product_url, wait_until="networkidle", timeout=60000)
+        await page.goto(product_url_parsed, wait_until=wait_mode, timeout=30*1000)
         links = page.locator("a")
         count = await links.count()
         
-        found = False
         for i in range(count):
             link = links.nth(i)
             href = await link.get_attribute("href")
@@ -107,28 +144,6 @@ async def process_product_page(browser: Browser, product_url: str):
     finally:
         await page.close()
         await context.close()
-
-async def handle_product_card(browser: Browser, card: Locator):
-    """
-    Extracts the product link from the card and processes the detail page.
-    """
-    links = card.locator("a")
-    count = await links.count()
-    
-    for i in range(count):
-        href = await links.nth(i).get_attribute("href")
-        if not href:
-            continue
-
-        if '.pdf' in href:
-            href = urljoin(BASE_URL, href)
-            filename = href.split('/')[-1]
-            create_folder_if_not_exist('brochures')
-            download_file_from_url(href, f"brochures/{filename}")
-        else:
-            # urljoin to join BASEURL with partial incomplete path (href)
-            page_url = urljoin(BASE_URL, href)
-            await process_product_page(browser, page_url)
     
 async def run():
     async with async_playwright() as p:
@@ -141,7 +156,7 @@ async def run():
             await expand_list(page)
             
             async for container in get_product_containers(page):
-                await handle_product_card(browser, container)
+                await handle_product_card(browser, container, "medical")
 
         except Exception as e:
             print(f"Error in main run loop: {e}")
