@@ -4,8 +4,8 @@ from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 import requests
-from download_file import download_file_from_url
 
+from download_file import download_file_from_url
 
 def find_aia_major_categories():
     base_url = "https://www.aia.com.hk/en/"
