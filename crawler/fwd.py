@@ -1,5 +1,10 @@
 import asyncio
-from playwright.async_api import async_playwright, Page, Locator
+import os
+from urllib.parse import urljoin
+
+from playwright.async_api import Browser, Locator, Page, async_playwright
+
+from download_file import create_folder_if_not_exist, download_file_from_url
 
 BASE_URL = "https://www.fwd.com.hk"
 
@@ -30,7 +35,7 @@ async def expand_list(page: Page):
                 print(f"Clicking 'Show more' (Attempt {click_count + 1})...")
                 await button.scroll_into_view_if_needed()
                 await button.click(force=True, timeout=5000) 
-                await page.wait_for_timeout(3000) # Wait for content to load
+                await page.wait_for_timeout(1500) # Wait for content to load
                 click_count += 1
             except Exception as e:
                 print(f"Failed to click button: {e}")
@@ -41,12 +46,10 @@ async def expand_list(page: Page):
         locator = await locate_show_more_button(page)
         count = await locator.count()
 
-async def extract_product_titles(page: Page):
+async def get_product_containers(page: Page):
     """
-    Finds all product containers in 'product-list' and prints their titles.
+    Yields each product container found in the 'product-list'.
     """
-    print("\nExtracting product titles...")
-    
     await page.wait_for_selector("#product-list")
     
     # Locate all containers with id starting with 'product-card-' inside #product-list
@@ -56,18 +59,92 @@ async def extract_product_titles(page: Page):
     for i in range(count):
         yield containers.nth(i) # generator
 
+async def process_product_page(browser: Browser, product_url: str):
+    """
+    Navigates to the product page and downloads the brochure if found.
+    """
+    context = await browser.new_context()
+    page = await context.new_page()
+    
+    try:
+        await page.goto(product_url, wait_until="networkidle", timeout=60000)
+        links = page.locator("a")
+        count = await links.count()
+        
+        found = False
+        for i in range(count):
+            link = links.nth(i)
+            href = await link.get_attribute("href")
+            text = await link.inner_text()
+            
+            if not href or not text or "brochure" not in text.lower():
+                continue
+
+            # Check if it looks like a PDF url (ignoring query params)
+            # e.g. /path/to/file.pdf?v=123#title1 -> /path/to/file.pdf
+            url_path = href.split("?")[0].split("#")[0]
+            if url_path.lower().endswith(".pdf"):
+                filename = url_path.split("/")[-1]
+                
+                output_dir = os.path.join(os.getcwd(), 'brochures')
+                os.makedirs(output_dir, exist_ok=True)
+                
+                download_path = os.path.join(output_dir, filename)
+                
+                full_url = href
+                if not href.startswith("https"):
+                    if href.startswith("/"):
+                        full_url = f"{BASE_URL}{href}"
+                    else:
+                        full_url = f"{BASE_URL}/{href}"
+
+                # Run download synchronously in a thread
+                await asyncio.to_thread(download_file_from_url, full_url, download_path)
+                break
+
+    except Exception as e:
+        print(f"Error processing page: {e}")
+    finally:
+        await page.close()
+        await context.close()
+
+async def handle_product_card(browser: Browser, card: Locator):
+    """
+    Extracts the product link from the card and processes the detail page.
+    """
+    links = card.locator("a")
+    count = await links.count()
+    
+    for i in range(count):
+        href = await links.nth(i).get_attribute("href")
+        if not href:
+            continue
+
+        if '.pdf' in href:
+            href = urljoin(BASE_URL, href)
+            filename = href.split('/')[-1]
+            create_folder_if_not_exist('brochures')
+            download_file_from_url(href, f"brochures/{filename}")
+        else:
+            # urljoin to join BASEURL with partial incomplete path (href)
+            page_url = urljoin(BASE_URL, href)
+            await process_product_page(browser, page_url)
+    
 async def run():
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page()
         try:
-            await page.goto(f"{BASE_URL}/en/products/", wait_until="networkidle", timeout=30000)
-            await page.wait_for_timeout(1000)
+            await page.goto(f"{BASE_URL}/en/products/", wait_until="networkidle", timeout=60000)
+            await page.wait_for_timeout(2000)
 
             await expand_list(page)
+            
+            async for container in get_product_containers(page):
+                await handle_product_card(browser, container)
 
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Error in main run loop: {e}")
         finally:
             await browser.close()
 
