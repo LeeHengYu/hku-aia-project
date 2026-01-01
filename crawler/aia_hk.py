@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 import requests
 
-from download_file import download_file_from_url
+from download_file import create_folder_if_not_exist, download_file_from_url
 
 def find_aia_major_categories():
     base_url = "https://www.aia.com.hk/en/"
@@ -101,9 +101,7 @@ def download_brochure(page_url, download_folder="brochures"):
             print(f"[-] Could not determine filename from URL: {file_url}")
             return None
 
-        if not os.path.exists(download_folder):
-            os.makedirs(download_folder)
-        
+        create_folder_if_not_exist(download_folder)
         file_path = os.path.join(download_folder, filename)
         
         print(f"[*] Found: {filename}")
@@ -117,9 +115,10 @@ def download_brochure(page_url, download_folder="brochures"):
 
 if __name__ == "__main__":
     major_links = find_aia_major_categories()
-    print("Entry pages for each insurance type:")
-    for l in major_links:
-        print(l)
+    # print("Entry pages for each insurance type:")
+    # for l in major_links:
+    #     print(l)
     
     for l in major_links:
-        scrape_dynamic_products(l)
+        if l.split("/")[-1] == 'health':
+            scrape_dynamic_products(l)
