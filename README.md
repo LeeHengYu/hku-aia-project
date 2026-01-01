@@ -32,11 +32,15 @@ In the webpages of each product type, say `https://www.aia.com.hk/en/products/ge
 
 > Note: this exploration method is also called Depth-First Search (DFS).
 
-#### Technicals
+### FWD (async)
+
+No recursive hierarchy in this website. The entry point is the product list page (https://www.fwd.com.hk/en/products/), if the brochure of a certain product can be found, direct download, otherwise visit the product page and search for it. 
+
+### Technicals
 
 `Playwright` is needed to load the contents of the page, as most of the product information in the list is injected by JavaScript program. Using only `BeautifulSoup` can't capture these HTML elements.
 
-This implementation successfully crawl 27 brochures from AIA websites in one run. Read the code for more details.
+This implementation successfully crawl **27** brochures from AIA websites and **50** from FWD in one run. Read the code for more details.
 
 ## Task 3 prep: OSS setup
 
