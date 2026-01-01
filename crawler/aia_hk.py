@@ -1,10 +1,11 @@
 import os
-import requests
-
-from typing import List
-from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
+
+from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
+import requests
+from download_file import download_file_from_url
+
 
 def find_aia_major_categories():
     base_url = "https://www.aia.com.hk/en/"
@@ -106,15 +107,7 @@ def download_brochure(page_url, download_folder="brochures"):
         file_path = os.path.join(download_folder, filename)
         
         print(f"[*] Found: {filename}")
-        print(f"[*] Downloading from: {file_url}")
-        
-        with requests.get(file_url, headers=headers, stream=True) as r:
-            r.raise_for_status()
-            with open(file_path, 'wb') as f:
-                for chunk in r.iter_content(chunk_size=1024 * 8):
-                    f.write(chunk)
-        
-        print(f"[+] Successfully saved to {file_path}")
+        download_file_from_url(file_url, file_path, headers)
         return file_path
 
     except Exception as e:
