@@ -1,6 +1,8 @@
 # HKU AIA project
 
-## Installation & Setup
+Only about phase 2. AIA mainly cares about medical and health insurance products, so, in the first step we try to gather information relevant to health/medical.
+
+# Installation & Setup
 
 It is recommended to install Python3.11 or above and `pip` for downloading required packages. It is STRONGLY RECOMMENDED to create a virtual environment for this project.
 
@@ -18,7 +20,9 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Task 2: Data crawling
+# Task 2: Data crawling
+
+## Insurance brochures
 
 ### AIA Hong Kong
 
@@ -34,7 +38,7 @@ In the webpages of each product type, say `https://www.aia.com.hk/en/products/ge
 
 ### FWD (async)
 
-No recursive hierarchy in this website. The entry point is the product list page (https://www.fwd.com.hk/en/products/), if the brochure of a certain product can be found, direct download, otherwise visit the product page and search for it. 
+No recursive hierarchy in this website. The entry point is the product list page (https://www.fwd.com.hk/en/products/), if the brochure of a certain product can be found, direct download, otherwise visit the product page and search for it.
 
 ### Technicals
 
@@ -42,7 +46,23 @@ No recursive hierarchy in this website. The entry point is the product list page
 
 This implementation successfully crawl **27** brochures from AIA websites and **50** from FWD in one run. Read the code for more details.
 
-## Task 3 prep: OSS setup
+## Census data
+
+### HK
+
+Several tables compiled into an excel file, provided by Census and Statistics government. May need to convert each table to a text file, such as csv.
+
+### US (in progress)
+
+Data API is provided by Census Bureau (https://data.census.gov/table), but was broken when I wrote this script on a Sunday. Run the script with `-g` flag to select the group (which data table to fetch). Use `-h` flag to see which groups we are mainly interested in.
+
+Example run: (suppose you are in the root folder of this project)
+
+```
+python3 census/us_health_insurance_coverage.py -g S2701
+```
+
+# Task 3 prep: OSS setup
 
 A simple script to upload data to Alibaba OSS. Configuration of API key and secret as environment variables is needed. Follow the [official API documentation](https://www.alibabacloud.com/help/en/oss/developer-reference/getting-started-with-oss-sdk-for-python) for this setup.
 
