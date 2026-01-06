@@ -52,7 +52,7 @@ This implementation successfully crawl **27** brochures from AIA websites and **
 
 Several tables compiled into an excel file, provided by Census and Statistics government. May need to convert each table to a text file, such as csv.
 
-### US (in progress)
+### US (to be tested)
 
 Data API is provided by Census Bureau (https://data.census.gov/table), but was broken when I wrote this script on a Sunday. Run the script with `-g` flag to select the group (which data table to fetch). Use `-h` flag to see which groups we are mainly interested in.
 
@@ -61,9 +61,3 @@ Example run: (suppose you are in the root folder of this project)
 ```
 python3 census/us_health_insurance_coverage.py -g S2701
 ```
-
-# Task 3 prep: OSS setup
-
-A simple script to upload data to Alibaba OSS. Configuration of API key and secret as environment variables is needed. Follow the [official API documentation](https://www.alibabacloud.com/help/en/oss/developer-reference/getting-started-with-oss-sdk-for-python) for this setup.
-
-`utility/main.py` is essentially a simple wrapper of Alibaba's OSS Python SDK.
