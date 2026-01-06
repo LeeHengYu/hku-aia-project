@@ -18,5 +18,4 @@ def download_file_from_url(file_url, file_path, headers=None):
     print(f"[+] Successfully saved to {file_path}")
 
 def create_folder_if_not_exist(dir):
-    if not os.path.exists(dir):
-        os.makedirs(dir)
+    os.makedirs(dir, exist_ok=True)
