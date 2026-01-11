@@ -22,42 +22,32 @@ pip install -r requirements.txt
 
 # Task 2: Data crawling
 
-## Insurance brochures
+### Census data
+- [x] HK Census and Stat department
+- [ ] US Census (API always broken)
 
-### AIA Hong Kong
+### Financial (stocks and bonds)
+- [ ] HK Stock (FUTU needs auth setup, considering using Bloomberg Terminal)
+- [ ] US Stock 
+- [x] HK Bond Yield
+- [x] US Bond Yield
 
-The main file for this website, `crawler/aia_hk.py`, serves as a general principle of recursively crawling brochures from each product page. One can apply the similar thought processes on other insurers' websites.
+### Financial Statements / Reports
+- [x] AIA Group 
+- [x] FWD
+- [x] Prudential
+- [ ] Manulife
 
-#### Logics
+### Insurance brochures
+- [x] AIA Group 
+- [x] FWD
+- [x] Prudential
+- [x] Manulife
 
-The base URL is `https://www.aia.com.hk/en`, and we can assume all product details lie below `https://www.aia.com.hk/en/products/<product_type>`, and the product type can be inferred from `product_type`. By crawling the base URL, we can find many matches of `product_type`.
+### Medical
+- [x] CHP
+- [ ] Hospital Authority
 
-In the webpages of each product type, say `https://www.aia.com.hk/en/products/general-insurance/<optional-something>`, there can be a list of product links (sometimes categorization is more niche) or the intro page of a product. The recursion comes in here: if the page is a product intro page, we try to find the brochure link and download it, or else we explore the product list and visit each of them. Any determination of whether if it is a product page is based on HTML elements.
+# Task 3: AI & GCP
 
-> Note: this exploration method is also called Depth-First Search (DFS).
-
-### FWD (async)
-
-No recursive hierarchy in this website. The entry point is the product list page (https://www.fwd.com.hk/en/products/), if the brochure of a certain product can be found, direct download, otherwise visit the product page and search for it.
-
-### Technicals
-
-`Playwright` is needed to load the contents of the page, as most of the product information in the list is injected by JavaScript program. Using only `BeautifulSoup` can't capture these HTML elements.
-
-This implementation successfully crawl **27** brochures from AIA websites and **50** from FWD in one run. Read the code for more details.
-
-## Census data
-
-### HK
-
-Several tables compiled into an excel file, provided by Census and Statistics government. May need to convert each table to a text file, such as csv.
-
-### US (to be tested)
-
-Data API is provided by Census Bureau (https://data.census.gov/table), but was broken when I wrote this script on a Sunday. Run the script with `-g` flag to select the group (which data table to fetch). Use `-h` flag to see which groups we are mainly interested in.
-
-Example run: (suppose you are in the root folder of this project)
-
-```
-python3 census/us_health_insurance_coverage.py -g S2701
-```
+Some helper function to upload data to Cloud Storage. Needs to setup permission key or auth using Google Cloud CLI.
