@@ -15,8 +15,6 @@ def download_file_from_url(file_url, file_path, headers=None, timeout=15):
         default_headers.update(headers)
     
     headers = default_headers
-        
-    print(f"[*] Downloading from: {file_url}")
     
     with requests.get(file_url, headers=headers, stream=True, timeout=timeout) as r:
         r.raise_for_status()
