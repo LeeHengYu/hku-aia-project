@@ -61,7 +61,7 @@ def download_pdf_with_retry(file_url, filepath, max_retries=3):
 
 def download_all_pdfs_from_page(page_url, page, max_pdfs=5) -> int:
     """Download PDFs from product detail page (max: max_pdfs)"""
-    download_folder = "brochures"
+    download_folder = "brochures/manulife"
     create_folder_if_not_exist(download_folder)
     
     try:

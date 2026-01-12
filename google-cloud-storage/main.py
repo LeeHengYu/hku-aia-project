@@ -1,8 +1,13 @@
 import os
 from google.cloud import storage
+from typing import Protocol
 
 BUCKET_NAME = "crawled-raw"
 
+class DataLoader(Protocol): # experiment
+    ... 
+    def load_data():
+        ...
 
 def upload_folder(client, bucket_name, source_folder, blob_prefix=None):
     bucket = client.get_bucket(bucket_name)
@@ -26,5 +31,4 @@ def upload_bytes(client, bucket_name, data, destination_blob_name, blob_prefix=N
 if __name__=="__main__":
     cli = storage.Client()
     # upload_folder(cli, BUCKET_NAME, 'google-cloud-storage/test_folder', 'data')
-
     upload_bytes(cli, BUCKET_NAME, b"hello world", "test_bytes.txt")

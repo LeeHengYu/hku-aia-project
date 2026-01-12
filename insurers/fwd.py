@@ -81,7 +81,7 @@ async def handle_product_card(browser: Browser, card: Locator, keyword=None):
             href = urljoin(BASE_URL, href)
             filename = href.split('/')[-1]
             create_folder_if_not_exist('brochures')
-            download_file_from_url(href, f"brochures/{filename}")
+            download_file_from_url(href, f"brochures/fwd/{filename}")
         else:
             # urljoin to join BASEURL with partial incomplete path (href)
             page_url = urljoin(BASE_URL, href)
@@ -123,7 +123,7 @@ async def process_product_page(browser: Browser, product_url: str):
             if url_path.lower().endswith(".pdf"):
                 filename = url_path.split("/")[-1]
                 
-                output_dir = os.path.join(os.getcwd(), 'brochures')
+                output_dir = os.path.join(os.getcwd(), 'brochures/fwd')
                 os.makedirs(output_dir, exist_ok=True)
                 
                 download_path = os.path.join(output_dir, filename)

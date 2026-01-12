@@ -76,7 +76,7 @@ def scrape_dynamic_products(root_url):
         browser.close()
 
 
-def download_brochure(page_url, download_folder="brochures"):
+def download_brochure(page_url, download_folder="brochures/aia"):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }

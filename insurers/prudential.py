@@ -92,7 +92,7 @@ def _extract_links_from_soup(soup, base_url):
 
 def download_brochures(page_url, soup, max_pdfs=5):
     """Download PDFs from a product page"""
-    download_folder = "brochures"
+    download_folder = "brochures/prudential"
     create_folder_if_not_exist(download_folder)
     
     try:
