@@ -1,10 +1,13 @@
 from abc import abstractmethod
 from dataclasses import dataclass
-from typing import List
+from typing import Any, List
 import argparse
 import io
 import os
 import subprocess
+
+from PyPDF2 import PdfReader, PdfWriter
+from google.cloud import storage
 
 from main import upload_bytes
 
@@ -21,11 +24,12 @@ def run_all_brochure_crawlers():
 @dataclass
 class File:
     blob_name: str
-    payload: any # pdf, csv, bytes, etc.
+    payload: Any # pdf, csv, bytes, etc.
 
 class DataPipeline:
-    def __init__(self, folder: str):
+    def __init__(self, folder: str, storage_client: storage.Client):
         self.folder = folder
+        self.storage_client = storage_client
         self.files: List[File] = []
         self.cleaned_files: List[File] = []
     
@@ -36,41 +40,45 @@ class DataPipeline:
     @abstractmethod
     def clean(self): 
         ...
-    
-    @abstractmethod
+
     def get_file_bytes(self):
         ...
     
 class AIAHandler(DataPipeline):
     label = 'aia'
     
-    def __init__(self, filepath: str):
-        super().__init__(filepath)
+    def __init__(self, filepath: str, cli: storage.Client):
+        super().__init__(filepath, cli)
+        # can also use dependency injection on uploading function
     
     def load(self):
-        from PyPDF2 import PdfFileReader
         for filename in os.listdir(self.folder):
             if filename.endswith('.pdf'):
                 with open(os.path.join(self.folder, filename), 'rb') as f:
-                    pdf = PdfFileReader(f)
+                    bytes_stream = io.BytesIO(f.read())
+                    pdf = PdfReader(bytes_stream)
                     self.files.append(File(filename, pdf))
         return self
     
     def clean(self):
         # remove last page
-        from PyPDF2 import PdfFileWriter
         for file in self.files:
-            writer = PdfFileWriter()
-            for page in range(file.payload.getNumPages()-1):
-                writer.addPage(file.payload.getPage(page))
+            writer = PdfWriter()
+            for page in range(len(file.payload.pages)-1):
+                writer.add_page(file.payload.pages[page])
             
             with io.BytesIO() as f:
                 writer.write(f)
                 self.cleaned_files.append(File(file.blob_name, f.getvalue()))
+            
+            writer.close()
         return self
-
-    def get_file_bytes(self):
-        return self.cleaned_files
+    
+    def upload(self):
+        for file in self.cleaned_files:
+            upload_bytes(self.storage_client, BUCKET_NAME, file.payload, file.blob_name, self.label)
+        
+        return self
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -80,11 +88,6 @@ if __name__ == '__main__':
     if args.run_all:
         run_all_brochure_crawlers()
         
-    from google.cloud import storage
-    
-    aia = AIAHandler('./brochures/aia')
-    aia.load().clean()
-    
-    for f in aia.get_file_bytes():
-        cli = storage.Client()
-        upload_bytes(cli, BUCKET_NAME, f.payload, f.blob_name, aia.label)
+    cli = storage.Client()
+    aia = AIAHandler('./brochures/aia', cli)
+    aia.load().clean().upload()
