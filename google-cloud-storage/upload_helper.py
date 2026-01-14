@@ -2,7 +2,7 @@ import os
 from google.cloud import storage
 from typing import List, Protocol
 
-BUCKET_NAME = "crawled-raw"
+BUCKET_NAME = "crawled-clean"
 
 class DataLoader(Protocol): # experiment
     ... 
@@ -14,13 +14,14 @@ def upload_folder(client, bucket_name, source_folder, blob_prefix=None, file_suf
     if isinstance(file_suffix, str):
         file_suffix = [file_suffix]
     
-    for root, _, files in os.walk(source_folder):
-        for file in files:
-            if file_suffix is not None and not any(file.endswith(suffix) for suffix in file_suffix):
-                continue
-            local_path = os.path.join(root, file)
-            remote_path = os.path.relpath(local_path, source_folder) if blob_prefix is None else f"{blob_prefix}/{remote_path}"
-
+    for file in os.listdir(source_folder):
+        if file_suffix is not None and not any(file.endswith(suffix) for suffix in file_suffix):
+            continue
+        local_path = os.path.join(source_folder, file)
+        remote_path = os.path.join(blob_prefix, file) if blob_prefix is not None else file
+        if os.path.isdir(local_path):
+            upload_folder(client, bucket_name, local_path, remote_path, file_suffix)
+        else:
             blob = bucket.blob(remote_path)
             blob.upload_from_filename(local_path)
             print(f"Uploaded {local_path} to {remote_path}")
@@ -47,8 +48,9 @@ if __name__=="__main__":
     cli = storage.Client()
     
     # SAMPLE USE CASES
-    upload_folder(cli, BUCKET_NAME, 'google-cloud-storage/test_folder', 'data')
-    upload_bytes(cli, BUCKET_NAME, b"hello world", "test_bytes.txt")
+    # upload_folder(cli, BUCKET_NAME, 'google-cloud-storage/test_folder', 'data')
+    # upload_bytes(cli, BUCKET_NAME, b"hello world", "test_bytes.txt")
     
-    aia_files = list_blobs(cli, 'crawled-clean', 'aia')
-    download_blob(cli, 'crawled-clean', aia_files[0].name, 'test_download.pdf')
+    # aia_files = list_blobs(cli, 'crawled-clean', 'aia')
+    # download_blob(cli, 'crawled-clean', aia_files[0].name, 'test_download.pdf')
+    upload_folder(cli, BUCKET_NAME, 'financial', 'financial_data', '.csv')
