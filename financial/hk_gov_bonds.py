@@ -17,7 +17,7 @@ def get_data_note_bill(page=1, pagesize=200):
         "pagesize": pagesize,
     }
     
-    resp = requests.get(endpoint, params=query_params)
+    resp = requests.get(endpoint, params=query_params, timeout=15)
     resp.raise_for_status()
 
     data = resp.json().get('result', {}).get('records', [])
@@ -66,24 +66,31 @@ def format_field(s):
 def drop_empty_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df.dropna(axis=1, how='all')
 
+def convert_col_names(s):
+    s = s.replace('efb', 'exchange_fund_bill').replace('efn', 'exchange_fund_note').replace('year', 'y')
+    pattern = r"(\d+)yr"
+    return re.sub(pattern, r"\1year_bond", s)
+
+
 def main():
-    output_dir = "./financial"
-    output_file = os.path.join(output_dir, "hk_exchange_fund_fi.csv")
-    
-    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join("./financial", "hk_exchange_fund_fi.csv")
+    if os.path.exists(output_file):
+        df = pd.read_csv(output_file, index_col=0)
+    else:
+        df_notes = crawl_resource(get_data_note_bill, total_pages=10)
+        df_bonds = crawl_resource(get_data_bonds, total_pages=10)
+        
+        if not df_notes.empty and not df_bonds.empty:
+            combined_df = pd.merge(
+                df_notes, 
+                df_bonds, 
+                on="end_of_day", 
+                how="inner", 
+            )
+        df = combined_df.copy()
 
-    df_notes = crawl_resource(get_data_note_bill, total_pages=10)
-    df_bonds = crawl_resource(get_data_bonds, total_pages=10)
-    
-    if not df_notes.empty and not df_bonds.empty:
-        combined_df = pd.merge(
-            df_notes, 
-            df_bonds, 
-            on="end_of_day", 
-            how="inner", 
-        )    
-
-    combined_df.to_csv(output_file, index=False)
+    df.columns = [convert_col_names(col) for col in df.columns]
+    df.to_csv(output_file, index=False)
 
 if __name__ == "__main__":
     main()
