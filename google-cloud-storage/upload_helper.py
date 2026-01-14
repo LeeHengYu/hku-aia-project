@@ -9,10 +9,15 @@ class DataLoader(Protocol): # experiment
     def load_data():
         ...
 
-def upload_folder(client, bucket_name, source_folder, blob_prefix=None):
+def upload_folder(client, bucket_name, source_folder, blob_prefix=None, file_suffix=None):
     bucket = client.get_bucket(bucket_name)
+    if isinstance(file_suffix, str):
+        file_suffix = [file_suffix]
+    
     for root, _, files in os.walk(source_folder):
         for file in files:
+            if file_suffix is not None and not any(file.endswith(suffix) for suffix in file_suffix):
+                continue
             local_path = os.path.join(root, file)
             remote_path = os.path.relpath(local_path, source_folder) if blob_prefix is None else f"{blob_prefix}/{remote_path}"
 
