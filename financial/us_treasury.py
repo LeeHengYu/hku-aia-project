@@ -3,6 +3,7 @@
 import os
 import pandas as pd
 import requests
+import uuid
 
 def get_endpoint(page_num=1, page_size=100):
     base_url = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/avg_interest_rates"
@@ -42,5 +43,7 @@ def crawl_pages(num_pages=3, page_size=100):
 if __name__ == "__main__":
     os.makedirs('./financial', exist_ok=True)
     df = crawl_pages(num_pages=20)
+    df['id'] = [str(uuid.uuid4()) for _ in range(len(df))]
+    df = df.set_index('id').reset_index() # this sets id as the 1st field
     if not df.empty:
         df.to_csv('./financial/us_treasury_yield.csv', index=False)
