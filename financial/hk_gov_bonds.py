@@ -1,10 +1,11 @@
 # Source: HK Monetary Authority
 
-import re
-import warnings
-import requests
-import pandas as pd
 import os
+import pandas as pd
+import re
+import requests
+import uuid
+import warnings
 
 BASE_ENDPOINT = "https://api.hkma.gov.hk/public/market-data-and-statistics/monthly-statistical-bulletin"
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -50,7 +51,6 @@ def crawl_resource(fetcher, total_pages=3, pagesize=200):
         
         df = df.loc[:, ~df.columns.duplicated()]
         all_dfs.append(df)
-
     return pd.concat(all_dfs, ignore_index=True) if all_dfs else pd.DataFrame()
 
 def format_field(s):
@@ -74,7 +74,7 @@ def convert_col_names(s):
 
 def main():
     output_file = os.path.join("./financial", "hk_exchange_fund_fi.csv")
-    if os.path.exists(output_file):
+    if os.path.exists(output_file) and False:
         df = pd.read_csv(output_file, index_col=0)
     else:
         df_notes = crawl_resource(get_data_note_bill, total_pages=10)
@@ -85,12 +85,19 @@ def main():
                 df_notes, 
                 df_bonds, 
                 on="end_of_day", 
-                how="inner", 
             )
+            df = combined_df.copy()
+            combined_df.set_index("end_of_day", inplace=True)
+            
         df = combined_df.copy()
 
     df.columns = [convert_col_names(col) for col in df.columns]
-    df.to_csv(output_file, index=False)
+    
+    df.reset_index(inplace=True)
+    df['id'] = [str(uuid.uuid4()) for _ in range(len(df))]
+    df.set_index('id', inplace=True)
+    
+    df.to_csv(output_file, index=True)
 
 if __name__ == "__main__":
     main()
