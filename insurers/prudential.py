@@ -1,9 +1,7 @@
 import os
 import re
-import time
 from urllib.parse import unquote, urljoin, urlparse
 
-import requests
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
@@ -33,7 +31,7 @@ CONFIG = {
     }
 }
 
-BASE_URL = "https://www.prudential.com.hk/en/health-insurance"
+BASE_URL = "https://www.prudential.com.hk/en/products/health/"
 
 def scrape_prudential_products(root_url):
     """
@@ -153,5 +151,4 @@ def download_brochures(page_url, soup, max_pdfs=5):
         print(f"  [!] Error processing page: {e}")
 
 if __name__ == "__main__":
-    start_url = f"{BASE_URL}/health-insurance/index.html"
-    scrape_prudential_products(start_url)
+    scrape_prudential_products(BASE_URL)
