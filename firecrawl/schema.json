@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "brochures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_name": {
+            "type": "string",
+            "description": "The name of the insurance product."
+          },
+          "category": {
+            "type": "string",
+            "description": "The product category (e.g., Life, Medical, Savings)."
+          },
+          "pdf_url": {
+            "type": "string",
+            "description": "The direct URL to the product brochure PDF."
+          }
+        },
+        "required": [
+          "product_name",
+          "category",
+          "pdf_url"
+        ]
+      }
+    }
+  },
+  "required": [
+    "brochures"
+  ]
+}

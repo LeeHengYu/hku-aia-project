@@ -1,0 +1,699 @@
+{
+  "brochures": [
+    {
+      "product_name": "AIA Assemble",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/aia-assemble/AIAAssemble_en.pdf"
+    },
+    {
+      "product_name": "Cancer Care Essence",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/cancer-care-essence/CancerCareEssence_en.pdf"
+    },
+    {
+      "product_name": "Cheerful Term / Cheerful Prime Care Pro",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/cheerful-rider/CheerfulRider_en.pdf"
+    },
+    {
+      "product_name": "EasyGuard Care Essence",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/easyguard-care-essence/EasyguardCareEssence_en.pdf"
+    },
+    {
+      "product_name": "Enhanced Critical Illness Rider Pro And Critical Illness Rider Pro",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/critical-illness-riders/CriticalIllnessRiders_en.pdf"
+    },
+    {
+      "product_name": "Essence – On Your Side Insurance Plan",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/essence-on-your-side/EssenceOnYourSideInsurancePlan_en.pdf"
+    },
+    {
+      "product_name": "Executive Care Pro 2 (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/executive-care-pro-2/ExecutiveCarePro2_en.pdf"
+    },
+    {
+      "product_name": "Lady Care Pro",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/lady-care-pro/LadyCarePro_en.pdf"
+    },
+    {
+      "product_name": "Level-Up Protect Cancer Plan",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/level-up/Level-Up_en.pdf"
+    },
+    {
+      "product_name": "Level-Up Protect Pearl Cancer Plan",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/level-up-pearl/Level-Up_Pearl_en.pdf"
+    },
+    {
+      "product_name": "Multiple Care Pro 2 (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/multiple-care-pro-2/MultipleCarePro2_en.pdf"
+    },
+    {
+      "product_name": "On Your Side Insurance Plan 2 / On Your Side Insurance Plan 2 – First Gift",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/on-your-side-plan-2/OnYourSideInsurancePlan2_en.pdf"
+    },
+    {
+      "product_name": "Pretty Choice Rider Pro",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/pretty-choice-rider-pro/PrettyChoiceRiderPro_en.pdf"
+    },
+    {
+      "product_name": "Prime Care Pro 2 (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/prime-care-pro-2/PrimeCarePro2_en.pdf"
+    },
+    {
+      "product_name": "Prime Care Rider",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/prime-care-rider/PrimeCareRider_en.pdf"
+    },
+    {
+      "product_name": "Simple Care Essence",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/simple-care-essence/SimpleCareEssence_en.pdf"
+    },
+    {
+      "product_name": "Simple Care Essence Pearl",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/simple-care-essence-pearl/SimpleCareEssencePearl_en.pdf"
+    },
+    {
+      "product_name": "Smart Elite Ultra (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/smart-elite-ultra/SmartEliteUltra_en.pdf"
+    },
+    {
+      "product_name": "Super HealthGuard Pro",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/super-healthguard-pro/SuperHealthGuardPro_en.pdf"
+    },
+    {
+      "product_name": "AIA Voluntary Health Insurance Flexi Scheme (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/vhis-flexi/AIAVoluntaryHealthInsuranceFlexiScheme_en.pdf"
+    },
+    {
+      "product_name": "AIA Voluntary Health Insurance Privilege Ultra Scheme (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/newmedical/newVHISmedical-en.pdf"
+    },
+    {
+      "product_name": "AIA Voluntary Health Insurance SelectWise Scheme (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/selectwise/vhis-selectwise_en.pdf"
+    },
+    {
+      "product_name": "AIA Voluntary Health Insurance Standard Scheme (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/vhis-standard/AIAVoluntaryHealthInsuranceStandardScheme_en.pdf"
+    },
+    {
+      "product_name": "Cancer Guardian 3 (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/cancer-guardian-3/CancerGuardian3_en.pdf"
+    },
+    {
+      "product_name": "Cancer Guardian 3 (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/cancer-guardian-3/CancerGuardian3_ma_en.pdf"
+    },
+    {
+      "product_name": "Cancer Guardian Pearl 3 (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/cancer-guardian-pearl-3/CancerGuardianPearl3_en.pdf"
+    },
+    {
+      "product_name": "Cancer Guardian Pearl 3 (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/cancer-guardian-pearl-3/CancerGuardianPearl3_ma_en.pdf"
+    },
+    {
+      "product_name": "CEO Medical Plan 5 / CEO Medical Plan (Worldwide) 5 (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/ceo-medical-plan-5/CEO5_en.pdf"
+    },
+    {
+      "product_name": "CEO Medical Plan 5 / CEO Medical Plan (Worldwide) 5 (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/ceo-medical-plan-5/CEO5_ma_en.pdf"
+    },
+    {
+      "product_name": "CEO Pearl Medical Plan 5 / CEO Pearl Medical Plan (Worldwide) 5  (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/ceo-pearl-medical-plan-5/CEOP5_en.pdf"
+    },
+    {
+      "product_name": "CEO Pearl Medical Plan 5 / CEO Pearl Medical Plan (Worldwide) 5  (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/ceo-pearl-medical-plan-5/CEOP5_ma_en.pdf"
+    },
+    {
+      "product_name": "Flexi-MediGuard Hospital Income Plan (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/flexi-mediguard-hospital-income-plan/Flexi-MediGuardHospitalIncomePlan_en.pdf"
+    },
+    {
+      "product_name": "Flexi-MediGuard Hospital Income Plan (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/flexi-mediguard-hospital-income-plan/Flexi-MediGuardHospitalIncomePlan_ma_en.pdf"
+    },
+    {
+      "product_name": "GBA Health Connect Outpatient Plan (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/gba/GBAOutpatientPlan-en.pdf"
+    },
+    {
+      "product_name": "GBA Health Connect Outpatient Plan (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/gba/GBAOutpatientPlan-ma-en.pdf"
+    },
+    {
+      "product_name": "Health Journey Guardian (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/health-journey-guardian/HJG_en.pdf"
+    },
+    {
+      "product_name": "Here For You Refundable Hospital Cash",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/here-for-you-refundable-hospital-cash/HFYRefundHC(0119)_en.pdf"
+    },
+    {
+      "product_name": "Here For You Refundable Surgical Cash (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/here-for-you-refundable-surgical-cash/HereForYouRefundableSurgicalCash_en.pdf"
+    },
+    {
+      "product_name": "Here For You Refundable Surgical Cash (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/here-for-you-refundable-surgical-cash/HereForYouRefundableSurgicalCash_ma_en.pdf"
+    },
+    {
+      "product_name": "Hospital & Surgical Rider (80 Series) (Macau Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/HS80_brochure_en.pdf"
+    },
+    {
+      "product_name": "Hospitalization Benefit Rider",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/hospitalization-benefit-rider/HospitalizationBenefitRider_en.pdf"
+    },
+    {
+      "product_name": "Individual Medical Plan (80 Series) (Macau Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/IM80_brochure_en.pdf"
+    },
+    {
+      "product_name": "Metro-Trio Medical & Critical Illness Protection Plan (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/metro-trio/Metro-Trio_en.pdf"
+    },
+    {
+      "product_name": "Metro-Trio Medical & Critical Illness Protection Plan (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/metro-trio/Metro-Trio_ma_en.pdf"
+    },
+    {
+      "product_name": "Metro-Trio Pearl Medical & Critical Illness Protection Plan (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/metro-trio-pearl/Metro-TrioPearl_en.pdf"
+    },
+    {
+      "product_name": "Metro-Trio Pearl Medical & Critical Illness Protection Plan (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/metro-trio-pearl/Metro-TrioPearl_ma_en.pdf"
+    },
+    {
+      "product_name": "OptimaCEO Medical Plan / OptimaCEO Medical Plan – First Gift (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/optimaceo-medical-plan/optimaceo-medical-plan-en.pdf"
+    },
+    {
+      "product_name": "OptimaCEO Medical Plan / OptimaCEO Medical Plan – First Gift (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/optimaceo-medical-plan/optimaceo-medical-plan-ma-en.pdf"
+    },
+    {
+      "product_name": "OptimaCEO Pearl Medical Plan / OptimaCEO Pearl Medical Plan – First Gift (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/optimaceo-pearl-medical-plan/optimaceo-pearl-medical-plan-en.pdf"
+    },
+    {
+      "product_name": "OptimaCEO Pearl Medical Plan / OptimaCEO Pearl Medical Plan – First Gift (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/optimaceo-pearl-medical-plan/optimaceo-pearl-medical-plan-ma-en.pdf"
+    },
+    {
+      "product_name": "Privilege Ultra Medical Plan (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/newmedical/newmedical-ma-en.pdf"
+    },
+    {
+      "product_name": "Privilege Ultra Pearl Medical Plan (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/newmedical/newmedicalpearl-en.pdf"
+    },
+    {
+      "product_name": "Privilege Ultra Pearl Medical Plan (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/newmedical/newmedicalpearl-ma-en.pdf"
+    },
+    {
+      "product_name": "SelectWise Medical Plan (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/selectwise/selectwise_ma_en.pdf"
+    },
+    {
+      "product_name": "SelectWise Pearl Medical Plan (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/selectwise/selectwise-pearl_en.pdf"
+    },
+    {
+      "product_name": "SelectWise Pearl Medical Plan (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/selectwise/selectwise-pearl_ma_en.pdf"
+    },
+    {
+      "product_name": "Super Good Health Hospital & Surgical Rider 2 (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/super-good-health-hospital-&-surgical-rider-2/SuperGoodHealthMedicalRider2_en.pdf"
+    },
+    {
+      "product_name": "Super Good Health Hospital & Surgical Rider 2 (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/super-good-health-hospital-&-surgical-rider-2/SuperGoodHealthMedicalRider2_ma_en.pdf"
+    },
+    {
+      "product_name": "Super Good Health Medical Plan 2 (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/super-good-health-medical-plan-2/SuperGoodHealthMedicalPlan2_en.pdf"
+    },
+    {
+      "product_name": "Super Good Health Medical Plan 2 (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/super-good-health-medical-plan-2/SuperGoodHealthMedicalPlan2_ma_en.pdf"
+    },
+    {
+      "product_name": "Severe Illness Medical Protection Rider (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/severe-illness-medical-protection-rider/SevereIllnessMedicalProtectionRider_en.pdf"
+    },
+    {
+      "product_name": "Severe Illness Medical Protection Rider (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/severe-illness-medical-protection-rider/SevereIllnessMedicalProtectionRider_ma_en.pdf"
+    },
+    {
+      "product_name": "Severe Illness Pearl Medical Protection Rider (Hong Kong only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/severe-illness-pearl-medical-protection-rider/SevereIllnessPearlMedicalProtectionRider_en.pdf"
+    },
+    {
+      "product_name": "Severe Illness Pearl Medical Protection Rider (Macau only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/severe-illness-pearl-medical-protection-rider/SevereIllnessPearlMedicalProtectionRider_ma_en.pdf"
+    },
+    {
+      "product_name": "AIA One Absolute – Cancer & Serious Infectious Disease Protection",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/aia-one-absolute-cancer-and-serious-infectious-disease-protection/AIAOneAbsolute-Cancer&SeriousInfectiousDiseaseProtection_en.pdf"
+    },
+    {
+      "product_name": "AIA One Absolute Pearl – Cancer & Serious Infectious Disease Protection",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/aia-one-absolute-pearl-cancer-and-serious-infectious-disease-protection/AIAOneAbsolutePearl-Cancer&SeriousInfectiousDiseaseProtection_en.pdf"
+    },
+    {
+      "product_name": "AIA One Absolute – Full Protection",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/aia-one-absolute-full-protection/AIAOneAbsolute-FullProtection_en.pdf"
+    },
+    {
+      "product_name": "AIA One Absolute Pearl – Full Protection",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/aia-one-absolute-pearl-full-protection/AIAOneAbsolutePearl-FullProtection_en.pdf"
+    },
+    {
+      "product_name": "Accidental Death Benefit Rider / Accidental Death and Dismemberment Rider / Simplified Accidental Death and Dismemberment Rider (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/accident-riders/AccidentRidersHongKongVersion_en.pdf"
+    },
+    {
+      "product_name": "Accidental Death Benefit Rider / Accidental Death and Dismemberment Rider / Simplified Accidental Death and Dismemberment Rider (Macau Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/accident-riders/AccidentRidersMacauVersion_en.pdf"
+    },
+    {
+      "product_name": "China Assist Protection Plan (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/china-assist-protection-plan/ChinaAssistProtectionPlan_en.pdf"
+    },
+    {
+      "product_name": "Here For You Refundable Accident Plus (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/here-for-you-refundable-accident/HereForYouRefundableAccidentPlus_en.pdf"
+    },
+    {
+      "product_name": "Here For You Refundable Accident Plus (Macau Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/here-for-you-refundable-accident/HereForYouRefundableAccidentPlus_ma_en.pdf"
+    },
+    {
+      "product_name": "PAC Select 3 (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/pac-select/PACSelect3_en.pdf"
+    },
+    {
+      "product_name": "PAC Select 3 (Macau Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/pac-select/PACSelect3_ma_en.pdf"
+    },
+    {
+      "product_name": "Premium Refund - Accidental HI (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/premium-Refund-Accident-HI/ROPAHI_en.pdf"
+    },
+    {
+      "product_name": "Premium Refund - Accidental HI (Macau Only) ",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/premium-Refund-Accident-HI/ROPAHI_ma_en.pdf"
+    },
+    {
+      "product_name": "Runner Guard (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/runner-guard/RunnerGuard_en.pdf"
+    },
+    {
+      "product_name": "Secure First",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/secure-first/SecureFirst_en.pdf"
+    },
+    {
+      "product_name": "Secure First Plus",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/secure-first-plus/SecureFirstPlus_en.pdf"
+    },
+    {
+      "product_name": "Silvery Protect (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/silveryprotect/SilveryProtect_en.pdf"
+    },
+    {
+      "product_name": "Silvery Protect (Macau Only) ",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/silveryprotect/SilveryProtect_ma_en.pdf"
+    },
+    {
+      "product_name": "Super Kids Shield / Super Adults Shield / Super Seniors Shield (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/super-shield-series/SuperShieldSeries_en.pdf"
+    },
+    {
+      "product_name": "Super Kids Shield / Super Adults Shield / Super Seniors Shield (Macau Only) ",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/super-shield-series/SuperShieldSeries_ma_en.pdf"
+    },
+    {
+      "product_name": "Waiver of Premium and Payor Benefit Riders",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/waiver-of-premium-and-payor-benefit-riders/WPPB_en.pdf"
+    },
+    {
+      "product_name": "Xtra Protect (Hong Kong Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/xtraprotect/XtraProtect_en.pdf"
+    },
+    {
+      "product_name": "Xtra Protect (Macau Only)",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/xtraprotect/XtraProtect_ma_en.pdf"
+    },
+    {
+      "product_name": "Additional Purchase Option Rider",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/additional-purchase-option-rider/AdditionalPurchaseOptionRider_en.pdf"
+    },
+    {
+      "product_name": "Admire Life 2",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/admire-life-2/AdmireLife2_en.pdf"
+    },
+    {
+      "product_name": "Bonus Power Plan 2 (Enhanced Protection) (Hong Kong Only)",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/bonus-power-plan-2-ep/BonusPowerPlan2EnhancedProtection_en.pdf"
+    },
+    {
+      "product_name": "Easyguard Term Life Plan",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/easyguard-term-life/EasyGuardTermLife_en.pdf"
+    },
+    {
+      "product_name": "Expert Term Life Plan",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/expert-term-life-plan/ExpertTermLifePlan_en.pdf"
+    },
+    {
+      "product_name": "Guaranteed Issue Whole Life Plan (Hong Kong Only)",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/guaranteed-issue-whole-life-plan/GuaranteedIssueWholeLifePlan_en.pdf"
+    },
+    {
+      "product_name": "Life Endowment Special AP",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/life-endowment-special-ap/LifeEndowmentSpecialAP_en.pdf"
+    },
+    {
+      "product_name": "ProsperLife Insurance Plan (Hong Kong only)",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/prosperlife-insurance-plan/ProsperLifeInsurancePlan_en.pdf"
+    },
+    {
+      "product_name": "ProsperLife Insurance Plan (Macau only)",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/prosperlife-insurance-plan/ProsperLifeInsurancePlan_ma_en.pdf"
+    },
+    {
+      "product_name": "Serene Life / Serene Life (Annual Dividends) (Hong Kong)",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/serene-life-series/SereneLifeSeries_en.pdf"
+    },
+    {
+      "product_name": "Serene Life / Serene Life (Annual Dividends) (Macau)",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/serene-life-series/SereneLifeSeries_ma_en.pdf"
+    },
+    {
+      "product_name": "Wealth Elite 2",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/wealth-elite2/WealthElite2_en.pdf"
+    },
+    {
+      "product_name": "Wealth Preserver 5",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/wealth-preserver-5_en.pdf"
+    },
+    {
+      "product_name": "Wealth Ultima 2",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/wealth-ultima-2/WealthUltima2_en.pdf"
+    },
+    {
+      "product_name": "Wisdom Term Life Plan",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/wisdom-term-life-plan/WisdomTermLifePlan_en.pdf"
+    },
+    {
+      "product_name": "Wisdom Term Life Supplementary Contract",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/wisdom-term-life-plan/WisdomTermLifeSupplementaryContract_en.pdf"
+    },
+    {
+      "product_name": "AIA Deferred Annuity Plan 2",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/deferred-annuity-plan-2/AIADeferredAnnuityPlan2_en.pdf"
+    },
+    {
+      "product_name": "Forever Love Coupon Plan 5",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/forever-love-coupon-plan-5/ForeverLoveCouponPlan5_en.pdf"
+    },
+    {
+      "product_name": "Fortune Promise 2",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/fortune-promise/FortunePromise2_en.pdf"
+    },
+    {
+      "product_name": "Golden Years Income Plan",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/golden-years-income-plan/GoldenYearsIncomePlan_en.pdf"
+    },
+    {
+      "product_name": "Simply Love Encore 5",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/simply-love-encore-5/SimplyLoveEncore5_en.pdf"
+    },
+    {
+      "product_name": "Special Target Saver Plus",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/special-target-saver-plus/SpecialTargetSaverPlus_en.pdf"
+    },
+    {
+      "product_name": "Spring Income Plan (Hong Kong Only)",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/spring-income-plan/SpringIncomePlan_en.pdf"
+    },
+    {
+      "product_name": " FlexiAchiever Savings Plan (Macau Only)",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/flexiachiever-savings-plan/FlexiAchieverSavingsPlan_ma_en.pdf"
+    },
+    {
+      "product_name": "GlobalFlexi Savings Insurance Plan",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/globalflexi-savings-insurance-plan/GlobalFlexiSavingsInsurancePlan_en.pdf"
+    },
+    {
+      "product_name": "Global Power Multi-Currency Plan 3 (Hong Kong Only)",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/global-power-multi-currency-plan-3/GlobalPowerMultiCurrencyPlan3_en.pdf"
+    },
+    {
+      "product_name": "Global Power Multi-Currency Plan 3 (Macau Only)",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/global-power-multi-currency-plan-3/GlobalPowerMultiCurrencyPlan3_ma_en.pdf"
+    },
+    {
+      "product_name": "Wealth Generation",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/wealth-generation/WealthGeneration_en.pdf"
+    },
+    {
+      "product_name": "Wealth Enrich",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/wealth-enrich/WealthEnrich_en.pdf"
+    },
+    {
+      "product_name": "AIA 2-in-1 Protection Linked Plan (Regular Premium) (Hong Kong only)",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/aia-2in1-protection-linked-plan-regular-premium/AIA2in1ProtectionLinkedPlanRegularPremium_HK_en.pdf"
+    },
+    {
+      "product_name": "AIA 2-in-1 Protection Linked Plan (Single Premium) (Hong Kong only)",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/aia-2in1-protection-linked-plan-single-premium/AIA2in1ProtectionLinkedPlanSinglePremium_HK_en.pdf"
+    },
+    {
+      "product_name": "AIA 2-in-1 Protection Linked Plan (Single Premium) (Macau only)",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/aia-2in1-protection-linked-plan-single-premium/AIA2in1ProtectionLinkedPlanSinglePremium_MA_en.pdf"
+    },
+    {
+      "product_name": "Treasure Advantage 2  (Macau only)",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/treasure-advantage-2/TreasureAdvantage2_MA_en.pdf"
+    },
+    {
+      "product_name": "Treasure Master Plus (Macau only)",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/treasure-master-plus/TreasureMasterPlus_MA_en.pdf"
+    },
+    {
+      "product_name": "Treasure Master Plus 2 (Hong Kong only)",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/individuals/en/treasure-master-plus-2/TreasureMasterPlus2_HK_en.pdf"
+    },
+    {
+      "product_name": "U-Select (Macau only)",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/individuals/u-select/U-Select_MA_en.pdf"
+    },
+    {
+      "product_name": "CEO Pro",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/sme-solution/CEOPro_en.pdf"
+    },
+    {
+      "product_name": "Executive Protect Group Insurance Plan",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/sme-solution/executive-protect-en.pdf"
+    },
+    {
+      "product_name": "Flexi Choice Group Insurance Plan 3",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/employee-benefits/sme-solution/FlexiChoice-3-en.pdf"
+    },
+    {
+      "product_name": "GPA Choice Plus",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/sme-solution/GPAChoicePlus_en.pdf"
+    },
+    {
+      "product_name": "PowerEasy",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/sme-solution/PowerEasy_en.pdf"
+    },
+    {
+      "product_name": "PROMISE",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/sme-solution/Promise_en.pdf"
+    },
+    {
+      "product_name": "PROTECT",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/sme-solution/Protect_en.pdf"
+    },
+    {
+      "product_name": "Travel Pro",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/sme-solution/TravelPro_en.pdf"
+    },
+    {
+      "product_name": "Shield Up Cancer Protection Plan",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/products/employee-benefits/shield-up/ShieldUpCancerProtectionPlan_en.pdf"
+    },
+    {
+      "product_name": "StepUp Medical Protection Plan 2",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/employee-voluntary-solutions/stepup2/StepUp2_en_hk.pdf"
+    },
+    {
+      "product_name": "GPA Choice Macau",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/sme-solution/GPAChoiceMacau_en.pdf"
+    },
+    {
+      "product_name": "POWER Macau",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/sme-solution/PowerMacau_en.pdf"
+    },
+    {
+      "product_name": "Smart Choice Macau Group Insurance Plan",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/sme-solution/SmartChoiceMacau_en.pdf"
+    },
+    {
+      "product_name": "CHEERS Macau",
+      "category": "Life",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/employee-voluntary-solutions/cheers-macau/CheersMacau_en.pdf"
+    },
+    {
+      "product_name": "StepUp Medical Protection Plan 2",
+      "category": "Medical",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/pdf/product-brochure/employee-benefits/employee-voluntary-solutions/stepup2/StepUp2_en_mo.pdf"
+    },
+    {
+      "product_name": "Happy Retirement Personal Savings Programme",
+      "category": "Savings",
+      "pdf_url": "https://www.aia.com.hk/content/dam/hk/en/docs/product-cards/macau-happy-retirement-personal-savings-program-leaflet-eng.pdf"
+    }
+  ]
+}
