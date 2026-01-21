@@ -61,16 +61,20 @@ def main():
 
         filename = sanitize_filename(f"{product_name}.pdf")
         file_path = os.path.join(download_folder, filename)
+        
+        if os.path.exists(file_path):
+            continue
 
         try:
             download_file_from_url(
                 file_url=url,
                 file_path=file_path,
-                headers={'User-Agent': 'Mozilla/5.0'},
-                timeout=15
             )
         except Exception as e:
             print(f"Error downloading '{product_name}': {e}", file=sys.stderr)
+            
+    if not os.listdir(download_folder):
+        os.rmdir(download_folder) # folder clean up
 
 if __name__ == "__main__":
     main()

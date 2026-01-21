@@ -1,0 +1,316 @@
+{
+  "brochures": [
+    {
+      "product_name": "MyTravel Insurance",
+      "product_name_citation": "https://www.fwd.com.hk/online-insurance/mytravel-insurance/en/",
+      "category": "Travel",
+      "category_citation": "https://www.fwd.com.hk/online-insurance/en/mytravel-insurance/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt60dfefc0e5053ea5/MyTravel_Insurance_brochure_updated.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/online-insurance/mytravel-insurance/en/"
+    },
+    {
+      "product_name": "Easy HomeCare",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Home",
+      "category_citation": "https://www.fwd.com.hk/en/products/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt606c47694f7d8a5f/6492a2591fb2d35d76496c80/B5_Easy_HomeCare_(2023.0620)_SS.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "HelperCare Insurance",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Home",
+      "category_citation": "https://www.fwd.com.hk/en/products/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt4a0f323b6777dd6a/[%E5%AE%B6%E5%82%AD%E5%85%A8%E4%BF%9D]%20%E4%B8%8B%E8%BC%89%E7%94%A2%E5%93%81%E5%B0%8F%E5%86%8A%E5%AD%90.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "HomeCare Insurance",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Home",
+      "category_citation": "https://www.fwd.com.hk/en/products/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/bltae35dc389ed61744/6492a3640f2d9bcbe7ed6a08/B14_home_care_(22023_0620)_SS.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "Pet Care",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Pet",
+      "category_citation": "https://www.fwd.com.hk/en/products/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt85a1787ff057a27b/[%E6%AF%9B%E5%AD%A9%E5%AF%B5%E7%89%A9%E4%BF%9D].pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "MotorSmart Plus",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Motor",
+      "category_citation": "https://www.fwd.com.hk/en/products/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/bltc8127937274cb3f9/[%E6%99%BA%E9%A7%95%E4%BF%9DPlus%E6%B1%BD%E8%BB%8A%E4%BF%9D%E9%9A%AA]%20%E4%B8%8B%E8%BC%89%E7%94%A2%E5%93%81%E5%B0%8F%E5%86%8A%E5%AD%90.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "Wealth ICON Horizon Insurance Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/savings/wealth-icon-horizon-insurance-plan/",
+      "category": "Savings",
+      "category_citation": "https://www.fwd.com.hk/en/savings/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/bltc12eae3b31ef939f/Wealth_ICON_Horizon_Eng.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/savings/wealth-icon-horizon-insurance-plan/"
+    },
+    {
+      "product_name": "MaxFocus Legacy II Insurance Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/savings/maxfocus-legacy-ii-insurance-plan/",
+      "category": "Savings",
+      "category_citation": "https://www.fwd.com.hk/en/savings/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/bltfc8f4c645aee51b5/MaxFocus_Legacy_II_Insurance_Plan_EN.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/savings/maxfocus-legacy-ii-insurance-plan/"
+    },
+    {
+      "product_name": "MyTerm Series",
+      "product_name_citation": "https://www.fwd.com.hk/online-insurance/term-life/en/",
+      "category": "Life",
+      "category_citation": "https://www.fwd.com.hk/online-insurance/term-life/en/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/bltc516e234f0615782/636216eb02f3c5338c8b22a8/myterm-pb-eng.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/online-insurance/term-life/en/"
+    },
+    {
+      "product_name": "vFamily Medical Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/vhis/vfamily/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/bltbe1c7cc88864cb92/vFamily_Medical_Plan_PB_EN_with_premium_schedule_final.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/vhis/vfamily/"
+    },
+    {
+      "product_name": "Glorious Fortune - Longevity",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Savings",
+      "category_citation": "https://www.fwd.com.hk/en/savings/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt73169974d5d98508/FWD-GFL-ENG-Final.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "Cross-Border Medical Vantage — NobleCare Premier Medical Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt245cdb1f9cc7e012/NobleCare-Premier-Medical-Plan-EN.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "EasyCover Critical Illness Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/critical-illness/easycover-critical-illness-plan/",
+      "category": "Critical Illness",
+      "category_citation": "https://www.fwd.com.hk/en/critical-illness/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt59b1df57a3e570fa/6361c3ec57082b10e8176283/fwd-easycover-en.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/critical-illness/easycover-critical-illness-plan/"
+    },
+    {
+      "product_name": "vPrime Signature Medical Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/vhis/vprimesignature/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/bltf3b8a56979548f84/vPrime_Signature_Medical_Plan_PB_EN_with_premium_schedule_final.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/vhis/vprimesignature/"
+    },
+    {
+      "product_name": "Ever Care Accident Protection Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Accident",
+      "category_citation": "https://www.fwd.com.hk/en/products/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt193050327b0a04b8/6360dc740735b210dd76dc52/ever-care-accident-protection-plan_rider-en.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "One&All Medical Insurance Plan/Rider",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt57517f74a89d5c63/one-n-all-medical-insurance-plan-en.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "vBooster Medical Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt753f93d5d7e9ef14/VHIS_comparison.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "vTheOne Medical Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/vhis/vtheone/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt7269abb1fb7b7bc2/fwd_vtheone_en_final.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/vhis/vtheone/"
+    },
+    {
+      "product_name": "CANsurance Cancer Protection Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Critical Illness",
+      "category_citation": "https://www.fwd.com.hk/en/critical-illness/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt976281b2b861ba4f/cansurance-en-all-prem.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "MaxFocus Legacy Insurance Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/savings/maxfocus-legacy-insurance-plan/",
+      "category": "Savings",
+      "category_citation": "https://www.fwd.com.hk/en/savings/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt200eac7678506328/FWD_MaxFocus_Legacy_Eng.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/savings/maxfocus-legacy-insurance-plan/"
+    },
+    {
+      "product_name": "Crisis EasyGo Series",
+      "product_name_citation": "https://www.fwd.com.hk/en/critical-illness/crisis-easygo-series/",
+      "category": "Critical Illness",
+      "category_citation": "https://www.fwd.com.hk/en/critical-illness/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/bltf34d6a5ac4c375aa/crisis-easygo-uprimecover-en.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/critical-illness/crisis-easygo-series/"
+    },
+    {
+      "product_name": "Crisis OneMaster Series",
+      "product_name_citation": "https://www.fwd.com.hk/en/critical-illness/crisis-onemaster-series/",
+      "category": "Critical Illness",
+      "category_citation": "https://www.fwd.com.hk/en/critical-illness/",
+      "pdf_url": "https://www.fwd.com.hk/-/media/Files/FWDHK/pdf/protect/health-accident/critical-illness/crisis-onemaster-en.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/critical-illness/crisis-onemaster-series/"
+    },
+    {
+      "product_name": "CANcover/CANcover Pro Cancer Protection Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/critical-illness/cancover-pro-cancer-protection-plan/",
+      "category": "Critical Illness",
+      "category_citation": "https://www.fwd.com.hk/en/critical-illness/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt0fcf073b67b6cc57/635f4e319549fb1076784e49/fwd_cancover_brochure_en.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/critical-illness/cancover-pro-cancer-protection-plan/"
+    },
+    {
+      "product_name": "Cross-Border Medical Vantage — GBAssure Outpatient Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt96307435660b6357/GBAssure-Outpatient-Plan-EN.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "vCare Medical Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/vhis/vcare/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt4fbcf0e25106ceb8/vCare_Medical_Plan_PB_EN_with_premium_schedule_final.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/vhis/vcare/"
+    },
+    {
+      "product_name": "Crisis USupporter / Crisis USupporter Pro Series",
+      "product_name_citation": "https://www.fwd.com.hk/en/critical-illness/crisis-usupporter-series/",
+      "category": "Critical Illness",
+      "category_citation": "https://www.fwd.com.hk/en/critical-illness/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt0a46d73b0f0303c6/6453247bcb506110e1ca032b/cxdsflyeren-202012--website.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/critical-illness/crisis-usupporter-series/"
+    },
+    {
+      "product_name": "Noble Term",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Life",
+      "category_citation": "https://www.fwd.com.hk/online-insurance/term-life/en/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt6ad28c313a144fdb/63622504b294304eafc81879/noble-term-product-brochure-eng.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "Life Gala Insurance Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Life",
+      "category_citation": "https://www.fwd.com.hk/online-insurance/term-life/en/",
+      "pdf_url": "https://www.fwd.com.hk/-/media/documents/product/life/Life-Gala-pb-eng.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "Mind Strength Protection Plan/Rider",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt12c946a30040db09/Mind_Strength_Plan_Rider_EN.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "vCore Medical Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/vhis/vcore/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blta835be39c650c0fb/vCore_Medical_Plan_PB_EN_with_premium_schedule_final.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/vhis/vcore/"
+    },
+    {
+      "product_name": "Wealth ICON Supreme III Insurance Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/savings/wealth-icon-supreme-iii-insurance-plan/",
+      "category": "Savings",
+      "category_citation": "https://www.fwd.com.hk/en/savings/",
+      "pdf_url": "https://www.fwd.com.hk/-/media/documents/save/WealthICON-Supreme-III-pb-eng.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/savings/wealth-icon-supreme-iii-insurance-plan/"
+    },
+    {
+      "product_name": "Glorious Fortune - Wealth",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Savings",
+      "category_citation": "https://www.fwd.com.hk/en/savings/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blta565e35b16d97262/651d36990a5da825a7abebb6/FWD_GF_Wealth_EN_PRMP_version_Final.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    },
+    {
+      "product_name": "RetireFun Deferred Annuity Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/savings/retirefun-deferred-annuity-plan/",
+      "category": "Savings",
+      "category_citation": "https://www.fwd.com.hk/en/savings/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/bltd6cc54fa2a92c729/FWD%20RetireFun%20EN%205Nov_Final.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/savings/retirefun-deferred-annuity-plan/"
+    },
+    {
+      "product_name": "vPrime Medical Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/vhis/vprime/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt753f93d5d7e9ef14/VHIS_comparison.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/vhis/vprime/"
+    },
+    {
+      "product_name": "Easy WealthPlus Endowment Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/savings/easy-wealthplus-endowment-plan/",
+      "category": "Savings",
+      "category_citation": "https://www.fwd.com.hk/en/savings/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blte54d6749ed65b6e6/FWD_Easy_WealthPlus_1Pay8_TA_EN.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/savings/easy-wealthplus-endowment-plan/"
+    },
+    {
+      "product_name": "vCANsurance Medical Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/vhis/vcansurance/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt753f93d5d7e9ef14/VHIS_comparison.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/vhis/vcansurance/"
+    },
+    {
+      "product_name": "Noble Fortune Signature",
+      "product_name_citation": "https://www.fwd.com.hk/en/savings/noble-fortune-signature/",
+      "category": "Savings",
+      "category_citation": "https://www.fwd.com.hk/en/savings/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt54aea7d7551f902d/659cf313e07b5345830be1d6/231124_FWD_NFS_HK_EN_R1_RGB.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/savings/noble-fortune-signature/"
+    },
+    {
+      "product_name": "vCare Supreme Medical Plan",
+      "product_name_citation": "https://www.fwd.com.hk/en/vhis/vcare-supreme/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://www.fwd.com.hk/files/v3/assets/blta9d684affff23c8c/blt753f93d5d7e9ef14/VHIS_comparison.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/vhis/vcare-supreme/"
+    },
+    {
+      "product_name": "FWD Health & Go",
+      "product_name_citation": "https://www.fwd.com.hk/en/products/",
+      "category": "Medical",
+      "category_citation": "https://www.fwd.com.hk/en/vhis/",
+      "pdf_url": "https://health.fwd.com.hk/v3/assets/blta9d684affff23c8c/blt42c359beb78b3d55/FWD_Health_&_Go_Brochure_EN.pdf",
+      "pdf_url_citation": "https://www.fwd.com.hk/en/products/"
+    }
+  ]
+}
