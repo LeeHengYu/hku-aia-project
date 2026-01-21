@@ -1,13 +1,8 @@
 import os
 from google.cloud import storage
-from typing import List, Protocol
+from typing import List
 
 BUCKET_NAME = "crawled-clean"
-
-class DataLoader(Protocol): # experiment
-    ... 
-    def load_data():
-        ...
 
 def upload_folder(client, bucket_name, source_folder, blob_prefix=None, file_suffix=None):
     bucket = client.get_bucket(bucket_name)
@@ -43,6 +38,16 @@ def download_blob(client, bucket_name, source_blob_name, destination_file_name):
     bucket = client.bucket(bucket_name)
     blob = bucket.blob(source_blob_name)
     blob.download_to_filename(destination_file_name)
+    
+def clean_folder(client, bucket_name, folder_path):
+    bucket = client.bucket(bucket_name)
+    if not folder_path.endswith('/'):
+        folder_path += '/'
+        
+    blobs = list(bucket.list_blobs(prefix=folder_path))
+    if not blobs:
+        return
+    bucket.delete_blobs(blobs)
 
 if __name__=="__main__":
     cli = storage.Client()
@@ -53,4 +58,6 @@ if __name__=="__main__":
     
     # aia_files = list_blobs(cli, 'crawled-clean', 'aia')
     # download_blob(cli, 'crawled-clean', aia_files[0].name, 'test_download.pdf')
-    upload_folder(cli, BUCKET_NAME, 'financial', 'financial_data', '.csv')
+    
+    clean_folder(cli, BUCKET_NAME, 'aia')
+    # upload_folder(cli, BUCKET_NAME, 'financial', 'financial_data', '.csv')
