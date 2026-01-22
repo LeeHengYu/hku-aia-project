@@ -91,7 +91,7 @@ if __name__ == "__main__":
     # 5. Download Single File
     dl_file_parser = subparsers.add_parser("download-file", help="Download a single file")
     dl_file_parser.add_argument("blob_name", help="Full path of file in GCS")
-    dl_file_parser.add_argument("--local_path", help="Local destination filename (optional)")
+    dl_file_parser.add_argument("local_path", help="Local destination filename")
 
     # 6. Clean Folder
     clean_parser = subparsers.add_parser("clean", help="Delete all files in a remote folder")
