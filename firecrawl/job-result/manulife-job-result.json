@@ -1,0 +1,436 @@
+{
+  "brochures": [
+    {
+      "product_name": "ManuPremier Protector",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Life Protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/life/manupremier-protector.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Whole-in-One Prime 3 - Essence",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Life protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/life/whole-in-one-prime-3-essence.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Future Assure",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/future-assure.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Outpatient Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Health",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/outpatient.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "La Vie 2",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/la-vie-2.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuCentury",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/manucentury.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuGuard Medical Plan/Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Quality medical care (Health)",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manuguard-medical-plan-mktpp43e.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "IncomeGuard Critical Illness Protector",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness Protection (Health)",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/incomeguard-critical-illness-protector.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuElite Protector",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Life protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/life/manuelite-protector.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuEnrich Medical Top-up Plan",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Quality medical care",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manuenrich-medical-top-up-plan-e26112018.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuMaster Healthcare Series/Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Health (Quality medical care)",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manumaster-product-brochure.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Cancer Treatment Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Health / Quality medical care",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/cancer-treatment-benefit.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Genesis",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/genesis.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Genesis Centurion Insurance Plan",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/genesis-centurion.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuShine Healthcare Series/Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Health (Quality medical care)",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manushine-product-brochure-20190611-pws.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuDelight Annuity Plan",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/manudelight-hk.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Hospital Income Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Health",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/hospital-income-benefit.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuTerm",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Life protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/life/manu-term.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuLeisure Deferred Annuity",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/manuleisure-deferred-annuity.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Prestige Achiever Insurance Plan",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/prestige-achiever.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Whole-in-One Prime 3",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Life protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/life/whole-in-one-prime-3.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Prestige Saver",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/prestige-saver-hk.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Universal Life",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Life protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/life/universal-life.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Prestige Preserver",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/prestige-preserver.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Harvest Saver (Single Premium, 3-year Maturity)",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/harvest-saver.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "FlexiFortune Annuity Plan",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/flexifortune.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuGlobal Saver",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Savings",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/save/manuglobal-saver-hk.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "IncomeShield Critical Illness Protector",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness Protection (Health)",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/incomeshield-critical-illness-protector.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Manulife Bright Care PRO",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manulife-bright-care-pro.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuPrimo Care / ManuPrimo Care (BestStart)",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness Protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manuprimo-care-manuprimo-care-beststart.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "CareGuard Critical Illness Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness Protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/careguard-critical-illness-benefit.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuBright Care 2 Plus",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness Protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manubright-care-2-plus.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuBright Care 2",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness Protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manubright-care-2.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuVital Care",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness Protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manuvital-care.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "ManuLove Care",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness Protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manulove-care-e16112018.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Cash Assistance Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness Protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/cash-assistance-benefit-e20112018.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Child Care Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness Protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/child-care-benefit-e18102018.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Cancer Guard Protection Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Critical Illness Protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/cancer-guard-protection-benefit-e18102018.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Manulife Supreme VHIS Flexi Plan",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Voluntary Health Insurance Scheme",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/vhis-supreme-leaflet.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Manulife Supreme Lite VHIS Supplementary Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "VHIS",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manulife-supreme-lite-vhis-supplementary-benefit.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Manulife First VHIS Flexi Plan",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "VHIS",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manulife-first-vhis-flexi-plan.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Manulife Shelter VHIS Standard Plan",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "VHIS",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/manulife-shelter-vhis-standard-plan-leaflet.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Payor Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Disability protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/premium-waiving-benefits.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Premium Waiver Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Disability protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/premium-waiving-benefits.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Disability Income Protector",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Disability protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/disability-income-protector.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Apollo Protection Linked Plan",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Investment-linked Assurance Scheme (ILAS)",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/ilas/apollo.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Manulife Investment Plus 2",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Investment-linked Assurance Scheme (ILAS)",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/ilas/manulife-investment-plus-2.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Take Care Personal Accident Plan/Benefit 2",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Accident protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/take-care-2-personal-accident-plan-2-product-brochure.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Accidental Death Benefit",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "Accident protection",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/health/accidental-death-benefit.pdf",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Home Insurance",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "General Insurance",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "Not found",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Domestic Helper Insurance",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "General Insurance",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "Not found",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Motor Insurance",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "General Insurance",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "Not found",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Travel Insurance",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "General Insurance",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "Not found",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    },
+    {
+      "product_name": "Personal Accident Protection Plus",
+      "product_name_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "product_category": "General Insurance",
+      "product_category_citation": "https://www.manulife.com.hk/en/individual/products.html",
+      "pdf_url": "Not found",
+      "pdf_url_citation": "https://www.manulife.com.hk/en/individual/products.html"
+    }
+  ]
+}
