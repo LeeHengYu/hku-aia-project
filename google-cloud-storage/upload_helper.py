@@ -18,7 +18,7 @@ def upload_folder(client, bucket_name, source_folder, blob_prefix=None, file_suf
         if os.path.isdir(local_path):
             upload_folder(client, bucket_name, local_path, remote_path, file_suffix)
         else:
-            blob = bucket.blob(remote_path)
+            blob: storage.Blob = bucket.blob(remote_path)
             blob.upload_from_filename(local_path)
             print(f"Uploaded {local_path} to {remote_path}")
 
@@ -61,6 +61,10 @@ def clean_folder(client, bucket_name, folder_path):
         return
     bucket.delete_blobs(blobs)
 
+def custom(client):
+    bucket = client.bucket(BUCKET_NAME)
+    ...
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Google Cloud Storage Utility CLI")
     parser.add_argument("--bucket", default=BUCKET_NAME, help=f"GCS Bucket name (default: {BUCKET_NAME})")
@@ -97,6 +101,8 @@ if __name__ == "__main__":
     clean_parser = subparsers.add_parser("clean", help="Delete all files in a remote folder")
     clean_parser.add_argument("folder", help="Remote folder path to delete")
 
+    custom_parser = subparsers.add_parser("custom", help="Run in-code functions")
+
     args = parser.parse_args()
     
     # Initialize Client
@@ -129,6 +135,9 @@ if __name__ == "__main__":
         confirm = input(f"Are you sure you want to delete everything in '{args.folder}'? (y/n): ")
         if confirm.lower().strip() == 'y':
             clean_folder(cli, args.bucket, args.folder)
+    
+    elif args.command == "custom":
+        custom(cli)
             
     else:
         parser.print_help()
