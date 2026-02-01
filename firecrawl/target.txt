@@ -1,0 +1,11 @@
+gs://hku-aia-market-data/financial_reports/AXA_HK_FinancialConditionReport_FY2016.pdf
+gs://hku-aia-market-data/financial_reports/AXA_HK_FinancialConditionReport_FY2017.pdf
+gs://hku-aia-market-data/financial_reports/AXA_HK_FinancialConditionReport_FY2018.pdf
+gs://hku-aia-market-data/financial_reports/AXA_HK_FinancialConditionReport_FY2019.pdf
+gs://hku-aia-market-data/financial_reports/prudential-plc-ar-2015-chinese.pdf
+gs://hku-aia-market-data/financial_reports/prudential-plc-ar-2015.pdf
+gs://hku-aia-market-data/financial_reports/prudential-plc-ar-2018.pdf
+gs://hku-aia-market-data/financial_reports/prudential-plc-ar-2019.pdf
+gs://hku-aia-market-data/financial_reports/prudential-plc-ar-2020.pdf
+gs://hku-aia-market-data/financial_reports/prudential-plc-ar-2021.pdf
+gs://hku-aia-market-data/financial_reports/prudential-plc-ar-2022.pdf

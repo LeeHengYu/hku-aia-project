@@ -1,0 +1,970 @@
+{
+  "reports": [
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2025",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2025/prudential-hy2025-report-en.pdf",
+      "filename": "prudential-hy2025-report-en.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2025",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2025/prudential-hy2025-report-tc.pdf",
+      "filename": "prudential-hy2025-report-tc.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2025",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2025/prudential-funding-asia-plc-2025-interim-report.pdf",
+      "filename": "prudential-funding-asia-plc-2025-interim-report.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2024",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2024/prudential-plc-ar-2024.pdf",
+      "filename": "prudential-plc-ar-2024.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2024",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2024/prudential-plc-ar-2024-chinese.pdf",
+      "filename": "prudential-plc-ar-2024-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2024",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2024/prudential-hy2024-report-en.pdf",
+      "filename": "prudential-hy2024-report-en.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2024",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2024/prudential-hy2024-report-tc.pdf",
+      "filename": "prudential-hy2024-report-tc.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2024",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2024/prudential-funding-asia-plc-hy-2024.pdf",
+      "filename": "prudential-funding-asia-plc-hy-2024.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2023",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2023/prudential-plc-ar-2023.pdf",
+      "filename": "prudential-plc-ar-2023.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2023",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2023/prudential-plc-ar-2023-chinese.pdf",
+      "filename": "prudential-plc-ar-2023-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2023",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2023/prudential-plc-2023-hy-financial-report-en.pdf",
+      "filename": "prudential-plc-2023-hy-financial-report-en.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2023",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2023/prudential-plc-2023-hy-financial-report-chinese.pdf",
+      "filename": "prudential-plc-2023-hy-financial-report-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2023",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2023/prudential-funding-asia-plc-2023-interim-report.pdf",
+      "filename": "prudential-funding-asia-plc-2023-interim-report.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2022",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2022/prudential-plc-ar-2022.pdf",
+      "filename": "prudential-plc-ar-2022.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2022",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2022/prudential-plc-ar-2022-chinese.pdf",
+      "filename": "prudential-plc-ar-2022-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2022",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2022/prudential-plc-2022-hy-financial-report-en.pdf",
+      "filename": "prudential-plc-2022-hy-financial-report-en.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2022",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2022/prudential-plc-2022-hy-financial-report-chinese.pdf",
+      "filename": "prudential-plc-2022-hy-financial-report-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2022",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2022/prudential-plc-6-k-half-year-financial-report-2022.pdf",
+      "filename": "prudential-plc-6-k-half-year-financial-report-2022.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2021",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2021/prudential-plc-ar-2021.pdf",
+      "filename": "prudential-plc-ar-2021.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2021",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2021/prudential-plc-ar-2021-chinese-a.pdf",
+      "filename": "prudential-plc-ar-2021-chinese-a.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2021",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2021/prudential-plc-2021-hy-financial-report-en.pdf",
+      "filename": "prudential-plc-2021-hy-financial-report-en.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2021",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2021/prudential-plc-2021-hy-financial-report-chinese.pdf",
+      "filename": "prudential-plc-2021-hy-financial-report-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2021",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2021/prudential-plc-6-k-half-year-financial-report-2021.pdf",
+      "filename": "prudential-plc-6-k-half-year-financial-report-2021.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2020",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2020/prudential-plc-ar-2020.pdf",
+      "filename": "prudential-plc-ar-2020.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2020",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2020/prudential-plc-ar-2020-chinese.pdf",
+      "filename": "prudential-plc-ar-2020-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2020",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2020/prudential-plc-2020-half-year-financial-report.pdf",
+      "filename": "prudential-plc-2020-half-year-financial-report.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2020",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2020/prudential-plc-2020-half-year-financial-report-chinese.pdf",
+      "filename": "prudential-plc-2020-half-year-financial-report-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2020",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2020/prudential-plc-6-k-half-year-financial-report-2020.pdf",
+      "filename": "prudential-plc-6-k-half-year-financial-report-2020.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2019",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2019/prudential-plc-ar-2019.pdf",
+      "filename": "prudential-plc-ar-2019.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2019",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2019/prudential-plc-ar-2019-chinese.pdf",
+      "filename": "prudential-plc-ar-2019-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2019",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2019/prudential-plc-2019-half-year-financial-report.pdf",
+      "filename": "prudential-plc-2019-half-year-financial-report.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2019",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2019/prudential-plc-2019-half-year-financial-report-chinese.pdf",
+      "filename": "prudential-plc-2019-half-year-financial-report-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2019",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2019/prudential-plc-form-6-k-half-year-2019.pdf",
+      "filename": "prudential-plc-form-6-k-half-year-2019.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2018",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2018/prudential-plc-ar-2018.pdf",
+      "filename": "prudential-plc-ar-2018.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2018",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2018/prudential-plc-ar-2018-chinese.pdf",
+      "filename": "prudential-plc-ar-2018-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2018",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2018/prudential-plc-2018-half-year-financial-report.pdf",
+      "filename": "prudential-plc-2018-half-year-financial-report.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2018",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2018/prudential-plc-2018-half-year-financial-report-chinese.pdf",
+      "filename": "prudential-plc-2018-half-year-financial-report-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2018",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2018/prudential-plc-6k-hyfr-2018.pdf",
+      "filename": "prudential-plc-6k-hyfr-2018.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2017",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2017/prudential-plc-ar-2017.pdf",
+      "filename": "prudential-plc-ar-2017.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2017",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2017/prudential-plc-ar-2017-chinese.pdf",
+      "filename": "prudential-plc-ar-2017-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2017",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2017/Prudential-Plc-2017-Half-year-financial-report.pdf",
+      "filename": "Prudential-Plc-2017-Half-year-financial-report.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2017",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2017/Prudential-plc-2017-Half-year-financial-report-chinese.pdf",
+      "filename": "Prudential-plc-2017-Half-year-financial-report-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2017",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2017/prudential-plc-6k-hyfr-2017.pdf",
+      "filename": "prudential-plc-6k-hyfr-2017.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2016",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2016/prudential-plc-ar-2016a.pdf",
+      "filename": "prudential-plc-ar-2016a.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2016",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2016/prudential-plc-ar-2016-chinese.pdf",
+      "filename": "prudential-plc-ar-2016-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2016",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2016/prudential-hy-report-2016-final.pdf",
+      "filename": "prudential-hy-report-2016-final.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2016",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2016/prudential-plc-2016-half-year-financial-report-chinese.pdf",
+      "filename": "prudential-plc-2016-half-year-financial-report-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2016",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2016/prudential-plc-6k-hyfr-2016.pdf",
+      "filename": "prudential-plc-6k-hyfr-2016.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2015",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2015/prudential-plc-ar-2015.pdf",
+      "filename": "prudential-plc-ar-2015.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2015",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2015/prudential-plc-ar-2015-chinese.pdf",
+      "filename": "prudential-plc-ar-2015-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2015",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2015/prudential-plc-2015-half-year-financial-report.pdf",
+      "filename": "prudential-plc-2015-half-year-financial-report.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2015",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2015/prudential-plc-2015-half-year-financial-report-chinese.pdf",
+      "filename": "prudential-plc-2015-half-year-financial-report-chinese.pdf"
+    },
+    {
+      "company_name": "Prudential PLC",
+      "fiscal_year": "2015",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.prudentialplc.com/content/dam/prudential-plc/investor/results-and-reports/all-reports/2015/prudential-plc-6k-hyfr-2015.pdf",
+      "filename": "prudential-plc-6k-hyfr-2015.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2025",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/investor-relations/2025/e_2025%20Interim%20Report%20(ESS).pdf",
+      "filename": "e_2025 Interim Report (ESS).pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2024",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/investor-relations/2025/2024%20Annual%20Report%20(Eng).pdf",
+      "filename": "2024 Annual Report (Eng).pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2024",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/investor-relations/2024/2024%20Interim%20Report%20(Eng).pdf",
+      "filename": "2024 Interim Report (Eng).pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2023",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/annual-report/2024041200326.pdf",
+      "filename": "2023 Annual Report (Eng).pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2023",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0920/2023092000215.pdf",
+      "filename": "Interim Report 2023"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2022",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/annual-report/Annual_Report_2022_ENG.pdf.coredownload.inline.pdf",
+      "filename": "Annual Report 2022 ENG.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2022",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/investor-relations/2022/AIA%20Interim%20Report%202022_E.pdf",
+      "filename": "AIA Interim Report 2022_E.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2021",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/annual-report/Annual%20Report%202021_E.pdf.coredownload.inline.pdf",
+      "filename": "Annual Report 2021 E.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2021",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.aia.com/content/dam/group/en/docs/press-release/2021/AIA%20Interim%20Report%202021%20(Eng).pdf.coredownload.inline.pdf",
+      "filename": "AIA Interim Report 2021 (Eng).pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2020",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/annual-report/AIA%20Group%20Annual%20Report%202020%20(Eng).pdf.coredownload.inline.pdf",
+      "filename": "AIA Group Annual Report 2020 (Eng).pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2020",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.aia.com/content/dam/group/en/docs/press-release/2020/e_Interim%20Report%202020.pdf.coredownload.inline.pdf",
+      "filename": "e_Interim Report 2020.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2019",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/annual-report/Annual%20Report%202019-E.pdf.coredownload.inline.pdf",
+      "filename": "Annual Report 2019-E.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2019",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.aia.com/content/dam/group/en/docs/press-release/2019/AIA%20Interim%20Report%202019%20(Eng).pdf.coredownload.inline.pdf",
+      "filename": "AIA Interim Report 2019 (Eng).pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2018",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/annual-report/annual_report_2018_e.pdf.coredownload.inline.pdf",
+      "filename": "annual_report_2018_e.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2018",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.aia.com/content/dam/group/en/docs/press-release/2018/Interim%20Report%202018%20(Eng).pdf.coredownload.inline.pdf",
+      "filename": "Interim Report 2018 (Eng).pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2017",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/annual-report/aia-annual-report-2017-eng.pdf.coredownload.inline.pdf",
+      "filename": "aia-annual-report-2017-eng.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2017",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.aia.com/content/dam/group/en/docs/announcements/2017/2017ir-eng.pdf.coredownload.inline.pdf",
+      "filename": "2017ir-eng.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2016",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/annual-report/aia-annual-report-2016-eng.pdf.coredownload.inline.pdf",
+      "filename": "aia-annual-report-2016-eng.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2016",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.aia.com/content/dam/group/en/docs/announcements/2016/interim-report-2016-0818-eng.pdf.coredownload.inline.pdf",
+      "filename": "interim-report-2016-0818-eng.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2015",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.aia.com/content/dam/group-wise/en/docs/annual-report/aia-annual-report-2015-eng.pdf.coredownload.inline.pdf",
+      "filename": "aia-annual-report-2015-eng.pdf"
+    },
+    {
+      "company_name": "AIA",
+      "fiscal_year": "2015",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.aia.com/content/dam/group/en/docs/download-library/2015/e101.pdf.coredownload.inline.pdf",
+      "filename": "e101.pdf"
+    },
+    {
+      "company_name": "BOCHK",
+      "fiscal_year": "2024",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.bochk.com/dam/bochk/desktop/top/aboutus/ir/docs/finreport/bochkholdings/2024ar/e101_fullset.pdf",
+      "filename": "e101_fullset.pdf"
+    },
+    {
+      "company_name": "BOCHK",
+      "fiscal_year": "2023",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.bochk.com/dam/bochk/desktop/top/aboutus/ir/docs/finreport/bochkholdings/2023ar/e101_fullset.pdf",
+      "filename": "e101_fullset.pdf"
+    },
+    {
+      "company_name": "BOCHK",
+      "fiscal_year": "2022",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.bochk.com/dam/bochk/desktop/top/aboutus/ir/docs/finreport/bochkholdings/2022ar/c101_Fullset_en.pdf",
+      "filename": "c101_Fullset_en.pdf"
+    },
+    {
+      "company_name": "BOCHK",
+      "fiscal_year": "2021",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.bochk.com/dam/bochk/desktop/top/aboutus/ir/docs/finreport/bochkholdings/2021ar/e101_fullset.pdf",
+      "filename": "e101_fullset.pdf"
+    },
+    {
+      "company_name": "BOCHK",
+      "fiscal_year": "2020",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.bochk.com/dam/bochk/desktop/top/aboutus/ir/docs/finreport/bochkholdings/2020ar/e101_fullset.pdf",
+      "filename": "e101_fullset.pdf"
+    },
+    {
+      "company_name": "BOCHK",
+      "fiscal_year": "2019",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.bochk.com/dam/bochk/desktop/top/aboutus/ir/docs/finreport/bochkholdings/2019ar/e101_Fullset.pdf",
+      "filename": "e101_Fullset.pdf"
+    },
+    {
+      "company_name": "BOCHK",
+      "fiscal_year": "2018",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.bochk.com/dam/bochk/desktop/top/aboutus/ir/docs/finreport/bochkholdings/2018ar/e101.pdf",
+      "filename": "e101.pdf"
+    },
+    {
+      "company_name": "BOCHK",
+      "fiscal_year": "2017",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.bochk.com/dam/bochk/desktop/top/aboutus/ir/docs/finreport/bochkholdings/2017ar/e101_Fullset.pdf",
+      "filename": "e101_Fullset.pdf"
+    },
+    {
+      "company_name": "BOCHK",
+      "fiscal_year": "2016",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.bochk.com/dam/bochk/desktop/top/aboutus/ir/docs/finreport/bochkholdings/2016ar/e101_Fullset.pdf",
+      "filename": "e101_Fullset.pdf"
+    },
+    {
+      "company_name": "BOCHK",
+      "fiscal_year": "2015",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.bochk.com/dam/bochk/desktop/top/aboutus/ir/docs/finreport/bochkholdings/2015ar/e101_Fullset.pdf",
+      "filename": "e101_Fullset.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2024",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020/c7bd019c-d94a-43c0-a261-4a20f7a0e099_fcr-2024.pdf",
+      "filename": "AXA_HK_FinancialConditionReport_FY2024.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2024",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020/bf7ea85c-5218-4b62-9662-f54192d3f447_afs-2024.pdf",
+      "filename": "AXA_HK_FinancialStatement_FY2024.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2023",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020/b249bf2c-1dee-426a-8e67-8cc4a5e0d136_Acrobat+Document.pdf",
+      "filename": "AXA_HK_FinancialConditionReport_FY2023.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2023",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020/d3330b9a-9773-4f70-b0e5-63b99e036cea_Acrobat+Document+2.pdf",
+      "filename": "AXA_HK_FinancialStatement_FY2023.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2022",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020/6aaefe35-c945-49a4-8c0e-537137ee76b2_AXA+CRIB+Financial+Condition+Report+FY22_FINAL+%28signed%29.pdf",
+      "filename": "AXA_HK_FinancialConditionReport_FY2022.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2022",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020/757a85d2-f687-4b75-a92f-ca060b139d19_FY2022+ACRIB+Consol+FS+%28Signed%29.pdf",
+      "filename": "AXA_HK_FinancialStatement_FY2022.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2021",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020/8c968907-27b6-4010-b6ac-80f10493f712_AXA+CRIB+Financial+Condition+Report+FY21+%28F%29+%28Signed%29.pdf",
+      "filename": "AXA_HK_FinancialConditionReport_FY2021.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2021",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020/7c64267e-7b9d-4942-922c-2605a35600fe_ACRIB+FS+FY2021+%28signed%29.pdf",
+      "filename": "AXA_HK_FinancialStatement_FY2021.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2020",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020/078c0cea-599b-4ddc-b0dd-10f5afa7bd53_axa_crib_financial-condition-report_fy20_signed.pdf",
+      "filename": "AXA_HK_FinancialConditionReport_FY2020.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2020",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020/69686919-8202-4097-a98a-3eeadb8a659e_acrib_financial-statement_fy2020_signed.pdf",
+      "filename": "AXA_HK_FinancialStatement_FY2020.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2019",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020%2Fb7dd5e4f-cbdf-4f1b-81e9-3c841fe80f47_axa+crib+financial+condition+report+fy19_signed.pdf",
+      "filename": "AXA_HK_FinancialConditionReport_FY2019.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2019",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020%2Fcbcf0f91-92f0-40a7-a568-1d001c30fe32_acrib+fs+signed+fy+2019.pdf",
+      "filename": "AXA_HK_FinancialStatement_FY2019.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2018",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020%2F4b5a8fe6-10f5-4106-9f39-9b812c8f61cf_axa+crib+financial+condition+report+fy18+v1.5+%28signed%29.pdf",
+      "filename": "AXA_HK_FinancialConditionReport_FY2018.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2018",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020%2F9727af4c-61d9-4e67-81b2-c343b19cb57d_acrib+-+financial+statement+2018+%28signed%29.pdf",
+      "filename": "AXA_HK_FinancialStatement_FY2018.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2017",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020%2F5819ff69-fa12-4887-b322-e8107d749703_axa+crib+financial+condition+report+fy17+v4.0.pdf",
+      "filename": "AXA_HK_FinancialConditionReport_FY2017.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2017",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020%2F92f896db-7255-4743-9e99-b28ef482b12a_acrib+-+financial+statement+2017+%28signed%29.pdf",
+      "filename": "AXA_HK_FinancialStatement_FY2017.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2016",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020%2F90583dd4-d71d-49d8-a8d7-f05202e6628b_axa+crib+financial+condition+report+fy16+v3.0.pdf",
+      "filename": "AXA_HK_FinancialConditionReport_FY2016.pdf"
+    },
+    {
+      "company_name": "AXA HK",
+      "fiscal_year": "2016",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://hk-axa-web-2020.cdn.axa-contento-118412.eu/hk-axa-web-2020%2F30c5ebe9-dab0-4653-a19c-5130cc237bd9_acrib+-+financial+statement+2016+%28signed%29.pdf",
+      "filename": "AXA_HK_FinancialStatement_FY2016.pdf"
+    },
+    {
+      "company_name": "Sun Life",
+      "fiscal_year": "2024",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.sunlife.com/content/dam/sunlife/regional/global-marketing/documents/com/annual-report-2024-e.pdf",
+      "filename": "annual-report-2024-e.pdf"
+    },
+    {
+      "company_name": "Sun Life",
+      "fiscal_year": "2023",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.sunlife.com/content/dam/sunlife/regional/global-marketing/documents/com/annual-report-2023-e.pdf",
+      "filename": "annual-report-2023-e.pdf"
+    },
+    {
+      "company_name": "Sun Life",
+      "fiscal_year": "2022",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.sunlife.com/content/dam/sunlife/regional/global-marketing/documents/com/annual-report-2022-e.pdf",
+      "filename": "annual-report-2022-e.pdf"
+    },
+    {
+      "company_name": "Sun Life",
+      "fiscal_year": "2021",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.sunlife.com/content/dam/sunlife/regional/global-marketing/documents/com/annual-report-2021-e.pdf",
+      "filename": "annual-report-2021-e.pdf"
+    },
+    {
+      "company_name": "Sun Life",
+      "fiscal_year": "2020",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.sunlife.com/content/dam/sunlife/regional/global-marketing/documents/com/annual-report-2020-e.pdf",
+      "filename": "annual-report-2020-e.pdf"
+    },
+    {
+      "company_name": "Sun Life",
+      "fiscal_year": "2019",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://cdn.sunlife.com/static/Global/Investors/Financial%20results%20and%20reports/Annual%20reports/2018%20Annual%20report/Annual-Report-2019-EN.pdf",
+      "filename": "Annual-Report-2019-EN.pdf"
+    },
+    {
+      "company_name": "Sun Life",
+      "fiscal_year": "2018",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.sunlife.com/static/Global/Investors/Financial%20results%20and%20reports/Annual%20reports/2018%20Annual%20report/01_2018%20Annual%20Report.pdf",
+      "filename": "01_2018 Annual Report.pdf"
+    },
+    {
+      "company_name": "Sun Life",
+      "fiscal_year": "2017",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.sunlife.com/content/dam/sunlife/regional/global-marketing/documents/com/1-slf-eng-annual-report-2017.pdf",
+      "filename": "1-slf-eng-annual-report-2017.pdf"
+    },
+    {
+      "company_name": "Sun Life",
+      "fiscal_year": "2016",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://cdn.sunlife.com/static/Global/Investors/Financial%20results%20and%20reports/Annual%20reports/1_SLF_Annual_Report_English.pdf",
+      "filename": "1_SLF_Annual_Report_English.pdf"
+    },
+    {
+      "company_name": "FWD",
+      "fiscal_year": "2024",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.fwd.com/files/v3/assets/blt7159ee3244a0ea01/blt645ed63b15467912/67d0e9e873bbb60df0258fd6/FWD_Group_Holdings_Limited_Annual_Results_Presentation_2024.pdf",
+      "filename": "FWD_Group_Holdings_Limited_Annual_Results_Presentation_2024.pdf"
+    },
+    {
+      "company_name": "FWD",
+      "fiscal_year": "2024",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.fwd.com/files/v3/assets/blt7159ee3244a0ea01/blt28fc4fd1c27e22fc/67cd6da586795f4dbb8e91dc/FWD_Group_Holdings_Limited_FS_2024.pdf",
+      "filename": "FWD_Group_Holdings_Limited_FS_2024.pdf"
+    },
+    {
+      "company_name": "FWD",
+      "fiscal_year": "2023",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.fwd.com/files/v3/assets/blt7159ee3244a0ea01/bltd145780f25641ca9/65f017848330b3853702cfe7/FWD_Group_Holdings_Limited_Annual_Results_Presentation_2023.pdf",
+      "filename": "FWD_Group_Holdings_Limited_Annual_Results_Presentation_2023.pdf"
+    },
+    {
+      "company_name": "FWD",
+      "fiscal_year": "2023",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.fwd.com/files/v3/assets/blt7159ee3244a0ea01/bltd9ca21e95cc02b22/65f0179ce55fcb9e6c23358c/FWD_Group_Holdings_Limited_FS_2023.pdf",
+      "filename": "FWD_Group_Holdings_Limited_FS_2023.pdf"
+    },
+    {
+      "company_name": "FWD",
+      "fiscal_year": "2023",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.fwd.com/files/v3/assets/blt7159ee3244a0ea01/bltfbb3167c6040eca4/65f017a25fa1c64d704bb896/FWD_Group_Holdings_Limited_ACR_2023.pdf",
+      "filename": "FWD_Group_Holdings_Limited_ACR_2023.pdf"
+    },
+    {
+      "company_name": "FWD",
+      "fiscal_year": "2022",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.fwd.com/files/v3/assets/blt7159ee3244a0ea01/bltd9051d1994c5d42d/6513e8d6b25810d4478041a4/FWD_Group_Holdings_Limited_Annual_Results_Presentation_2022.pdf",
+      "filename": "FWD_Group_Holdings_Limited_Annual_Results_Presentation_2022.pdf"
+    },
+    {
+      "company_name": "FWD",
+      "fiscal_year": "2022",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.fwd.com/files/v3/assets/blt7159ee3244a0ea01/blt51389875876db289/640fe3cea7d98e0267ed3d93/fwd-group-holdings-limited-fs-2022.pdf",
+      "filename": "fwd-group-holdings-limited-fs-2022.pdf"
+    },
+    {
+      "company_name": "FWD",
+      "fiscal_year": "2021",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.fwd.com/files/v3/assets/blt7159ee3244a0ea01/blt79008b41eb4da2be/640fe5668f134b10597de5da/fwd-group-holdings-limited-annual-report-2021.pdf",
+      "filename": "fwd-group-holdings-limited-annual-report-2021.pdf"
+    },
+    {
+      "company_name": "FWD",
+      "fiscal_year": "2020",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.fwd.com/files/v3/assets/blt7159ee3244a0ea01/blt5589e0ffec0b5dbc/640fe5a5e70dd635488d1721/fwd-group-holdings-limited-fs-2020-2021.pdf",
+      "filename": "fwd-group-holdings-limited-fs-2020-2021.pdf"
+    },
+    {
+      "company_name": "FWD",
+      "fiscal_year": "2019",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.fwd.com/files/v3/assets/blt7159ee3244a0ea01/blt9259299df2c8d6dd/640fe5d2c08fec105313ddc6/fwd-group-holdings-limited-acr-2019-2021-feb-2022.pdf",
+      "filename": "fwd-group-holdings-limited-acr-2019-2021-feb-2022.pdf"
+    },
+    {
+      "company_name": "FWD",
+      "fiscal_year": "2018",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.fwd.com/files/v3/assets/blt7159ee3244a0ea01/blt8e49dde10976f172/640fe60b9a3afb6a24ebaddd/fwd-group-holdings-limited-fs-2018-2020.pdf",
+      "filename": "fwd-group-holdings-limited-fs-2018-2020.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2024",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.generali.com/doc/jcr:259c5d6e-46f7-4a43-9512-58e5dcbd2a56/Annual%20Integrated%20Report%20and%20Consolidated%20Financial%20Statements%202024_Generali%20Group_final_interactive.pdf/lang:en/Annual_Integrated_Report_and_Consolidated_Financial_Statements_2024_Generali_Group_final_interactive.pdf",
+      "filename": "Annual_Integrated_Report_and_Consolidated_Financial_Statements_2024_Generali_Group_final_interactive.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2023",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.generali.com/doc/jcr:10e8853d-1fa8-44b2-958e-3ca826a3bd30/Annual%20Integrated%20Report%20and%20Consolidated%20Financial%20Statements%202023_Generali%20Group_final_interactive.pdf/lang:en/Annual_Integrated_Report_and_Consolidated_Financial_Statements_2023_Generali_Group_final_interactive.pdf",
+      "filename": "Annual_Integrated_Report_and_Consolidated_Financial_Statements_2023_Generali_Group_final_interactive.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2022",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.generali.com/doc/jcr:4c783ff4-619b-47ac-b3b5-231c27e5c8b1/Group%20Annual%20Integrated%20Report%202022_Generali%20Group_final_interactive.pdf/lang:en/Group_Annual_Integrated_Report_2022_Generali_Group_final_interactive.pdf",
+      "filename": "Group_Annual_Integrated_Report_2022_Generali_Group_final_interactive.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2021",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.generali.com/doc/jcr:4dea680f-4109-4c82-85bd-e67210d9adf9/Group%20Annual%20Integrated%20Report%202021_Generali%20Group_final.pdf/lang:en/Group_Annual_Integrated_Report_2021_Generali_Group_final.pdf",
+      "filename": "Group_Annual_Integrated_Report_2021_Generali_Group_final.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2020",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.generali.pl/media/Group_Annual_Integrated_Report_2020_Generali_Group_f9faa3e4c0.pdf",
+      "filename": "Group_Annual_Integrated_Report_2020_Generali_Group_f9faa3e4c0.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2019",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.generali.com/doc/jcr:ce07cd7e-3898-438b-afc9-f374a5427b07/lang:en/Generali_Group_Annual_Integrated_Report_2019.pdf",
+      "filename": "Generali_Group_Annual_Integrated_Report_2019.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2018",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.generali.com/doc/jcr:35cc7f5d-51c7-4ff2-8c4b-986acfe908db/lang:en/Group_Annual_Integrated_Report_2018_Generali_Group_final-.pdf",
+      "filename": "Group_Annual_Integrated_Report_2018_Generali_Group_final-.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2017",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.generali.lu/media/f2ebf0e4-a47b-41a5-a225-7c54468b83d9/annual-integrated-report-2017-generali-group-final.pdf",
+      "filename": "annual-integrated-report-2017-generali-group-final.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2016",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.generali.com/doc/jcr:5c648ce8-76c6-43d1-b60b-81f5804ed363/lang:en/Annual_Integrated_Report_2016_.pdf",
+      "filename": "Annual_Integrated_Report_2016_.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2015",
+      "document_type": "Annual Report",
+      "direct_source_url": "https://www.generali.com/doc/jcr:6a69f893-8147-40c0-93cb-7cab5634fb59/Integrated%20Report%20Generali%20Group%202015.pdf/lang:en/Integrated_Report_Generali_Group_2015.pdf",
+      "filename": "Integrated_Report_Generali_Group_2015.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2024",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.generali.com/doc/jcr:a292852f-e9fc-47be-b139-24daa4b82285/Generali%20Financial%20Supplement%20FY24.xlsx/lang:en/Generali_Financial_Supplement_FY24.xlsx",
+      "filename": "Generali_Financial_Supplement_FY24.xlsx"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2023",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.generali.com/doc/jcr:d6c256d3-cbf8-4a23-aa02-31e469bf1cc1/Generali%20Financial%20Supplement%20FY23.xlsx/lang:en/Generali_Financial_Supplement_FY23.xlsx",
+      "filename": "Generali_Financial_Supplement_FY23.xlsx"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2021",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.generali.com/doc/jcr:fe4e4768-4be2-46ea-93bd-325e5f7636e5/2021%20Own%20Funds%20and%20Life%20New%20Business%20Supplementary%20Information.pdf/lang:en/2021_Own_Funds_and_Life_New_Business_Supplementary_Information.pdf",
+      "filename": "2021_Own_Funds_and_Life_New_Business_Supplementary_Information.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2020",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.generali.com/doc/jcr:0437c47c-1dbb-4b4b-99cb-8d66f100ce9f/2020%20Own%20Funds%20and%20Life%20New%20Business%20Supplementary%20Information.pdf/lang:en/2020_Own_Funds_and_Life_New_Business_Supplementary_Information.pdf",
+      "filename": "2020_Own_Funds_and_Life_New_Business_Supplementary_Information.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2019",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.generali.com/doc/jcr:5466e122-2774-4484-b2f4-8a2eee35d482/lang:en/Generali_Group_2019_Own_Funds_and_New_Business_Supplementary_Information.pdf",
+      "filename": "Generali_Group_2019_Own_Funds_and_New_Business_Supplementary_Information.pdf"
+    },
+    {
+      "company_name": "Generali",
+      "fiscal_year": "2018",
+      "document_type": "Financial Supplement",
+      "direct_source_url": "https://www.generali.com/doc/jcr:017dfa8c-ac94-4dc4-9554-c2eabc872b17/lang:en/Generali_2018_Own_Funds_and_New_Business_Supplementary_Information.pdf",
+      "filename": "Generali_2018_Own_Funds_and_New_Business_Supplementary_Information.pdf"
+    }
+  ]
+}
