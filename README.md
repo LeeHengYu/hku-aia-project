@@ -1,6 +1,6 @@
 # HKU AIA project
 
-Only about phase 2. AIA mainly cares about medical and health insurance products, so, in the first step we try to gather information relevant to health/medical.
+Only about phase 2. In the first step we try to gather information relevant to insurance and insurance companies' financial reports, these files are in PDF formats.
 
 # Installation & Setup
 
@@ -20,53 +20,16 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-# Task 2: Data crawling
+# Task 2 & 3: Automation Roadmap
 
-### Census data
+- AI Agent crawler by Firecrawl: Schema provision, more structured output such as JSON or CSV.
+  - The prompt or scope of search (webistes) can be prepared by other LLM, or through Firecrawl UI.
 
-- [x] HK Census and Stat department
-- [ ] US Census (API always broken)
+- File download script deployment
+- GCS to Data Stores
+- Multi-source grounding cannot be done through AI Studio, richtext display
 
-### Financial (stocks and bonds)
-
-- [ ] HK Stock (FUTU API needs auth setup with FUTU HK account)
-- [ ] US Stock
-- [x] HK Bond Yield
-- [x] US Bond Yield
-
-### Financial Statements / Reports
-
-- [x] AIA Group
-- [x] FWD
-- [x] Prudential
-- [ ] Manulife
-
-### Insurance brochures
-
-- [x] AIA Group
-- [x] FWD
-- [x] Prudential
-- [x] Manulife
-
-### Medical
-
-- [x] CHP
-- [ ] Hospital Authority
-
-# Task 3: AI & GCP
-
-## Resolve CSV import problem
-
-- In the metadata, an `id` field set as REQUIRED is needed
-- BigQuery is used as a bridge to import data into data stores, but auto-detection schema in BigQuery cannot set `id` to REQUIRED, nor can Google SQL => switch to SDK sol to prepare the schema ourselves. Can rely on Gemini to generate the schema (in Python code form)
-- The final csv data is imported from BigQuery to data stores for grounding
-
-## Test programmatic grounding with multiple sources (data stores + Google Search)
-
-- Cannot configure in console UI
-- Can test with SDK, unlikely to work though the param is `List[Tool]`
-
-## Long term plan
+## Long term plan (to be researched)
 
 Conversational agent (part of Vertex AI agent builder)
 
