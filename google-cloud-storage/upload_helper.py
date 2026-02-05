@@ -1,4 +1,5 @@
 import argparse
+import mimetypes
 import os
 import sys
 import tempfile
@@ -57,7 +58,8 @@ def upload_url(client, bucket_name, file_url, destination_blob_name, blob_prefix
     blob: storage.Blob = bucket.blob(destination_blob_name)
 
     try:
-        tmp_file = tempfile.NamedTemporaryFile(delete=False)
+        suffix = Path(destination_blob_name).suffix or Path(urlparse(file_url).path).suffix
+        tmp_file = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
         tmp_path = tmp_file.name
         tmp_file.close()
 
@@ -71,7 +73,8 @@ def upload_url(client, bucket_name, file_url, destination_blob_name, blob_prefix
             log_error(f"Empty downloaded file: url={file_url}")
             return
 
-        blob.upload_from_filename(tmp_path)
+        content_type = mimetypes.guess_type(destination_blob_name)[0]
+        blob.upload_from_filename(tmp_path, content_type=content_type)
     
     except Exception as e:
         log_error(f"Error downloading/uploading: url={file_url} error={e}")
