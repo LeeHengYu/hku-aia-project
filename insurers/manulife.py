@@ -5,8 +5,6 @@ from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 import requests
 
-from download_file import create_folder_if_not_exist
-
 BASE_URL = "https://www.manulife.com.hk"
 
 def get_product_links(list_page_url):
@@ -62,7 +60,7 @@ def download_pdf_with_retry(file_url, filepath, max_retries=3):
 def download_all_pdfs_from_page(page_url, page, max_pdfs=5) -> int:
     """Download PDFs from product detail page (max: max_pdfs)"""
     download_folder = "brochures/manulife"
-    create_folder_if_not_exist(download_folder)
+    os.makedirs(download_folder, exist_ok=True)
     
     try:
         page.goto(page_url, wait_until="load", timeout=30000)

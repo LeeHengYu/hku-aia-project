@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 import requests
 
-from download_file import create_folder_if_not_exist, download_file_from_url
+from download_file import download_file_from_url
 
 def find_aia_major_categories():
     base_url = "https://www.aia.com.hk/en/"
@@ -101,7 +101,7 @@ def download_brochure(page_url, download_folder="brochures/aia"):
             print(f"[-] Could not determine filename from URL: {file_url}")
             return None
 
-        create_folder_if_not_exist(download_folder)
+        os.makedirs(download_folder, exist_ok=True)
         file_path = os.path.join(download_folder, filename)
         
         print(f"[*] Found: {filename}")

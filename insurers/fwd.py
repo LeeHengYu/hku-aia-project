@@ -4,7 +4,7 @@ from urllib.parse import urljoin, urlparse
 
 from playwright.async_api import Browser, Locator, Page, async_playwright
 
-from download_file import create_folder_if_not_exist, download_file_from_url
+from download_file import download_file_from_url
 
 BASE_URL = "https://www.fwd.com.hk"
 
@@ -80,7 +80,7 @@ async def handle_product_card(browser: Browser, card: Locator, keyword=None):
         if '.pdf' in href:
             href = urljoin(BASE_URL, href)
             filename = href.split('/')[-1]
-            create_folder_if_not_exist('brochures')
+            os.makedirs('brochures', exist_ok=True)
             download_file_from_url(href, f"brochures/fwd/{filename}")
         else:
             # urljoin to join BASEURL with partial incomplete path (href)

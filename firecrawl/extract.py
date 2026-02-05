@@ -5,13 +5,11 @@ import re
 import sys
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-sys.path.append(parent_dir)
 
 try:
     from insurers.download_file import download_file_from_url
 except ImportError:
-    print("Error: Could not import 'download_file_from_url'. Check yourdirectory structure.", file=sys.stderr)
+    print("Error: Could not import 'download_file_from_url'. Check your directory structure.", file=sys.stderr)
     sys.exit(1)
     
 OUTPUT_DIR = "brochures"
@@ -49,10 +47,10 @@ def main():
             sys.exit(1)
 
     download_folder = os.path.join(current_dir, OUTPUT_DIR)
-    if not os.path.exists(download_folder):
-        os.makedirs(download_folder)
+    os.makedirs(download_folder, exist_ok=True)
 
-    for item in data.get("brochures", []):
+    items = data.get("brochures") or data.get("reports") or []
+    for item in items:
         url = item.get("pdf_url")
         product_name = item.get("product_name")
 
@@ -73,7 +71,7 @@ def main():
         except Exception as e:
             print(f"Error downloading '{product_name}': {e}", file=sys.stderr)
             
-    if not os.listdir(download_folder):
+    if os.path.isdir(download_folder) and not os.listdir(download_folder):
         os.rmdir(download_folder) # folder clean up
 
 if __name__ == "__main__":

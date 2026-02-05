@@ -5,7 +5,7 @@ from urllib.parse import unquote, urljoin, urlparse
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
-from download_file import create_folder_if_not_exist, download_file_from_url
+from download_file import download_file_from_url
 
 CONFIG = {
     "non_product_keywords": {
@@ -91,7 +91,7 @@ def _extract_links_from_soup(soup, base_url):
 def download_brochures(page_url, soup, max_pdfs=5):
     """Download PDFs from a product page"""
     download_folder = "brochures/prudential"
-    create_folder_if_not_exist(download_folder)
+    os.makedirs(download_folder, exist_ok=True)
     
     try:
         pdf_links = []
