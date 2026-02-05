@@ -1,13 +1,6 @@
-import sys
 from curl_cffi import requests
 
-def download_file_from_url(
-    file_url,
-    file_path=None,
-    timeout=15,
-    return_stream=False,
-    allowed_content_types=None,
-):
+def download_file_from_url(file_url, file_path, headers=None, timeout=15):
     default_headers = {
         "User-Agent": "Chrome/120.0.0.0",
         "Content-Type": "application/pdf",
@@ -15,21 +8,15 @@ def download_file_from_url(
         "Accept-Encoding": "gzip, deflate, br",
     }
 
-    if allowed_content_types is None:
-        allowed_content_types = {
-            "application/pdf",
-            "application/octet-stream",
-            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            "application/vnd.ms-excel",
-            "text/csv",
-            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            "application/msword",
-        }
+    if headers:
+        default_headers.update(headers)
+
+    headers = default_headers
 
     try:
         r = requests.get(
             file_url,
-            headers=default_headers,
+            headers=headers,
             stream=True,
             timeout=timeout,
             impersonate="chrome110",
@@ -37,24 +24,15 @@ def download_file_from_url(
         r.raise_for_status()
 
         content_type = r.headers.get("content-type", "").lower()
-        if allowed_content_types:
-            if not any(ct in content_type for ct in allowed_content_types):
-                print(r.text)
-                r.close()
-                return
+        if "application/pdf" not in content_type:
+            print(r.text)
+            return
 
-        if return_stream:
-            return r
+        if r.status_code != 200:
+            return
 
-        if not file_path:
-            r.close()
-            raise ValueError("file_path is required when return_stream is False")
+        with open(file_path, "wb") as f:
+            f.write(r.content)
 
-        try:
-            with open(file_path, "wb") as f:
-                for chunk in r.iter_content(chunk_size=1024 * 32):
-                    f.write(chunk)
-        finally:
-            r.close()
-    except Exception as e:
-        print(f"Error downloading file: {e}", file=sys.stderr)
+    except Exception:
+        ...

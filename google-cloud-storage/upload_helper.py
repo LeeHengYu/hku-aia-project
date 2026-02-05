@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+import tempfile
 from datetime import datetime
 from pathlib import Path
 from typing import List
@@ -18,6 +19,11 @@ from insurers.download_file import download_file_from_url
 ERROR_LOG_PATH = FILE_DIR / "upload_json_errors.log"
 
 BUCKET_NAME = "hku-aia-market-data"
+
+def log_error(message: str) -> None:
+    timestamp = datetime.now()
+    with ERROR_LOG_PATH.open("a", encoding="utf-8") as log_file:
+        log_file.write(f"[{timestamp}] {message}\n")
 
 def upload_folder(client, bucket_name, source_folder, blob_prefix=None, file_suffix=None):
     bucket = client.get_bucket(bucket_name)
@@ -50,29 +56,33 @@ def upload_url(client, bucket_name, file_url, destination_blob_name, blob_prefix
         destination_blob_name = f"{blob_prefix}/{destination_blob_name}"
     blob: storage.Blob = bucket.blob(destination_blob_name)
 
-    r = download_file_from_url(
-        file_url,
-        return_stream=True,
-        timeout=timeout,
-    )
-    if r is None:
-        raise RuntimeError(f"Failed to download: {file_url}")
-
     try:
-        content_type = r.headers.get("content-type")
-        content_length = r.headers.get("content-length")
-        raw = getattr(r, "raw", None)
-        if content_length is not None and raw is not None:
-            blob.upload_from_file(
-                raw,
-                size=int(content_length),
-                content_type=content_type,
-            )
-        else:
-            data = r.content
-            blob.upload_from_string(data, content_type=content_type)
+        tmp_file = tempfile.NamedTemporaryFile(delete=False)
+        tmp_path = tmp_file.name
+        tmp_file.close()
+
+        download_file_from_url(
+            file_url,
+            tmp_path,
+            timeout=timeout,
+        )
+
+        if not os.path.exists(tmp_path) or os.path.getsize(tmp_path) == 0:
+            log_error(f"Empty downloaded file: url={file_url}")
+            return
+
+        blob.upload_from_filename(tmp_path)
+    
+    except Exception as e:
+        log_error(f"Error downloading/uploading: url={file_url} error={e}")
+        return
+    
     finally:
-        r.close()
+        if "tmp_path" in locals():
+            try:
+                os.remove(tmp_path)
+            except FileNotFoundError:
+                pass
 
     print(f"Uploaded {file_url} to gs://{bucket_name}/{destination_blob_name}")
 
@@ -133,12 +143,7 @@ def upload_json(client, bucket_name, json_path, blob_prefix=None, key=None, time
                 timeout=timeout,
             )
         except Exception as e:
-            print(f"Error uploading {file_url}: {e}")
-            timestamp = datetime.utcnow().isoformat(timespec="seconds") + "Z"
-            with ERROR_LOG_PATH.open("a", encoding="utf-8") as log_file:
-                log_file.write(
-                    f"[{timestamp}] url={file_url} filename={filename} error={e}\n"
-                )
+            log_error(f"Error uploading: url={file_url} filename={filename} error={e}")
 
 def list_blobs(client, bucket_name, prefix=None) -> List[storage.Blob]:
     bucket = client.bucket(bucket_name)
