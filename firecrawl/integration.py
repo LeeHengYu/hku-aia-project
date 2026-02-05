@@ -12,14 +12,27 @@ class Report(BaseModel):
     company_name: str = Field(description="The name of the company which published the report")
     report_year: int = Field(description="The fiscal year of the report is about. If not detectable, use publication year.")
     document_type: str = Field(description="The content nature of the report. E.g. Annual Report, Interim Report, Financial Supplement")
-    source_url: str = Field()
+    source_url: str = Field(description="The file url which users, upon clicking a link in a browser, can download the report.")
     filename: str = Field(description="The suggested filename from the website. Use the original name if meaningful, else suggest one which can be inferred from the website where the report is found")
 
 class ExtractSchema(BaseModel):
     reports: List[Report] = Field(description="List of reports")
     
 extract_prompt = """
-Extract the direct PDF links for annual financial reports and the URLs for financial supplements for Prudential PLC, AIA, BOCHK, AXA HK, Sun Life, FWD, and Generali from 2015 to the present. For each document found, capture the company_name, report_year, document_type (e.g., Annual Report, Financial Supplement), source_url, and filename.
+Task: For Prudential PLC, AIA, BOCHK (Bank of China Hong Kong), AXA HK, Sun Life, FWD, Generali and other insurance companies in Hong Kong, find annual financial reports (PDF) and financial supplements from 2015 to present.
+
+Rules:
+- Annual reports: return the direct PDF URL (not a landing page).
+- Financial supplements: return the direct PDF URL if available; otherwise the URL to the resource file, do not give landing page URL.
+- Use these field names exactly: company_name, report_year, document_type, source_url, filename.
+- document_type must be "Annual Report", "Financial Supplement" or of similar patterns.
+- report_year is the fiscal year covered by the document. If unclear, use the publication year.
+- filename should be the original file name if visible; otherwise synthesize: {company_name}_{report_year}_{document_type}.pdf or .html.
+- Please find the links which user can access to download the file, and store it as {source_url}.
+- Prefer English versions if multiple languages are available.
+- Avoid duplicates (one entry per unique document).
+
+Return only the extracted data that matches the schema.
 """
 
 def main():
@@ -33,7 +46,6 @@ def main():
     if args.run: 
         agent_job = app.start_agent(
             prompt=extract_prompt,
-            # urls=[],
             schema=ExtractSchema,
             model="spark-1-mini",
         )
