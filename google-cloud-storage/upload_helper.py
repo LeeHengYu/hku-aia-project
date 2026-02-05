@@ -1,11 +1,21 @@
 import argparse
 import os
+import sys
+from datetime import datetime
 from pathlib import Path
 from typing import List
 from urllib.parse import urlparse
 
-import requests
 from google.cloud import storage
+
+FILE_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = FILE_DIR.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from insurers.download_file import download_file_from_url
+
+ERROR_LOG_PATH = FILE_DIR / "upload_json_errors.log"
 
 BUCKET_NAME = "hku-aia-market-data"
 
@@ -34,30 +44,39 @@ def upload_bytes(client, bucket_name, data, destination_blob_name, blob_prefix=N
     blob.upload_from_string(data)
     print(f"Uploaded bytes to gs://{bucket_name}/{destination_blob_name}")
 
-def upload_url(client, bucket_name, file_url, destination_blob_name, blob_prefix=None, headers=None, timeout=30):
+def upload_url(client, bucket_name, file_url, destination_blob_name, blob_prefix=None, timeout=30):
     bucket = client.bucket(bucket_name)
     if blob_prefix is not None:
         destination_blob_name = f"{blob_prefix}/{destination_blob_name}"
     blob: storage.Blob = bucket.blob(destination_blob_name)
 
-    with requests.get(file_url, headers=headers, stream=True, timeout=timeout) as r:
-        r.raise_for_status()
-        r.raw.decode_content = True
+    r = download_file_from_url(
+        file_url,
+        return_stream=True,
+        timeout=timeout,
+    )
+    if r is None:
+        raise RuntimeError(f"Failed to download: {file_url}")
+
+    try:
         content_type = r.headers.get("content-type")
         content_length = r.headers.get("content-length")
-        if content_length is not None:
+        raw = getattr(r, "raw", None)
+        if content_length is not None and raw is not None:
             blob.upload_from_file(
-                r.raw,
+                raw,
                 size=int(content_length),
                 content_type=content_type,
             )
         else:
             data = r.content
             blob.upload_from_string(data, content_type=content_type)
+    finally:
+        r.close()
 
     print(f"Uploaded {file_url} to gs://{bucket_name}/{destination_blob_name}")
 
-def upload_json(client, bucket_name, json_path, blob_prefix=None, key=None, headers=None, timeout=30):
+def upload_json(client, bucket_name, json_path, blob_prefix=None, key=None, timeout=30):
     import json
 
     json_path = Path(json_path)
@@ -87,7 +106,6 @@ def upload_json(client, bucket_name, json_path, blob_prefix=None, key=None, head
             continue
 
         file_url = item.get("source_url") or item.get("url")
-            
         if not file_url:
             continue
         lower_url = file_url.lower()
@@ -105,16 +123,22 @@ def upload_json(client, bucket_name, json_path, blob_prefix=None, key=None, head
 
         if not filename:
             continue
-
-        upload_url(
-            client=client,
-            bucket_name=bucket_name,
-            file_url=file_url,
-            destination_blob_name=filename,
-            blob_prefix=blob_prefix,
-            headers=headers,
-            timeout=timeout,
-        )
+        try:
+            upload_url(
+                client=client,
+                bucket_name=bucket_name,
+                file_url=file_url,
+                destination_blob_name=filename,
+                blob_prefix=blob_prefix,
+                timeout=timeout,
+            )
+        except Exception as e:
+            print(f"Error uploading {file_url}: {e}")
+            timestamp = datetime.utcnow().isoformat(timespec="seconds") + "Z"
+            with ERROR_LOG_PATH.open("a", encoding="utf-8") as log_file:
+                log_file.write(
+                    f"[{timestamp}] url={file_url} filename={filename} error={e}\n"
+                )
 
 def list_blobs(client, bucket_name, prefix=None) -> List[storage.Blob]:
     bucket = client.bucket(bucket_name)

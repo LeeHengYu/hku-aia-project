@@ -105,7 +105,7 @@ def download_brochure(page_url, download_folder="brochures/aia"):
         file_path = os.path.join(download_folder, filename)
         
         print(f"[*] Found: {filename}")
-        download_file_from_url(file_url, file_path, headers)
+        download_file_from_url(file_url, file_path)
         return file_path
 
     except Exception as e:
