@@ -1,9 +1,13 @@
 import argparse
 import os
-from google.cloud import storage
+from pathlib import Path
 from typing import List
+from urllib.parse import urlparse
 
-BUCKET_NAME = "crawled-clean"
+import requests
+from google.cloud import storage
+
+BUCKET_NAME = "hku-aia-market-data"
 
 def upload_folder(client, bucket_name, source_folder, blob_prefix=None, file_suffix=None):
     bucket = client.get_bucket(bucket_name)
@@ -29,6 +33,88 @@ def upload_bytes(client, bucket_name, data, destination_blob_name, blob_prefix=N
     blob = bucket.blob(destination_blob_name)
     blob.upload_from_string(data)
     print(f"Uploaded bytes to gs://{bucket_name}/{destination_blob_name}")
+
+def upload_url(client, bucket_name, file_url, destination_blob_name, blob_prefix=None, headers=None, timeout=30):
+    bucket = client.bucket(bucket_name)
+    if blob_prefix is not None:
+        destination_blob_name = f"{blob_prefix}/{destination_blob_name}"
+    blob: storage.Blob = bucket.blob(destination_blob_name)
+
+    with requests.get(file_url, headers=headers, stream=True, timeout=timeout) as r:
+        r.raise_for_status()
+        r.raw.decode_content = True
+        content_type = r.headers.get("content-type")
+        content_length = r.headers.get("content-length")
+        if content_length is not None:
+            blob.upload_from_file(
+                r.raw,
+                size=int(content_length),
+                content_type=content_type,
+            )
+        else:
+            data = r.content
+            blob.upload_from_string(data, content_type=content_type)
+
+    print(f"Uploaded {file_url} to gs://{bucket_name}/{destination_blob_name}")
+
+def upload_json(client, bucket_name, json_path, blob_prefix=None, key=None, headers=None, timeout=30):
+    import json
+
+    json_path = Path(json_path)
+    if not json_path.exists():
+        raise FileNotFoundError(f"JSON file not found: {json_path}")
+
+    with json_path.open("r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    items = None
+    if key:
+        if isinstance(data, dict):
+            items = data.get(key)
+    elif isinstance(data, dict):
+        items = data.get("reports") or data.get("brochures")
+    elif isinstance(data, list):
+        items = data
+
+    if not items:
+        print("No items found in JSON for upload.")
+        return
+
+    allowed_exts = {".pdf", ".xlsx", ".xls", ".csv", ".docx"}
+
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+
+        file_url = item.get("source_url") or item.get("url")
+            
+        if not file_url:
+            continue
+        lower_url = file_url.lower()
+        if not any(ext in lower_url for ext in allowed_exts):
+            continue
+
+        filename = item.get("filename")
+        if not filename:
+            product_name = item.get("product_name")
+            if product_name:
+                filename = f"{product_name}.pdf"
+            else:
+                parsed = urlparse(file_url)
+                filename = os.path.basename(parsed.path)
+
+        if not filename:
+            continue
+
+        upload_url(
+            client=client,
+            bucket_name=bucket_name,
+            file_url=file_url,
+            destination_blob_name=filename,
+            blob_prefix=blob_prefix,
+            headers=headers,
+            timeout=timeout,
+        )
 
 def list_blobs(client, bucket_name, prefix=None) -> List[storage.Blob]:
     bucket = client.bucket(bucket_name)
@@ -88,6 +174,20 @@ if __name__ == "__main__":
     bytes_parser.add_argument("filename", help="Destination filename")
     bytes_parser.add_argument("--prefix", help="Remote folder prefix")
 
+    # 3b. Upload URL
+    url_parser = subparsers.add_parser("upload-url", help="Stream a URL directly to GCS")
+    url_parser.add_argument("url", help="Source URL to download")
+    url_parser.add_argument("filename", help="Destination filename")
+    url_parser.add_argument("--prefix", help="Remote folder prefix")
+    url_parser.add_argument("--timeout", type=int, default=30, help="Request timeout in seconds")
+
+    # 3c. Upload JSON
+    json_parser = subparsers.add_parser("upload-json", help="Upload files from a JSON manifest")
+    json_parser.add_argument("json_path", help="Path to JSON file")
+    json_parser.add_argument("--prefix", help="Remote folder prefix")
+    json_parser.add_argument("--key", help="Root key to read items from (e.g., reports, brochures)")
+    json_parser.add_argument("--timeout", type=int, default=30, help="Request timeout in seconds")
+
     # 4. List Blobs
     list_parser = subparsers.add_parser("list", help="List files in bucket")
     list_parser.add_argument("--prefix", help="Filter by folder prefix")
@@ -122,6 +222,12 @@ if __name__ == "__main__":
         
     elif args.command == "upload-bytes":
         upload_bytes(cli, args.bucket, args.data, args.filename, args.prefix)
+
+    elif args.command == "upload-url":
+        upload_url(cli, args.bucket, args.url, args.filename, args.prefix, timeout=args.timeout)
+
+    elif args.command == "upload-json":
+        upload_json(cli, args.bucket, args.json_path, args.prefix, key=args.key, timeout=args.timeout)
         
     elif args.command == "list":
         blobs = list_blobs(cli, args.bucket, args.prefix)
