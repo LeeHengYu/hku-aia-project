@@ -1,11 +1,19 @@
 import os
 from typing import List
+from google.cloud import storage
 from google.cloud.bigquery import *
 from google.cloud.bigquery.table import TableListItem
 
 PROJECT_ID = "project-b8819359-0bf9-4214-88d"
 DATASET_ID = "financial_history"
 SOURCE_DATA_DIR = "./financial"
+
+def get_uri(bucket_name: str, blob_prefix: str):
+    # get only csv
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
+    blobs: List[storage.Blob] = list(bucket.list_blobs(prefix=blob_prefix))
+    return [b.self_link for b in blobs if b.name.endswith('.csv')]
 
 def transform_schema(client: Client, full_table_id: str)-> List[SchemaField]:
     new_schema: List[SchemaField] = []
@@ -63,4 +71,5 @@ def main():
             print(e)
 
 if __name__ == '__main__':
-    main()
+    # main()
+    get_uri('crawled-clean', 'financial_data')
