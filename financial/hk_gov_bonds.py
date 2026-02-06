@@ -79,16 +79,19 @@ def main():
     else:
         df_notes = crawl_resource(get_data_note_bill, total_pages=10)
         df_bonds = crawl_resource(get_data_bonds, total_pages=10)
-        
+
+        combined_df = pd.DataFrame()
         if not df_notes.empty and not df_bonds.empty:
             combined_df = pd.merge(
-                df_notes, 
-                df_bonds, 
-                on="end_of_day", 
+                df_notes,
+                df_bonds,
+                on="end_of_day",
             )
-            df = combined_df.copy()
-            combined_df.set_index("end_of_day", inplace=True)
-            
+        elif not df_notes.empty:
+            combined_df = df_notes.copy()
+        elif not df_bonds.empty:
+            combined_df = df_bonds.copy()
+
         df = combined_df.copy()
 
     df.columns = [convert_col_names(col) for col in df.columns]

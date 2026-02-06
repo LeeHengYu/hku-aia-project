@@ -51,14 +51,14 @@ def main():
 
     items = data.get("brochures") or data.get("reports") or []
     for item in items:
-        url = item.get("pdf_url")
-        product_name = item.get("product_name")
+        url = item.get("source_url")
+        filename = item.get("filename")
 
-        if not url or not product_name:
+        if not url or not filename:
             continue
 
-        filename = sanitize_filename(f"{product_name}.pdf")
-        file_path = os.path.join(download_folder, filename)
+        safe_filename = sanitize_filename(filename)
+        file_path = os.path.join(download_folder, safe_filename)
         
         if os.path.exists(file_path):
             continue
@@ -69,7 +69,7 @@ def main():
                 file_path=file_path,
             )
         except Exception as e:
-            print(f"Error downloading '{product_name}': {e}", file=sys.stderr)
+            print(f"Error downloading '{filename}': {e}", file=sys.stderr)
             
     if os.path.isdir(download_folder) and not os.listdir(download_folder):
         os.rmdir(download_folder) # folder clean up
