@@ -19,8 +19,6 @@ from insurers.download_file import download_file_from_url
 
 ERROR_LOG_PATH = FILE_DIR / "upload_json_errors.log"
 
-BUCKET_NAME = "hku-aia-market-data"
-
 def log_error(message: str) -> None:
     timestamp = datetime.now()
     with ERROR_LOG_PATH.open("a", encoding="utf-8") as log_file:
@@ -179,13 +177,13 @@ def clean_folder(client, bucket_name, folder_path):
         return
     bucket.delete_blobs(blobs)
 
-def custom(client):
-    bucket = client.bucket(BUCKET_NAME)
+def custom(client, bucket_name):
+    bucket = client.bucket(bucket_name)
     ...
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Google Cloud Storage Utility CLI")
-    parser.add_argument("--bucket", default=BUCKET_NAME, help=f"GCS Bucket name (default: {BUCKET_NAME})")
+    parser.add_argument("--bucket", required=True, help="GCS Bucket name")
     
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
     
@@ -275,7 +273,7 @@ if __name__ == "__main__":
             clean_folder(cli, args.bucket, args.folder)
     
     elif args.command == "custom":
-        custom(cli)
+        custom(cli, args.bucket)
             
     else:
         parser.print_help()
