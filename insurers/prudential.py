@@ -5,7 +5,7 @@ from urllib.parse import unquote, urljoin, urlparse
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
-from download_file import download_file_from_url
+from insurers.download_file import download_file_from_url
 
 CONFIG = {
     "non_product_keywords": {

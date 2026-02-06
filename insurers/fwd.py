@@ -4,7 +4,7 @@ from urllib.parse import urljoin, urlparse
 
 from playwright.async_api import Browser, Locator, Page, async_playwright
 
-from download_file import download_file_from_url
+from insurers.download_file import download_file_from_url
 
 BASE_URL = "https://www.fwd.com.hk"
 
