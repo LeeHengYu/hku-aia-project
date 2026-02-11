@@ -1,28 +1,28 @@
-import { useEffect, useRef, type KeyboardEvent } from 'react'
+import { useEffect, useRef, type KeyboardEvent } from "react";
 
 interface ComposerProps {
-  value: string
-  onChange: (value: string) => void
-  onSend: () => void
-  disabled?: boolean
+  value: string;
+  onChange: (value: string) => void;
+  onSend: () => void;
+  disabled?: boolean;
 }
 
 const Composer = ({ value, onChange, onSend, disabled }: ComposerProps) => {
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null)
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
-    const textarea = textareaRef.current
-    if (!textarea) return
-    textarea.style.height = '0px'
-    textarea.style.height = `${textarea.scrollHeight}px`
-  }, [value])
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+    textarea.style.height = "0px";
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }, [value]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === 'Enter' && !event.shiftKey) {
-      event.preventDefault()
-      if (!disabled) onSend()
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      if (!disabled) onSend();
     }
-  }
+  };
 
   return (
     <div className="composer">
@@ -45,7 +45,7 @@ const Composer = ({ value, onChange, onSend, disabled }: ComposerProps) => {
         Send
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Composer
+export default Composer;
