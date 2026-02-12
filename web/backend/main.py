@@ -21,7 +21,7 @@ class ChatRequest(BaseModel):
     systemInstruction: str | None = None
     parameters: dict[str, Any] | None = None
     model: str | None = None
-
+    authKey: str
 
 class ChatResponse(BaseModel):
     text: str
@@ -59,6 +59,8 @@ async def health() -> dict[str, str]:
 
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest) -> ChatResponse:
+    if not request.authKey.strip():
+        raise HTTPException(status_code=401, detail="Missing auth key.")
     try:
         text = generate_content(
             messages=[message.model_dump() for message in request.messages],
