@@ -1,37 +1,23 @@
 import Sidebar from "./components/Sidebar";
 import ChatView from "./components/ChatView";
 import Composer from "./components/Composer";
+import { ChatStoreProvider } from "./controllers/chatStoreProvider";
 import { useChatController } from "./controllers/chatController";
 
-function App() {
+const AppLayout = () => {
   const {
-    chats,
-    activeChatId,
     activeChat,
     input,
     isLoading,
-    setInput,
     userKeyInput,
+    setInput,
     setUserKeyInput,
-    handleNewChat,
-    handleSelectChat,
-    handleImport,
-    handleRenameChat,
-    handleDeleteChat,
     handleSend,
   } = useChatController();
 
   return (
     <div className="app">
-      <Sidebar
-        chats={chats}
-        activeChatId={activeChatId}
-        onSelectChat={handleSelectChat}
-        onNewChat={handleNewChat}
-        onImport={handleImport}
-        onRenameChat={handleRenameChat}
-        onDeleteChat={handleDeleteChat}
-      />
+      <Sidebar />
       <main className="main">
         <div className="main-header">
           <div>
@@ -45,6 +31,9 @@ function App() {
           ) : null}
         </div>
         <div className="auth-row">
+          <label className="auth-label" htmlFor="auth-key">
+            Access key
+          </label>
           <input
             id="auth-key"
             className="auth-input"
@@ -63,6 +52,14 @@ function App() {
         />
       </main>
     </div>
+  );
+};
+
+function App() {
+  return (
+    <ChatStoreProvider>
+      <AppLayout />
+    </ChatStoreProvider>
   );
 }
 

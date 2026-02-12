@@ -1,25 +1,18 @@
 import { useRef, useState, type ChangeEvent } from "react";
-import type { Chat, VertexPromptExport } from "../lib/types";
+import type { Chat } from "../lib/types";
+import { useSidebarController } from "../controllers/sidebarController";
 
-interface SidebarProps {
-  chats: Chat[];
-  activeChatId: string | null;
-  onSelectChat: (chatId: string) => void;
-  onNewChat: () => void;
-  onImport: (data: VertexPromptExport) => void;
-  onRenameChat: (chatId: string, nextTitle: string) => void;
-  onDeleteChat: (chatId: string) => void;
-}
+const Sidebar = () => {
+  const {
+    chats,
+    activeChatId,
+    handleSelectChat,
+    handleNewChat,
+    handleImport,
+    handleRenameChat,
+    handleDeleteChat,
+  } = useSidebarController();
 
-const Sidebar = ({
-  chats,
-  activeChatId,
-  onSelectChat,
-  onNewChat,
-  onImport,
-  onRenameChat,
-  onDeleteChat,
-}: SidebarProps) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [editingChatId, setEditingChatId] = useState<string | null>(null);
   const [editingTitle, setEditingTitle] = useState("");
@@ -35,7 +28,7 @@ const Sidebar = ({
     try {
       const text = await file.text();
       const data = JSON.parse(text);
-      onImport(data);
+      handleImport(data);
     } catch (error) {
       console.error(error);
       alert(
@@ -53,14 +46,18 @@ const Sidebar = ({
 
   const commitRename = () => {
     if (!editingChatId) return;
-    onRenameChat(editingChatId, editingTitle);
+    handleRenameChat(editingChatId, editingTitle);
     setEditingChatId(null);
   };
 
   return (
     <aside className="sidebar">
       <div className="sidebar-top">
-        <button className="sidebar-action" onClick={onNewChat} type="button">
+        <button
+          className="sidebar-action"
+          onClick={handleNewChat}
+          type="button"
+        >
           New chat
         </button>
         <button
@@ -104,7 +101,7 @@ const Sidebar = ({
                 <>
                   <button
                     className="chat-select"
-                    onClick={() => onSelectChat(chat.id)}
+                    onClick={() => handleSelectChat(chat.id)}
                     type="button"
                   >
                     <div className="chat-title">{chat.title}</div>
@@ -120,7 +117,7 @@ const Sidebar = ({
                   <button
                     className="chat-delete"
                     type="button"
-                    onClick={() => onDeleteChat(chat.id)}
+                    onClick={() => handleDeleteChat(chat.id)}
                     aria-label={`Delete ${chat.title}`}
                   >
                     ×
