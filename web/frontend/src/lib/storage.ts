@@ -2,6 +2,7 @@ import type { Chat, Message, Role, VertexPromptExport } from "./types";
 
 const CHATS_KEY = "gemini-lite.chats";
 const ACTIVE_CHAT_KEY = "gemini-lite.activeChat";
+const AUTH_KEY = "gemini-lite.authKey";
 
 const toIsoString = () => new Date().toISOString();
 
@@ -40,6 +41,22 @@ export const saveActiveChatId = (chatId: string | null) => {
     } else {
       localStorage.removeItem(ACTIVE_CHAT_KEY);
     }
+  } catch {
+    // ignore storage errors
+  }
+};
+
+export const loadUserKey = (): string => {
+  try {
+    return localStorage.getItem(AUTH_KEY) ?? "";
+  } catch {
+    return "";
+  }
+};
+
+export const saveUserKey = (key: string) => {
+  try {
+    localStorage.setItem(AUTH_KEY, key);
   } catch {
     // ignore storage errors
   }

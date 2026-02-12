@@ -22,11 +22,6 @@ const ChatView = ({ messages, isLoading = false }: ChatViewProps) => {
         <div className="chat-empty-subtitle">
           Import a prompt or send a message to begin.
         </div>
-        {import.meta.env.DEV ? (
-          <div className="chat-empty-subtitle">
-            Or load the sample chat from the sidebar.
-          </div>
-        ) : null}
       </div>
     );
   }

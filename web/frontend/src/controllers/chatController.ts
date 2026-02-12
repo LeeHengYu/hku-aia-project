@@ -4,8 +4,10 @@ import {
   hydrateChatFromExport,
   loadActiveChatId,
   loadChats,
+  loadUserKey,
   saveActiveChatId,
   saveChats,
+  saveUserKey,
 } from "../lib/storage";
 
 const createChat = (title = "New chat"): Chat => {
@@ -16,49 +18,6 @@ const createChat = (title = "New chat"): Chat => {
     createdAt: now,
     updatedAt: now,
     messages: [],
-  };
-};
-
-const SAMPLE_MARKDOWN = `### Sample Markdown
-
-Here is a quick render check:
-
-- **Bold text**
-- *Italic text*
-- \`inline code\`
-- [Link](https://example.com)
-
-| Feature | Value |
-| --- | --- |
-| Response | Rich text |
-| Tables | Supported |
-
-\`\`\`bash
-curl -X POST /api/chat
-\`\`\`
-`;
-
-const buildSampleChat = (): Chat => {
-  const now = new Date().toISOString();
-  return {
-    id: crypto.randomUUID(),
-    title: "Sample markdown",
-    createdAt: now,
-    updatedAt: now,
-    messages: [
-      {
-        id: crypto.randomUUID(),
-        role: "user",
-        content: "Render sample markdown",
-        createdAt: now,
-      },
-      {
-        id: crypto.randomUUID(),
-        role: "assistant",
-        content: SAMPLE_MARKDOWN,
-        createdAt: now,
-      },
-    ],
   };
 };
 
@@ -75,6 +34,8 @@ export const useChatController = () => {
   );
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [userKeyInput, setUserKeyInput] = useState(() => loadUserKey());
+  const [userKey, setUserKey] = useState(() => loadUserKey());
 
   useEffect(() => {
     if (!activeChatId && chats.length > 0) {
@@ -89,6 +50,17 @@ export const useChatController = () => {
   useEffect(() => {
     saveActiveChatId(activeChatId);
   }, [activeChatId]);
+
+  useEffect(() => {
+    const handle = window.setTimeout(() => {
+      setUserKey(userKeyInput.trim());
+      saveUserKey(userKeyInput.trim());
+    }, 300);
+
+    return () => {
+      window.clearTimeout(handle);
+    };
+  }, [userKeyInput]);
 
   const activeChat = useMemo(
     () => chats.find((chat) => chat.id === activeChatId) ?? null,
@@ -117,12 +89,6 @@ export const useChatController = () => {
     setActiveChatId(imported.id);
   };
 
-  const handleLoadSample = () => {
-    const sample = buildSampleChat();
-    setChats((prev) => [sample, ...prev]);
-    setActiveChatId(sample.id);
-  };
-
   const handleDeleteChat = (chatId: string) => {
     setChats((prev) => {
       const remaining = prev.filter((chat) => chat.id !== chatId);
@@ -131,6 +97,15 @@ export const useChatController = () => {
       }
       return remaining;
     });
+  };
+
+  const handleRenameChat = (chatId: string, nextTitle: string) => {
+    const title = nextTitle.trim() || "New chat";
+    updateChat(chatId, (chat) => ({
+      ...chat,
+      title,
+      updatedAt: new Date().toISOString(),
+    }));
   };
 
   const handleSend = async () => {
@@ -174,6 +149,7 @@ export const useChatController = () => {
           systemInstruction: activeChat.systemInstruction ?? null,
           parameters: activeChat.parameters ?? null,
           model: activeChat.model ?? null,
+          authKey: userKey,
         }),
       });
 
@@ -224,10 +200,12 @@ export const useChatController = () => {
     input,
     isLoading,
     setInput,
+    userKeyInput,
+    setUserKeyInput,
     handleNewChat,
     handleSelectChat,
     handleImport,
-    handleLoadSample,
+    handleRenameChat,
     handleDeleteChat,
     handleSend,
   };

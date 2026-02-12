@@ -1,4 +1,4 @@
-import { useRef, type ChangeEvent } from "react";
+import { useRef, useState, type ChangeEvent } from "react";
 import type { Chat, VertexPromptExport } from "../lib/types";
 
 interface SidebarProps {
@@ -7,7 +7,7 @@ interface SidebarProps {
   onSelectChat: (chatId: string) => void;
   onNewChat: () => void;
   onImport: (data: VertexPromptExport) => void;
-  onLoadSample: () => void;
+  onRenameChat: (chatId: string, nextTitle: string) => void;
   onDeleteChat: (chatId: string) => void;
 }
 
@@ -17,10 +17,12 @@ const Sidebar = ({
   onSelectChat,
   onNewChat,
   onImport,
-  onLoadSample,
+  onRenameChat,
   onDeleteChat,
 }: SidebarProps) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [editingChatId, setEditingChatId] = useState<string | null>(null);
+  const [editingTitle, setEditingTitle] = useState("");
 
   const handleImportClick = () => {
     fileInputRef.current?.click();
@@ -44,6 +46,17 @@ const Sidebar = ({
     }
   };
 
+  const startRename = (chat: Chat) => {
+    setEditingChatId(chat.id);
+    setEditingTitle(chat.title);
+  };
+
+  const commitRename = () => {
+    if (!editingChatId) return;
+    onRenameChat(editingChatId, editingTitle);
+    setEditingChatId(null);
+  };
+
   return (
     <aside className="sidebar">
       <div className="sidebar-top">
@@ -57,15 +70,6 @@ const Sidebar = ({
         >
           Import prompt
         </button>
-        {import.meta.env.DEV ? (
-          <button
-            className="sidebar-secondary"
-            onClick={onLoadSample}
-            type="button"
-          >
-            Load sample
-          </button>
-        ) : null}
         <input
           ref={fileInputRef}
           className="file-input"
@@ -85,24 +89,44 @@ const Sidebar = ({
                 chat.id === activeChatId ? "active" : ""
               }`}
             >
-              <button
-                className="chat-select"
-                onClick={() => onSelectChat(chat.id)}
-                type="button"
-              >
-                <div className="chat-title">{chat.title}</div>
-                <div className="chat-meta">
-                  {new Date(chat.updatedAt).toLocaleDateString()}
-                </div>
-              </button>
-              <button
-                className="chat-delete"
-                type="button"
-                onClick={() => onDeleteChat(chat.id)}
-                aria-label={`Delete ${chat.title}`}
-              >
-                ×
-              </button>
+              {editingChatId === chat.id ? (
+                <input
+                  className="chat-input"
+                  value={editingTitle}
+                  onChange={(event) => setEditingTitle(event.target.value)}
+                  onBlur={() => setEditingChatId(null)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") commitRename();
+                    if (event.key === "Escape") setEditingChatId(null);
+                  }}
+                />
+              ) : (
+                <>
+                  <button
+                    className="chat-select"
+                    onClick={() => onSelectChat(chat.id)}
+                    type="button"
+                  >
+                    <div className="chat-title">{chat.title}</div>
+                  </button>
+                  <button
+                    className="chat-rename"
+                    type="button"
+                    onClick={() => startRename(chat)}
+                    aria-label={`Rename ${chat.title}`}
+                  >
+                    ✎
+                  </button>
+                  <button
+                    className="chat-delete"
+                    type="button"
+                    onClick={() => onDeleteChat(chat.id)}
+                    aria-label={`Delete ${chat.title}`}
+                  >
+                    ×
+                  </button>
+                </>
+              )}
             </div>
           ))}
         </div>

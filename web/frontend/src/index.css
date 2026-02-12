@@ -58,21 +58,6 @@ button {
   gap: 12px;
 }
 
-.brand {
-  font-family: 'Sora', sans-serif;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.brand-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  box-shadow: 0 0 12px rgba(90, 214, 162, 0.6);
-}
 
 .sidebar-action,
 .sidebar-secondary {
@@ -143,6 +128,29 @@ button {
   cursor: pointer;
 }
 
+.chat-input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+.chat-rename {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.chat-rename:hover {
+  color: #cfe0ff;
+}
+
 .chat-delete {
   border: none;
   background: transparent;
@@ -161,11 +169,6 @@ button {
   font-weight: 500;
 }
 
-.chat-meta {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 4px;
-}
 
 .file-input {
   display: none;
@@ -197,6 +200,25 @@ button {
   margin-top: 4px;
 }
 
+.auth-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.auth-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+}
+
 .system-indicator {
   padding: 6px 12px;
   border-radius: 999px;
@@ -225,11 +247,6 @@ button {
   gap: 8px;
 }
 
-.chat-empty-title {
-  font-family: 'Sora', sans-serif;
-  font-size: 32px;
-  font-weight: 600;
-}
 
 .chat-empty-subtitle {
   color: var(--muted);
@@ -319,7 +336,7 @@ button {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 18px;
-  padding: 12px 14px;
+  padding: 6px 12px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -333,7 +350,7 @@ button {
   background: transparent;
   color: var(--text);
   font-family: inherit;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .composer-send {

@@ -11,10 +11,12 @@ function App() {
     input,
     isLoading,
     setInput,
+    userKeyInput,
+    setUserKeyInput,
     handleNewChat,
     handleSelectChat,
     handleImport,
-    handleLoadSample,
+    handleRenameChat,
     handleDeleteChat,
     handleSend,
   } = useChatController();
@@ -27,7 +29,7 @@ function App() {
         onSelectChat={handleSelectChat}
         onNewChat={handleNewChat}
         onImport={handleImport}
-        onLoadSample={handleLoadSample}
+        onRenameChat={handleRenameChat}
         onDeleteChat={handleDeleteChat}
       />
       <main className="main">
@@ -41,6 +43,16 @@ function App() {
           {activeChat?.systemInstruction ? (
             <div className="system-indicator">Prompt loaded</div>
           ) : null}
+        </div>
+        <div className="auth-row">
+          <input
+            id="auth-key"
+            className="auth-input"
+            type="text"
+            placeholder="Enter access key"
+            value={userKeyInput}
+            onChange={(event) => setUserKeyInput(event.target.value)}
+          />
         </div>
         <ChatView messages={activeChat?.messages ?? []} isLoading={isLoading} />
         <Composer
