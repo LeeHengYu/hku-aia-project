@@ -40,6 +40,8 @@ button {
 .app {
   display: flex;
   min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -50,6 +52,11 @@ button {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  flex-shrink: 0;
 }
 
 .sidebar-top {
@@ -348,12 +355,17 @@ button {
 @media (max-width: 960px) {
   .app {
     flex-direction: column;
+    height: auto;
+    overflow: visible;
   }
 
   .sidebar {
     width: 100%;
     border-right: none;
     border-bottom: 1px solid var(--border);
+    position: static;
+    height: auto;
+    overflow: visible;
   }
 
   .main {
