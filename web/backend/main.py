@@ -27,10 +27,6 @@ class ChatResponse(BaseModel):
     text: str
 
 
-class TestRequest(BaseModel):
-    message: str
-
-
 class TestResponse(BaseModel):
     text: str
 
@@ -73,8 +69,9 @@ async def chat(request: ChatRequest) -> ChatResponse:
 
 
 @app.post("/api/test", response_model=TestResponse)
-async def test_endpoint(request: TestRequest) -> TestResponse:
-    if request.message.strip().lower() == "hello":
+async def test_endpoint(request: ChatRequest) -> TestResponse:
+    content = request.messages[-1].content if request.messages else ""
+    if content.strip().lower() == "hello":
         return TestResponse(text="Hi")
     return TestResponse(text="Unsupported test message")
 
