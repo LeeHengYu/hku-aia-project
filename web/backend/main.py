@@ -1,27 +1,25 @@
 from __future__ import annotations
 
+import hmac
 import os
 from typing import Any
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from .vertex import generate_content
 
-
 class ChatMessage(BaseModel):
     role: str
     content: str
-
 
 class ChatRequest(BaseModel):
     messages: list[ChatMessage]
     systemInstruction: str | None = None
     parameters: dict[str, Any] | None = None
     model: str | None = None
-    authKey: str
 
 class ChatResponse(BaseModel):
     text: str
@@ -32,12 +30,29 @@ class TestResponse(BaseModel):
 
 
 app = FastAPI(title="Gemini Lite")
+EXPECTED_AUTH_KEY = os.getenv("HKU_KEY_DEV", "").strip()
+
+def _validate_auth_key(authorization: str | None) -> None:
+    if not authorization: 
+        return ""
+    scheme, _, token = authorization.partition(" ")
+    if scheme.lower() != "bearer":
+        candidate = ""
+    else:
+        candidate = token.strip()
+    
+    if not candidate:
+        raise HTTPException(status_code=401, detail="Missing auth key.")
+    if not EXPECTED_AUTH_KEY:
+        raise HTTPException(status_code=500, detail="Server auth key is not configured.")
+    if not hmac.compare_digest(candidate, EXPECTED_AUTH_KEY):
+        raise HTTPException(status_code=403, detail="Invalid auth key.")
 
 origins_env = os.getenv("CORS_ORIGINS", "")
 if origins_env:
     allow_origins = [origin.strip() for origin in origins_env.split(",") if origin.strip()]
 else:
-    allow_origins = ["http://localhost:5173", "http://127.0.0.1:5173"]
+    allow_origins = ["http://localhost:5173", "http://127.0.0.1:5173", "https://hku-aia-project.vercel.app"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -54,9 +69,11 @@ async def health() -> dict[str, str]:
 
 
 @app.post("/api/chat", response_model=ChatResponse)
-async def chat(request: ChatRequest) -> ChatResponse:
-    if not request.authKey.strip():
-        raise HTTPException(status_code=401, detail="Missing auth key.")
+async def chat(
+    request: ChatRequest,
+    authorization: str | None = Header(default=None),
+) -> ChatResponse:
+    _validate_auth_key(authorization)
     try:
         text = generate_content(
             messages=[message.model_dump() for message in request.messages],
@@ -69,25 +86,12 @@ async def chat(request: ChatRequest) -> ChatResponse:
 
 
 @app.post("/api/test", response_model=TestResponse)
-async def test_endpoint(request: ChatRequest) -> TestResponse:
+async def test_endpoint(
+    request: ChatRequest,
+    authorization: str | None = Header(default=None),
+) -> TestResponse:
+    _validate_auth_key(authorization)
     content = request.messages[-1].content if request.messages else ""
     if content.strip().lower() == "hello":
         return TestResponse(text="Hi")
     return TestResponse(text="Unsupported test message")
-
-
-_FRONTEND_DIST = os.getenv("FRONTEND_DIST")
-if _FRONTEND_DIST and os.path.isdir(_FRONTEND_DIST):
-
-    @app.get("/")
-    async def serve_root() -> FileResponse:
-        return FileResponse(os.path.join(_FRONTEND_DIST, "index.html"))
-
-    @app.get("/{path:path}")
-    async def serve_spa(path: str) -> FileResponse:
-        if path.startswith("api/"):
-            raise HTTPException(status_code=404)
-        candidate = os.path.join(_FRONTEND_DIST, path)
-        if os.path.isfile(candidate):
-            return FileResponse(candidate)
-        return FileResponse(os.path.join(_FRONTEND_DIST, "index.html"))
