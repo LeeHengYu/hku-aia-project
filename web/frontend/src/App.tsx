@@ -2,7 +2,7 @@ import Sidebar from "./components/Sidebar";
 import ChatView from "./components/ChatView";
 import Composer from "./components/Composer";
 import { ChatStoreProvider } from "./controllers/chatStoreProvider";
-import { useChatController } from "./controllers/chatController";
+import { useChatContext } from "./controllers/useChatStore";
 
 const AppLayout = () => {
   const {
@@ -13,7 +13,7 @@ const AppLayout = () => {
     setInput,
     setUserKeyInput,
     handleSend,
-  } = useChatController();
+  } = useChatContext();
 
   return (
     <div className="app">

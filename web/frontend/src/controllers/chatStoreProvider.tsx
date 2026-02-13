@@ -1,78 +1,28 @@
-// Wires reducer and side effects, then provides chat state/actions contexts.
-// dispatch modifies state via reducer, while handlers run side effects and dispatch updates.
+// Wires reducer-backed state and actions, then provides a unified chat context.
 
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useReducer,
-  type ReactNode,
-} from "react";
+import { useCallback, useMemo, useReducer, type ReactNode } from "react";
 import type { Chat, Message, VertexPromptExport } from "../lib/types";
-import {
-  hydrateChatFromExport,
-  loadActiveChatId,
-  loadChats,
-  loadUserKey,
-  saveActiveChatId,
-  saveChats,
-  saveUserKey,
-} from "../lib/storage";
+import { hydrateChatFromExport } from "../lib/storage";
 import {
   chatReducer,
+  createInitialState,
   createChat,
   titleFromMessage,
-  type ChatState,
 } from "./chatStore";
-import {
-  ChatActionsContext,
-  ChatStateContext,
-} from "./chatContext";
-
-const initState = (): ChatState => {
-  return {
-    chats: loadChats(),
-    activeChatId: loadActiveChatId(),
-    input: "",
-    isLoading: false,
-    userKeyInput: loadUserKey(),
-    userKey: loadUserKey(),
-  };
-};
+import { ChatContext } from "./chatContext";
+import { ChatController } from "./chatController";
 
 export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(chatReducer, undefined, initState);
+  const [state, dispatch] = useReducer(
+    chatReducer,
+    undefined,
+    createInitialState,
+  );
 
   const activeChat = useMemo(
     () => state.chats.find((chat) => chat.id === state.activeChatId) ?? null,
     [state.chats, state.activeChatId],
   );
-
-  useEffect(() => {
-    if (!state.activeChatId && state.chats.length > 0) {
-      dispatch({ type: "SET_ACTIVE_CHAT", chatId: state.chats[0].id });
-    }
-  }, [state.activeChatId, state.chats]);
-
-  useEffect(() => {
-    saveChats(state.chats);
-  }, [state.chats]);
-
-  useEffect(() => {
-    saveActiveChatId(state.activeChatId);
-  }, [state.activeChatId]);
-
-  useEffect(() => {
-    const handle = window.setTimeout(() => {
-      const trimmed = state.userKeyInput.trim();
-      dispatch({ type: "SET_USER_KEY", value: trimmed });
-      saveUserKey(trimmed);
-    }, 300);
-
-    return () => {
-      window.clearTimeout(handle);
-    };
-  }, [state.userKeyInput]);
 
   const setInput = useCallback((value: string) => {
     dispatch({ type: "SET_INPUT", value });
@@ -228,42 +178,24 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [activeChat, state]);
 
-  const valueState = useMemo(
-    () => ({
-      ...state,
-      activeChat,
-    }),
-    [state, activeChat],
-  );
-
-  const valueActions = useMemo(
-    () => ({
-      setInput,
-      setUserKeyInput,
-      handleNewChat,
-      handleSelectChat,
-      handleImport,
-      handleRenameChat,
-      handleDeleteChat,
-      handleSend,
-    }),
-    [
-      setInput,
-      setUserKeyInput,
-      handleNewChat,
-      handleSelectChat,
-      handleImport,
-      handleRenameChat,
-      handleDeleteChat,
-      handleSend,
-    ],
-  );
+  const value = {
+    ...state,
+    activeChat,
+    dispatch,
+    setInput,
+    setUserKeyInput,
+    handleNewChat,
+    handleSelectChat,
+    handleImport,
+    handleRenameChat,
+    handleDeleteChat,
+    handleSend,
+  };
 
   return (
-    <ChatStateContext.Provider value={valueState}>
-      <ChatActionsContext.Provider value={valueActions}>
-        {children}
-      </ChatActionsContext.Provider>
-    </ChatStateContext.Provider>
+    <ChatContext.Provider value={value}>
+      {children}
+      <ChatController />
+    </ChatContext.Provider>
   );
 };

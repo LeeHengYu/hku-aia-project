@@ -1,10 +1,10 @@
 // Defines shared context contracts: state shape and action interface.
 
-import { createContext } from "react";
+import { createContext, type Dispatch } from "react";
 import type { Chat, VertexPromptExport } from "../lib/types";
-import type { ChatState } from "./chatStore";
+import type { ChatAction, ChatState } from "./chatStore";
 
-export interface ChatActions {
+interface ChatContextActions {
   setInput: (value: string) => void;
   setUserKeyInput: (value: string) => void;
   handleNewChat: () => void;
@@ -15,9 +15,9 @@ export interface ChatActions {
   handleSend: () => Promise<void>;
 }
 
-export interface ChatContextState extends ChatState {
+interface ChatContextValue extends ChatState, ChatContextActions {
   activeChat: Chat | null;
+  dispatch: Dispatch<ChatAction>;
 }
 
-export const ChatStateContext = createContext<ChatContextState | null>(null);
-export const ChatActionsContext = createContext<ChatActions | null>(null);
+export const ChatContext = createContext<ChatContextValue | null>(null);

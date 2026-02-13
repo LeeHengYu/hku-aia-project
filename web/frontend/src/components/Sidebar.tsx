@@ -1,6 +1,6 @@
 import { useRef, useState, type ChangeEvent } from "react";
 import type { Chat } from "../lib/types";
-import { useSidebarController } from "../controllers/sidebarController";
+import { useChatContext } from "../controllers/useChatStore";
 
 const Sidebar = () => {
   const {
@@ -11,7 +11,7 @@ const Sidebar = () => {
     handleImport,
     handleRenameChat,
     handleDeleteChat,
-  } = useSidebarController();
+  } = useChatContext();
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [editingChatId, setEditingChatId] = useState<string | null>(null);

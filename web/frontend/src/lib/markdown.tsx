@@ -1,8 +1,8 @@
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface MarkdownProps {
-  content: string
+  content: string;
 }
 
 const Markdown = ({ content }: MarkdownProps) => (
@@ -31,18 +31,18 @@ const Markdown = ({ content }: MarkdownProps) => (
             <code {...props} className={className}>
               {children}
             </code>
-          )
+          );
         }
         return (
           <code {...props} className="inline-code">
             {children}
           </code>
-        )
+        );
       },
     }}
   >
     {content}
   </ReactMarkdown>
-)
+);
 
-export default Markdown
+export default Markdown;

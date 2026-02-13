@@ -3,6 +3,7 @@
 import type { Chat } from "../lib/types";
 
 export interface ChatState {
+  isHydrated: boolean;
   chats: Chat[];
   activeChatId: string | null;
   input: string;
@@ -11,14 +12,33 @@ export interface ChatState {
   userKey: string;
 }
 
+export interface HydratePayload {
+  chats: Chat[];
+  activeChatId: string | null;
+  userKeyInput: string;
+  userKey: string;
+}
+
 export type ChatAction =
-  | { type: "INIT"; state: ChatState }
+  | { type: "HYDRATE"; payload: HydratePayload }
   | { type: "SET_INPUT"; value: string }
   | { type: "SET_LOADING"; value: boolean }
   | { type: "SET_ACTIVE_CHAT"; chatId: string | null }
   | { type: "SET_CHATS"; chats: Chat[] }
   | { type: "SET_USER_KEY_INPUT"; value: string }
   | { type: "SET_USER_KEY"; value: string };
+
+export const createInitialState = (): ChatState => {
+  return {
+    isHydrated: false,
+    chats: [],
+    activeChatId: null,
+    input: "",
+    isLoading: false,
+    userKeyInput: "",
+    userKey: "",
+  };
+};
 
 export const createChat = (title = "New chat"): Chat => {
   const now = new Date().toISOString();
@@ -42,8 +62,15 @@ export const chatReducer = (
   action: ChatAction,
 ): ChatState => {
   switch (action.type) {
-    case "INIT":
-      return action.state;
+    case "HYDRATE":
+      return {
+        ...state,
+        isHydrated: true,
+        chats: action.payload.chats,
+        activeChatId: action.payload.activeChatId,
+        userKeyInput: action.payload.userKeyInput,
+        userKey: action.payload.userKey,
+      };
     case "SET_INPUT":
       return { ...state, input: action.value };
     case "SET_LOADING":
