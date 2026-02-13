@@ -1,5 +1,4 @@
-import { useRef, useState, type ChangeEvent } from "react";
-import type { Chat } from "../lib/types";
+import { useRef, type ChangeEvent } from "react";
 import { useChatContext } from "../controllers/useChatStore";
 
 const Sidebar = () => {
@@ -9,17 +8,10 @@ const Sidebar = () => {
     handleSelectChat,
     handleNewChat,
     handleImport,
-    handleRenameChat,
     handleDeleteChat,
   } = useChatContext();
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [editingChatId, setEditingChatId] = useState<string | null>(null);
-  const [editingTitle, setEditingTitle] = useState("");
-
-  const handleImportClick = () => {
-    fileInputRef.current?.click();
-  };
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -32,22 +24,11 @@ const Sidebar = () => {
     } catch (error) {
       console.error(error);
       alert(
-        "Unable to parse the JSON file. Please use the prompt exported from Vertex AI.",
+        "Unable to parse the JSON file. Please use the prompt exported from Vertex AI Studio.",
       );
     } finally {
       event.target.value = "";
     }
-  };
-
-  const startRename = (chat: Chat) => {
-    setEditingChatId(chat.id);
-    setEditingTitle(chat.title);
-  };
-
-  const commitRename = () => {
-    if (!editingChatId) return;
-    handleRenameChat(editingChatId, editingTitle);
-    setEditingChatId(null);
   };
 
   return (
@@ -62,7 +43,9 @@ const Sidebar = () => {
         </button>
         <button
           className="sidebar-secondary"
-          onClick={handleImportClick}
+          onClick={() => {
+            fileInputRef.current?.click();
+          }}
           type="button"
         >
           Import prompt
@@ -86,44 +69,21 @@ const Sidebar = () => {
                 chat.id === activeChatId ? "active" : ""
               }`}
             >
-              {editingChatId === chat.id ? (
-                <input
-                  className="chat-input"
-                  value={editingTitle}
-                  onChange={(event) => setEditingTitle(event.target.value)}
-                  onBlur={() => setEditingChatId(null)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter") commitRename();
-                    if (event.key === "Escape") setEditingChatId(null);
-                  }}
-                />
-              ) : (
-                <>
-                  <button
-                    className="chat-select"
-                    onClick={() => handleSelectChat(chat.id)}
-                    type="button"
-                  >
-                    <div className="chat-title">{chat.title}</div>
-                  </button>
-                  <button
-                    className="chat-rename"
-                    type="button"
-                    onClick={() => startRename(chat)}
-                    aria-label={`Rename ${chat.title}`}
-                  >
-                    ✎
-                  </button>
-                  <button
-                    className="chat-delete"
-                    type="button"
-                    onClick={() => handleDeleteChat(chat.id)}
-                    aria-label={`Delete ${chat.title}`}
-                  >
-                    ×
-                  </button>
-                </>
-              )}
+              <button
+                className="chat-select"
+                onClick={() => handleSelectChat(chat.id)}
+                type="button"
+              >
+                <div className="chat-title">{chat.title}</div>
+              </button>
+              <button
+                className="chat-delete"
+                type="button"
+                onClick={() => handleDeleteChat(chat.id)}
+                aria-label={`Delete ${chat.title}`}
+              >
+                ×
+              </button>
             </div>
           ))}
         </div>

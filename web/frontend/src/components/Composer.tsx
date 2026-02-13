@@ -1,16 +1,21 @@
 import { useEffect, useRef, type KeyboardEvent } from "react";
-import { useChatContext } from "../controllers/useChatStore";
 
 interface ComposerProps {
   value: string;
   onChange: (value: string) => void;
   onSend: () => void;
   disabled?: boolean;
+  visible?: boolean;
 }
 
-const Composer = ({ value, onChange, onSend, disabled }: ComposerProps) => {
+const Composer = ({
+  value,
+  onChange,
+  onSend,
+  disabled,
+  visible = true,
+}: ComposerProps) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const { activeChatId } = useChatContext();
 
   useEffect(() => {
     const textarea = textareaRef.current;
@@ -26,7 +31,7 @@ const Composer = ({ value, onChange, onSend, disabled }: ComposerProps) => {
     }
   };
 
-  return activeChatId ? (
+  return visible ? (
     <div className="composer">
       <textarea
         ref={textareaRef}

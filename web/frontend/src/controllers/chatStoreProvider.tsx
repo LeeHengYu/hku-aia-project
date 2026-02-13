@@ -51,19 +51,6 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     [state.chats],
   );
 
-  const handleRenameChat = useCallback(
-    (chatId: string, nextTitle: string) => {
-      const title = nextTitle.trim() || "New chat";
-      const nextChats = state.chats.map((chat) =>
-        chat.id === chatId
-          ? { ...chat, title, updatedAt: new Date().toISOString() }
-          : chat,
-      );
-      dispatch({ type: "SET_CHATS", chats: nextChats });
-    },
-    [state.chats],
-  );
-
   const handleDeleteChat = useCallback(
     (chatId: string) => {
       const remaining = state.chats.filter((chat) => chat.id !== chatId);
@@ -187,7 +174,6 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     handleNewChat,
     handleSelectChat,
     handleImport,
-    handleRenameChat,
     handleDeleteChat,
     handleSend,
   };

@@ -10,7 +10,6 @@ interface ChatContextActions {
   handleNewChat: () => void;
   handleSelectChat: (chatId: string) => void;
   handleImport: (data: VertexPromptExport) => void;
-  handleRenameChat: (chatId: string, nextTitle: string) => void;
   handleDeleteChat: (chatId: string) => void;
   handleSend: () => Promise<void>;
 }

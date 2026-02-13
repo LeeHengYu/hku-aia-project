@@ -128,29 +128,6 @@ button {
   cursor: pointer;
 }
 
-.chat-input {
-  flex: 1;
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text);
-  padding: 6px 8px;
-  font-size: 14px;
-}
-
-.chat-rename {
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  font-size: 14px;
-  cursor: pointer;
-  padding: 4px 6px;
-}
-
-.chat-rename:hover {
-  color: #cfe0ff;
-}
-
 .chat-delete {
   border: none;
   background: transparent;

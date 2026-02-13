@@ -1,8 +1,11 @@
 import Sidebar from "./components/Sidebar";
 import ChatView from "./components/ChatView";
 import Composer from "./components/Composer";
+import MainHeader from "./components/MainHeader";
+import AuthKeyInput from "./components/AuthKeyInput";
 import { ChatStoreProvider } from "./controllers/chatStoreProvider";
 import { useChatContext } from "./controllers/useChatStore";
+import { APP_TITLE } from "./constants/uiText";
 
 const AppLayout = () => {
   const {
@@ -19,33 +22,18 @@ const AppLayout = () => {
     <div className="app">
       <Sidebar />
       <main className="main">
-        <div className="main-header">
-          <div>
-            <div className="main-title">Gemini</div>
-            <div className="main-subtitle">
-              Grounded responses with clean markdown rendering.
-            </div>
-          </div>
-          {activeChat?.systemInstruction ? (
-            <div className="system-indicator">Prompt loaded</div>
-          ) : null}
-        </div>
-        <div className="auth-row">
-          <input
-            id="auth-key"
-            className="auth-input"
-            type="text"
-            placeholder="Enter access key"
-            value={userKeyInput}
-            onChange={(event) => setUserKeyInput(event.target.value)}
-          />
-        </div>
+        <MainHeader
+          title={APP_TITLE}
+          showPromptLoaded={Boolean(activeChat?.systemInstruction)}
+        />
+        <AuthKeyInput value={userKeyInput} onChange={setUserKeyInput} />
         <ChatView messages={activeChat?.messages ?? []} isLoading={isLoading} />
         <Composer
           value={input}
           onChange={setInput}
           onSend={handleSend}
           disabled={!activeChat || isLoading}
+          visible={Boolean(activeChat)}
         />
       </main>
     </div>
