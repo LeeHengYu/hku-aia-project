@@ -113,6 +113,7 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${state.userKey}`,
         },
         body: JSON.stringify({
           messages: updatedChat.messages.map((message) => ({
@@ -122,7 +123,6 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
           systemInstruction: activeChat.systemInstruction ?? null,
           parameters: activeChat.parameters ?? null,
           model: activeChat.model ?? null,
-          authKey: state.userKey,
         }),
       });
 
