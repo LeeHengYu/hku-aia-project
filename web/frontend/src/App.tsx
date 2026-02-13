@@ -31,9 +31,6 @@ const AppLayout = () => {
           ) : null}
         </div>
         <div className="auth-row">
-          <label className="auth-label" htmlFor="auth-key">
-            Access key
-          </label>
           <input
             id="auth-key"
             className="auth-input"
