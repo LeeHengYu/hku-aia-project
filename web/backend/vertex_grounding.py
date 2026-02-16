@@ -5,6 +5,7 @@ from typing import Any
 
 from google import genai
 from google.genai.types import (
+    Content,
     GenerateContentConfig,
     GoogleSearch,
     HttpOptions,
@@ -67,7 +68,7 @@ def get_runtime_config() -> dict[str, str]:
 
 
 def send_to_gemini(
-    contents: Any,
+    contents: list[Content],
     datastore_path: str,
     system_instruction: str | None = None,
 ) -> str:

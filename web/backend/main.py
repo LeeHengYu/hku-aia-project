@@ -10,7 +10,7 @@ from fastapi import FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from .vertex import send_to_gemini, get_vertex_runtime_config
+from .vertex import generate_content, get_vertex_runtime_config
 
 class ChatMessage(BaseModel):
     role: str
@@ -99,8 +99,11 @@ async def chat(
         raise HTTPException(status_code=400, detail="Missing messages.")
 
     try:
-        text = send_to_gemini(
-            contents=[m.model_dump() for m in request.messages if m.content.strip()],
+        text = generate_content(
+            messages=[
+                {"role": "model" if m.role == "assistant" else "user", "content": m.content}
+                for m in request.messages if m.content.strip()
+            ],
             system_instruction=request.systemInstruction,
             datastore_path=datastore_path,
         )
