@@ -75,18 +75,11 @@ export const ChatController = () => {
 
   useEffect(() => {
     if (!isHydrated) return;
-
-    const handle = window.setTimeout(() => {
-      const trimmed = userKeyInput.trim();
-      if (trimmed !== userKey) {
-        dispatch({ type: "SET_USER_KEY", value: trimmed });
-      }
-      saveUserKey(trimmed);
-    }, 300);
-
-    return () => {
-      window.clearTimeout(handle);
-    };
+    const trimmed = userKeyInput.trim();
+    if (trimmed !== userKey) {
+      dispatch({ type: "SET_USER_KEY", value: trimmed });
+    }
+    saveUserKey(trimmed);
   }, [isHydrated, userKeyInput, userKey, dispatch]);
 
   return null;

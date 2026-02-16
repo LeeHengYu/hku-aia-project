@@ -96,12 +96,17 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: "SET_LOADING", value: true });
 
     try {
+      const authKey = state.userKeyInput.trim();
+      const headers: Record<string, string> = {
+        "Content-Type": "application/json",
+      };
+      if (authKey) {
+        headers.Authorization = `Bearer ${authKey}`;
+      }
+
       const response = await fetch("/api/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${state.userKey}`,
-        },
+        headers,
         body: JSON.stringify({
           messages: updatedChat.messages.map((message) => ({
             role: message.role,
