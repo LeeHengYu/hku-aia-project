@@ -12,8 +12,8 @@ import {
 import { ChatContext } from "./chatContext";
 import { ChatController } from "./chatController";
 
-const DATASTORE_PATH = (import.meta.env.DATASTORE_PATH ?? "").trim();
-const API_BASE_URL = (import.meta.env.BACKEND_URL ?? "").trim();
+const DATASTORE_PATH = (import.meta.env.VITE_DATASTORE_PATH ?? "").trim();
+const API_BASE_URL = (import.meta.env.VITE_BACKEND_URL ?? "").trim();
 
 const buildApiUrl = (path: string): string => {
   if (!API_BASE_URL) return path;
