@@ -100,7 +100,7 @@ async def chat(
 
     try:
         text = send_to_gemini(
-            messages=[m.model_dump() for m in request.messages if m.content.strip()],
+            contents=[m.model_dump() for m in request.messages if m.content.strip()],
             system_instruction=request.systemInstruction,
             datastore_path=datastore_path,
         )
