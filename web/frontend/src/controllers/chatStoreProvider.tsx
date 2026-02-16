@@ -12,6 +12,14 @@ import {
 import { ChatContext } from "./chatContext";
 import { ChatController } from "./chatController";
 
+const DATASTORE_PATH = (import.meta.env.DATASTORE_PATH ?? "").trim();
+const API_BASE_URL = (import.meta.env.BACKEND_URL ?? "").trim();
+
+const buildApiUrl = (path: string): string => {
+  if (!API_BASE_URL) return path;
+  return `${API_BASE_URL}${path}`;
+};
+
 export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(
     chatReducer,
@@ -104,7 +112,7 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
         headers.Authorization = `Bearer ${authKey}`;
       }
 
-      const response = await fetch("/api/chat", {
+      const response = await fetch(buildApiUrl("/api/chat"), {
         method: "POST",
         headers,
         body: JSON.stringify({
@@ -113,6 +121,7 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
             content: message.content,
           })),
           systemInstruction: activeChat.systemInstruction ?? null,
+          datastorePath: DATASTORE_PATH,
         }),
       });
 
