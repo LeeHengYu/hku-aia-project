@@ -9,11 +9,16 @@ interface ChatViewProps {
 
 const ChatView = ({ messages, isLoading = false }: ChatViewProps) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const bottomRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    container.scrollTop = container.scrollHeight;
+    const anchor = bottomRef.current;
+    if (!anchor) return;
+
+    window.requestAnimationFrame(() => {
+      anchor.scrollIntoView({ block: "end" });
+    });
+
   }, [messages, isLoading]);
 
   if (messages.length === 0 && !isLoading) {
@@ -41,6 +46,7 @@ const ChatView = ({ messages, isLoading = false }: ChatViewProps) => {
           }}
         />
       ) : null}
+      <div ref={bottomRef} aria-hidden="true" />
     </div>
   );
 };
