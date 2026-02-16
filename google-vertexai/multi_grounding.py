@@ -1,44 +1,39 @@
-from google import genai
-from google.genai.types import (
-    GenerateContentConfig,
-    GoogleSearch,
-    HttpOptions,
-    Retrieval,
-    Tool,
-    VertexAISearch,
-)
+import os
+import pathlib
+import sys
 
-DEFAULT_MODEL = "gemini-3-pro-preview"
-DATASTORE_PATH = "projects/project-b8819359-0bf9-4214-88d/locations/global/collections/default_collection/dataStores/hku-market-analysis_1769864742906"
-
-client = genai.Client(http_options=HttpOptions(api_version="v1"), vertexai=True)
-
-
-def build_default_tools(path):
-    google_search_tool = Tool(google_search=GoogleSearch())
-    vertex_tool = Tool(
-        retrieval=Retrieval(
-            vertex_ai_search=VertexAISearch(datastore=path),
-        ),
+try:
+    from web.backend.vertex_grounding import (
+        build_default_config,
+        build_default_tools,
+        generate_content,
+        get_runtime_config,
     )
-    return [vertex_tool, google_search_tool]
-
-
-def build_default_config():
-    return GenerateContentConfig(tools=build_default_tools(DATASTORE_PATH))
-
-
-def generate_content(contents, model=None, config=None):
-    response = client.models.generate_content(
-        model=model or DEFAULT_MODEL,
-        contents=contents,
-        config=config or build_default_config(),
+except ModuleNotFoundError:
+    ROOT_DIR = pathlib.Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(ROOT_DIR))
+    from web.backend.vertex_grounding import (
+        build_default_config,
+        build_default_tools,
+        generate_content,
+        get_runtime_config,
     )
-    return response.text
+
+__all__ = [
+    "build_default_config",
+    "build_default_tools",
+    "generate_content",
+    "get_runtime_config",
+]
 
 
 if __name__ == "__main__":
+    path = os.getenv("VERTEX_DATASTORE_PATH", "").strip()
+    if not path:
+        raise RuntimeError("Set VERTEX_DATASTORE_PATH for local script execution.")
+
     response_text = generate_content(
+        datastore_path=path,
         contents=(
             "How was the performance of AIA as a company in 2025 H1? "
             "Please list out the sources from which you gather information."

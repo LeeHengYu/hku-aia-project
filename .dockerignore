@@ -1,0 +1,16 @@
+.git
+.gitignore
+.venv
+.DS_Store
+
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+web/frontend/node_modules/
+web/frontend/dist/
+
+firecrawl/job-result/
+*.log
+secrets/

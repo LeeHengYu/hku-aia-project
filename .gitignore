@@ -9,3 +9,4 @@ brochures/
 firecrawl/*.csv
 census/data
 *.pdf
+secrets/

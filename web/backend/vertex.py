@@ -1,45 +1,23 @@
 from __future__ import annotations
 
-import importlib.util
-import pathlib
 from typing import Any, Iterable
 
-_BASE_DIR = pathlib.Path(__file__).resolve().parents[2]
-_MULTI_GROUNDING_PATH = _BASE_DIR / "google-vertexai" / "multi_grounding.py"
+from google.genai.types import Content, Part
+
+from .vertex_grounding import (
+    get_runtime_config,
+    send_to_gemini,
+)
 
 
-def _load_multi_grounding_module():
-    spec = importlib.util.spec_from_file_location(
-        "multi_grounding", str(_MULTI_GROUNDING_PATH)
-    )
-    if spec is None or spec.loader is None:
-        raise RuntimeError("Unable to load multi_grounding.py module.")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+def get_vertex_runtime_config() -> dict[str, str]:
+    return get_runtime_config()
 
 
 def _build_contents(
     messages: Iterable[dict[str, Any]],
-    system_instruction: str | None,
-) -> list[dict[str, Any]]:
-    contents: list[dict[str, Any]] = []
-
-    if system_instruction:
-        instruction = system_instruction.strip()
-        if instruction:
-            contents.append(
-                {
-                    "role": "user",
-                    "parts": [
-                        {
-                            "text": "[System Instruction]\n"
-                            + instruction
-                            + "\n[/System Instruction]",
-                        }
-                    ],
-                }
-            )
+) -> list[Content]:
+    contents: list[Content] = []
 
     for message in messages:
         role = message.get("role")
@@ -50,7 +28,7 @@ def _build_contents(
         text = str(message.get("content", "")).strip()
         if not text:
             continue
-        contents.append({"role": role, "parts": [{"text": text}]})
+        contents.append(Content(role=role, parts=[Part.from_text(text=text)]))
 
     return contents
 
@@ -58,10 +36,18 @@ def _build_contents(
 def generate_content(
     messages: Iterable[dict[str, Any]],
     system_instruction: str | None = None,
+    datastore_path: str | None = None,
 ) -> str:
-    contents = _build_contents(messages, system_instruction)
+    contents = _build_contents(messages)
     if not contents:
         return ""
 
-    multi_grounding = _load_multi_grounding_module()
-    return multi_grounding.generate_content(contents=contents)
+    path = str(datastore_path or "").strip()
+    if not path:
+        raise RuntimeError("Missing datastore path.")
+
+    return send_to_gemini(
+        contents=contents,
+        datastore_path=path,
+        system_instruction=system_instruction,
+    )

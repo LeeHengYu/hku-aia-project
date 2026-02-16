@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 import hmac
+import logging
 import os
+from contextlib import asynccontextmanager
 from typing import Any
 
 from fastapi import FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from .vertex import generate_content
+from .vertex import send_to_gemini, get_vertex_runtime_config
 
 class ChatMessage(BaseModel):
     role: str
@@ -18,8 +19,8 @@ class ChatMessage(BaseModel):
 class ChatRequest(BaseModel):
     messages: list[ChatMessage]
     systemInstruction: str | None = None
+    datastorePath: str | None = None
     parameters: dict[str, Any] | None = None
-    model: str | None = None
 
 class ChatResponse(BaseModel):
     text: str
@@ -29,18 +30,19 @@ class TestResponse(BaseModel):
     text: str
 
 
-app = FastAPI(title="Gemini Lite")
 EXPECTED_AUTH_KEY = os.getenv("HKU_KEY_DEV", "").strip()
+LOGGER = logging.getLogger(__name__)
 
 def _validate_auth_key(authorization: str | None) -> None:
-    if not authorization: 
-        return ""
+    if not authorization:
+        raise HTTPException(status_code=401, detail="Missing auth key.")
+
     scheme, _, token = authorization.partition(" ")
     if scheme.lower() != "bearer":
         candidate = ""
     else:
         candidate = token.strip()
-    
+
     if not candidate:
         raise HTTPException(status_code=401, detail="Missing auth key.")
     if not EXPECTED_AUTH_KEY:
@@ -53,6 +55,26 @@ if origins_env:
     allow_origins = [origin.strip() for origin in origins_env.split(",") if origin.strip()]
 else:
     allow_origins = ["http://localhost:5173", "http://127.0.0.1:5173", "https://hku-aia-project.vercel.app"]
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    if not EXPECTED_AUTH_KEY:
+        raise RuntimeError("Missing required environment variable: HKU_KEY_DEV")
+
+    vertex_config = get_vertex_runtime_config()
+    LOGGER.info(
+        "Startup config loaded: cors_origins=%s, vertex_project=%s, "
+        "vertex_location=%s, vertex_model=%s",
+        allow_origins,
+        vertex_config["project_id"],
+        vertex_config["location"],
+        vertex_config["model"],
+    )
+    yield
+
+
+app = FastAPI(title="Gemini Lite", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -74,12 +96,21 @@ async def chat(
     authorization: str | None = Header(default=None),
 ) -> ChatResponse:
     _validate_auth_key(authorization)
+    datastore_path = str(request.datastorePath or "").strip()
+
+    if not datastore_path:
+        raise HTTPException(status_code=400, detail="Missing datastorePath.")
+    if not request.messages:
+        raise HTTPException(status_code=400, detail="Missing messages.")
+
     try:
-        text = generate_content(
-            messages=[message.model_dump() for message in request.messages],
+        text = send_to_gemini(
+            messages=[m.model_dump() for m in request.messages if m.content.strip()],
             system_instruction=request.systemInstruction,
+            datastore_path=datastore_path,
         )
-    except Exception as exc:  # pragma: no cover - surface external errors
+        
+    except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
     return ChatResponse(text=text)
