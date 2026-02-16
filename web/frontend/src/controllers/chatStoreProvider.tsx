@@ -113,8 +113,6 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
             content: message.content,
           })),
           systemInstruction: activeChat.systemInstruction ?? null,
-          parameters: activeChat.parameters ?? null,
-          model: activeChat.model ?? null,
         }),
       });
 
