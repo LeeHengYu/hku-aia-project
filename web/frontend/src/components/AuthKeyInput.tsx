@@ -16,7 +16,7 @@ const AuthKeyInput = ({
       <input
         id="auth-key"
         className="auth-input"
-        type="text"
+        type="password"
         placeholder={placeholder}
         value={value}
         onChange={(event) => onChange(event.target.value)}

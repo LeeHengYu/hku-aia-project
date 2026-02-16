@@ -36,7 +36,7 @@ const Composer = ({
       <textarea
         ref={textareaRef}
         className="composer-input"
-        placeholder="Ask Gemini"
+        placeholder="Ask Gemini 3 Pro"
         value={value}
         onChange={(event) => onChange(event.target.value)}
         onKeyDown={handleKeyDown}
