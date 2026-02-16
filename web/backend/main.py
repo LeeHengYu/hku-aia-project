@@ -50,13 +50,6 @@ def _validate_auth_key(authorization: str | None) -> None:
     if not hmac.compare_digest(candidate, EXPECTED_AUTH_KEY):
         raise HTTPException(status_code=403, detail="Invalid auth key.")
 
-origins_env = os.getenv("CORS_ORIGINS", "")
-if origins_env:
-    allow_origins = [origin.strip() for origin in origins_env.split(",") if origin.strip()]
-else:
-    allow_origins = ["http://localhost:5173", "http://127.0.0.1:5173", "https://hku-aia-project.vercel.app"]
-
-
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     if not EXPECTED_AUTH_KEY:
@@ -75,6 +68,8 @@ async def lifespan(_app: FastAPI):
 
 
 app = FastAPI(title="Gemini Lite", lifespan=lifespan)
+
+allow_origins = ["http://localhost:5173", "http://127.0.0.1:5173", "https://hku-aia-project.vercel.app"]
 
 app.add_middleware(
     CORSMiddleware,
