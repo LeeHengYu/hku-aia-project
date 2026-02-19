@@ -13,6 +13,7 @@ interface ChatContextActions {
   handleImport: (data: VertexPromptExport) => void;
   handleDeleteChat: (chatId: string) => void;
   handleSend: () => Promise<void>;
+  handleSetSystemInstruction: (chatId: string, value: string | undefined) => void;
 }
 
 interface ChatContextValue extends ChatState, ChatContextActions {

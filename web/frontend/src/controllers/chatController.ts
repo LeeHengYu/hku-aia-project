@@ -42,24 +42,15 @@ export const ChatController = () => {
   useEffect(() => {
     if (!isHydrated) return;
 
-    if (!activeChatId && chats.length > 0) {
+    if (chats.length === 0) {
+      if (activeChatId !== null) {
+        dispatch({ type: "SET_ACTIVE_CHAT", chatId: null });
+      }
+      return;
+    }
+
+    if (!activeChatId || !chats.some((chat) => chat.id === activeChatId)) {
       dispatch({ type: "SET_ACTIVE_CHAT", chatId: chats[0].id });
-      return;
-    }
-
-    if (!activeChatId) return;
-    if (chats.some((chat) => chat.id === activeChatId)) return;
-
-    const storedChats = loadChats();
-    if (storedChats.length === 0) {
-      dispatch({ type: "SET_ACTIVE_CHAT", chatId: null });
-      return;
-    }
-
-    dispatch({ type: "SET_CHATS", chats: storedChats });
-
-    if (!storedChats.some((chat) => chat.id === activeChatId)) {
-      dispatch({ type: "SET_ACTIVE_CHAT", chatId: storedChats[0].id });
     }
   }, [isHydrated, activeChatId, chats, dispatch]);
 

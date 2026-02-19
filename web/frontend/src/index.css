@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -19,7 +19,7 @@ html:not(.dark) {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 
 #root {
@@ -76,8 +76,9 @@ button {
   overflow: hidden;
 }
 
-.sidebar-section:not(:last-child) {
-  flex: 0;
+.sidebar-top .sidebar-section {
+  flex: 0 0 auto;
+  overflow: visiable;
 }
 
 .sidebar-select-wrapper {
@@ -166,7 +167,7 @@ button {
 }
 
 .main-title {
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 28px;
   font-weight: 600;
 }

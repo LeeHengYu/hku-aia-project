@@ -1,7 +1,8 @@
-import { useRef, type ChangeEvent } from "react";
+import { useRef, useState, type ChangeEvent } from "react";
 import { useChatContext } from "../controllers/useChatStore";
 import GroupSelector from "./GroupSelector";
 import ChatList from "./ChatList";
+import SystemInstructionModal from "./SystemInstructionModal";
 import type { VertexPromptExport } from "../lib/types";
 
 interface ImportPromptButtonProps {
@@ -52,7 +53,13 @@ const ImportPromptButton = ({ onImport }: ImportPromptButtonProps) => {
 };
 
 const Sidebar = () => {
-  const { handleNewChat, handleImport } = useChatContext();
+  const {
+    handleNewChat,
+    handleImport,
+    activeChat,
+    handleSetSystemInstruction,
+  } = useChatContext();
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <aside className="sidebar bg-slate-100 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-700">
@@ -68,6 +75,23 @@ const Sidebar = () => {
         <GroupSelector />
       </div>
       <ChatList />
+      <div className="mt-auto pt-3">
+        <button
+          className="sidebar-secondary border border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed w-full !text-center"
+          type="button"
+          onClick={() => setModalOpen(true)}
+          disabled={!activeChat}
+        >
+          System Instructions
+        </button>
+      </div>
+      {modalOpen && activeChat && (
+        <SystemInstructionModal
+          initialValue={activeChat.systemInstruction ?? ""}
+          onSave={(value) => handleSetSystemInstruction(activeChat.id, value)}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
     </aside>
   );
 };

@@ -78,6 +78,13 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     [state.chats, state.activeChatId],
   );
 
+  const handleSetSystemInstruction = useCallback(
+    (chatId: string, value: string | undefined) => {
+      dispatch({ type: "SET_SYSTEM_INSTRUCTION", chatId, value });
+    },
+    [],
+  );
+
   const handleSend = useCallback(async () => {
     if (!activeChat) return;
     const trimmed = state.input.trim();
@@ -197,6 +204,7 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     handleImport,
     handleDeleteChat,
     handleSend,
+    handleSetSystemInstruction,
   };
 
   return (
