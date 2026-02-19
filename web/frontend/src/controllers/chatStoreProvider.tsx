@@ -142,7 +142,7 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
 
       const assistantMessage: Message = {
         id: crypto.randomUUID(),
-        role: "assistant",
+        role: "model",
         content: assistantText,
         createdAt: new Date().toISOString(),
       };
@@ -161,7 +161,7 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       const assistantMessage: Message = {
         id: crypto.randomUUID(),
-        role: "assistant",
+        role: "model",
         content:
           error instanceof Error
             ? `Error: ${error.message}`

@@ -193,12 +193,6 @@ button {
   outline: none;
 }
 
-.system-indicator {
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-}
-
 .chat-view {
   flex: 1;
   overflow-y: auto;
@@ -229,7 +223,7 @@ button {
   align-self: flex-end;
 }
 
-.message.assistant {
+.message.model {
   align-self: flex-start;
 }
 

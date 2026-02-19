@@ -40,7 +40,7 @@ const ChatView = ({ messages, isLoading = false }: ChatViewProps) => {
         <MessageBubble
           message={{
             id: "loading",
-            role: "assistant",
+            role: "model",
             content: "Thinking…",
             createdAt: new Date().toISOString(),
           }}

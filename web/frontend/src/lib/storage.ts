@@ -6,13 +6,75 @@ const AUTH_KEY = "gemini-lite.authKey";
 
 const toIsoString = () => new Date().toISOString();
 
+const normalizeRole = (value: unknown): Role => {
+  if (value === "user") return "user";
+  return "model";
+};
+
+const normalizeMessages = (value: unknown): Message[] => {
+  if (!Array.isArray(value)) return [];
+
+  return value.reduce<Message[]>((acc, rawMessage) => {
+    if (!rawMessage || typeof rawMessage !== "object") return acc;
+    const message = rawMessage as Partial<Message>;
+
+    if (
+      typeof message.id !== "string" ||
+      typeof message.content !== "string" ||
+      typeof message.createdAt !== "string"
+    ) {
+      return acc;
+    }
+
+    acc.push({
+      id: message.id,
+      role: normalizeRole(message.role),
+      content: message.content,
+      createdAt: message.createdAt,
+    });
+
+    return acc;
+  }, []);
+};
+
+const normalizeChats = (value: unknown): Chat[] => {
+  if (!Array.isArray(value)) return [];
+
+  return value.reduce<Chat[]>((acc, rawChat) => {
+    if (!rawChat || typeof rawChat !== "object") return acc;
+    const chat = rawChat as Partial<Chat> & { messages?: unknown };
+
+    if (
+      typeof chat.id !== "string" ||
+      typeof chat.title !== "string" ||
+      typeof chat.createdAt !== "string" ||
+      typeof chat.updatedAt !== "string"
+    ) {
+      return acc;
+    }
+
+    acc.push({
+      id: chat.id,
+      title: chat.title,
+      createdAt: chat.createdAt,
+      updatedAt: chat.updatedAt,
+      systemInstruction:
+        typeof chat.systemInstruction === "string"
+          ? chat.systemInstruction
+          : undefined,
+      messages: normalizeMessages(chat.messages),
+    });
+
+    return acc;
+  }, []);
+};
+
 export const loadChats = (): Chat[] => {
   try {
     const raw = localStorage.getItem(CHATS_KEY);
     if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed as Chat[];
+    const parsed: unknown = JSON.parse(raw);
+    return normalizeChats(parsed);
   } catch {
     return [];
   }
@@ -80,7 +142,11 @@ const extractMessages = (data: VertexPromptExport): Message[] => {
   const messages = data.messages ?? [];
 
   return messages.reduce<Message[]>((acc, message) => {
-    const author: Role = message.author === "user" ? "user" : "assistant";
+    const roleSource =
+      typeof message.content?.role === "string"
+        ? message.content.role
+        : message.author;
+    const role = normalizeRole(roleSource);
     const parts = message.content?.parts ?? [];
     const text = parts
       .filter((part) => !part.thought)
@@ -93,7 +159,7 @@ const extractMessages = (data: VertexPromptExport): Message[] => {
 
     acc.push({
       id: crypto.randomUUID(),
-      role: author,
+      role,
       content: text,
       createdAt: now,
     });
@@ -112,8 +178,6 @@ export const hydrateChatFromExport = (data: VertexPromptExport): Chat => {
     createdAt: now,
     updatedAt: now,
     systemInstruction: extractSystemInstruction(data),
-    parameters: data.parameters ?? undefined,
-    model: data.model ?? undefined,
     messages: extractMessages(data),
   };
 };

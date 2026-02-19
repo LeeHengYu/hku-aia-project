@@ -22,10 +22,7 @@ const AppLayout = () => {
     <div className="app bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
       <Sidebar />
       <main className="main">
-        <MainHeader
-          title={APP_TITLE}
-          showPromptLoaded={Boolean(activeChat?.systemInstruction)}
-        />
+        <MainHeader title={APP_TITLE} />
         <AuthKeyInput value={userKeyInput} onChange={setUserKeyInput} />
         <ChatView messages={activeChat?.messages ?? []} isLoading={isLoading} />
         <Composer

@@ -13,7 +13,7 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
       className={
         isUser
           ? "message user bg-blue-50 dark:bg-slate-700 border border-teal-200 dark:border-teal-700"
-          : "message assistant bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+          : "message model bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
       }
     >
       <div className="message-body">

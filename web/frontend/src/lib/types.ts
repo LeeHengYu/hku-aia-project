@@ -1,4 +1,4 @@
-export type Role = 'user' | 'assistant' | 'system'
+export type Role = 'user' | 'model'
 
 export interface Message {
   id: string
@@ -13,15 +13,12 @@ export interface Chat {
   createdAt: string
   updatedAt: string
   systemInstruction?: string
-  parameters?: Record<string, unknown>
-  model?: string
   messages: Message[]
 }
 
 export interface VertexPromptExport {
   title?: string
   description?: string
-  parameters?: Record<string, unknown>
   systemInstruction?: {
     parts?: Array<{
       text?: string
@@ -37,6 +34,5 @@ export interface VertexPromptExport {
       }>
     }
   }>
-  model?: string
   type?: string
 }
