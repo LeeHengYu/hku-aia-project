@@ -2,8 +2,8 @@ import { useChatContext } from "../controllers/useChatStore";
 import type { GroupSelection } from "../controllers/chatStore";
 
 const GROUP_OPTIONS: { value: GroupSelection; label: string }[] = [
-  { value: "gp2", label: "Group 2" },
-  { value: "gp3", label: "Group 3" },
+  { value: "gp2", label: "Market" },
+  { value: "gp3", label: "Product" },
 ];
 
 const DropdownArrow = () => (
