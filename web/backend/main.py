@@ -4,9 +4,9 @@ import hmac
 import logging
 import os
 from contextlib import asynccontextmanager
-from typing import Any
+from typing import Annotated, Any
 
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -33,21 +33,18 @@ class TestResponse(BaseModel):
 EXPECTED_AUTH_KEY = os.getenv("HKU_KEY_DEV", "").strip()
 LOGGER = logging.getLogger(__name__)
 
-def _validate_auth_key(authorization: str | None) -> None:
+async def require_auth(authorization: str | None = Header(default=None)) -> None:
     if not authorization:
         raise HTTPException(status_code=401, detail="Missing auth key.")
 
     scheme, _, token = authorization.partition(" ")
-    if scheme.lower() != "bearer":
-        candidate = ""
-    else:
-        candidate = token.strip()
+    candidate = token.strip() if scheme.lower() == "bearer" else ""
 
     if not candidate:
         raise HTTPException(status_code=401, detail="Missing auth key.")
     if not EXPECTED_AUTH_KEY:
         raise HTTPException(status_code=500, detail="Server auth key is not configured.")
-    if not hmac.compare_digest(candidate, EXPECTED_AUTH_KEY):
+    if not hmac.compare_digest(candidate.encode(), EXPECTED_AUTH_KEY.encode()):
         raise HTTPException(status_code=403, detail="Invalid auth key.")
 
 @asynccontextmanager
@@ -88,9 +85,8 @@ async def health() -> dict[str, str]:
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(
     request: ChatRequest,
-    authorization: str | None = Header(default=None),
+    _: Annotated[None, Depends(require_auth)],
 ) -> ChatResponse:
-    _validate_auth_key(authorization)
     datastore_path = str(request.datastorePath or "").strip()
 
     if not datastore_path:
@@ -117,9 +113,8 @@ async def chat(
 @app.post("/api/test", response_model=TestResponse)
 async def test_endpoint(
     request: ChatRequest,
-    authorization: str | None = Header(default=None),
+    _: Annotated[None, Depends(require_auth)],
 ) -> TestResponse:
-    _validate_auth_key(authorization)
     content = request.messages[-1].content if request.messages else ""
     if content.strip().lower() == "hello":
         return TestResponse(text="Hi")

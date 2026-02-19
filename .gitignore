@@ -11,3 +11,5 @@ brochures/
 census/data
 firecrawl/*.csv
 secrets/
+
+*.env
