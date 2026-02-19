@@ -1,5 +1,21 @@
 import { useEffect, useRef, type KeyboardEvent } from "react";
 
+interface SendButtonProps {
+  onClick: () => void;
+  disabled: boolean;
+}
+
+const SendButton = ({ onClick, disabled }: SendButtonProps) => (
+  <button
+    className="composer-send bg-gradient-to-br from-teal-400 to-blue-400 dark:from-teal-500 dark:to-blue-500 text-slate-900"
+    type="button"
+    onClick={onClick}
+    disabled={disabled}
+  >
+    Send
+  </button>
+);
+
 interface ComposerProps {
   value: string;
   onChange: (value: string) => void;
@@ -43,14 +59,10 @@ const Composer = ({
         rows={1}
         disabled={disabled}
       />
-      <button
-        className="composer-send bg-gradient-to-br from-teal-400 to-blue-400 dark:from-teal-500 dark:to-blue-500 text-slate-900"
-        type="button"
+      <SendButton
         onClick={onSend}
-        disabled={disabled || value.trim().length === 0}
-      >
-        Send
-      </button>
+        disabled={!!disabled || value.trim().length === 0}
+      />
     </div>
   ) : null;
 };

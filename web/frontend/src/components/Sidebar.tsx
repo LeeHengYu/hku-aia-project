@@ -2,10 +2,13 @@ import { useRef, type ChangeEvent } from "react";
 import { useChatContext } from "../controllers/useChatStore";
 import GroupSelector from "./GroupSelector";
 import ChatList from "./ChatList";
+import type { VertexPromptExport } from "../lib/types";
 
-const Sidebar = () => {
-  const { handleNewChat, handleImport } = useChatContext();
+interface ImportPromptButtonProps {
+  onImport: (data: VertexPromptExport) => void;
+}
 
+const ImportPromptButton = ({ onImport }: ImportPromptButtonProps) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +18,7 @@ const Sidebar = () => {
     try {
       const text = await file.text();
       const data = JSON.parse(text);
-      handleImport(data);
+      onImport(data);
     } catch (error) {
       console.error(error);
       alert(
@@ -27,6 +30,31 @@ const Sidebar = () => {
   };
 
   return (
+    <>
+      <button
+        className="sidebar-secondary border border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800"
+        onClick={() => {
+          fileInputRef.current?.click();
+        }}
+        type="button"
+      >
+        Import prompt
+      </button>
+      <input
+        ref={fileInputRef}
+        className="file-input"
+        type="file"
+        accept="application/json"
+        onChange={handleFileChange}
+      />
+    </>
+  );
+};
+
+const Sidebar = () => {
+  const { handleNewChat, handleImport } = useChatContext();
+
+  return (
     <aside className="sidebar bg-slate-100 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-700">
       <div className="sidebar-top">
         <button
@@ -36,22 +64,7 @@ const Sidebar = () => {
         >
           New chat
         </button>
-        <button
-          className="sidebar-secondary border border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800"
-          onClick={() => {
-            fileInputRef.current?.click();
-          }}
-          type="button"
-        >
-          Import prompt
-        </button>
-        <input
-          ref={fileInputRef}
-          className="file-input"
-          type="file"
-          accept="application/json"
-          onChange={handleFileChange}
-        />
+        <ImportPromptButton onImport={handleImport} />
         <GroupSelector />
       </div>
       <ChatList />

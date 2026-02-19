@@ -6,6 +6,26 @@ const GROUP_OPTIONS: { value: GroupSelection; label: string }[] = [
   { value: "gp3", label: "Group 3" },
 ];
 
+const DropdownArrow = () => (
+  <svg
+    className="sidebar-select-arrow text-slate-500 dark:text-slate-400"
+    xmlns="http://www.w3.org/2000/svg"
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    aria-hidden="true"
+  >
+    <path
+      d="M2 4l4 4 4-4"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const GroupSelector = () => {
   const { selectedGroup, setSelectedGroup } = useChatContext();
 
@@ -23,23 +43,7 @@ const GroupSelector = () => {
             </option>
           ))}
         </select>
-        <svg
-          className="sidebar-select-arrow text-slate-500 dark:text-slate-400"
-          xmlns="http://www.w3.org/2000/svg"
-          width="12"
-          height="12"
-          viewBox="0 0 12 12"
-          aria-hidden="true"
-        >
-          <path
-            d="M2 4l4 4 4-4"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <DropdownArrow />
       </div>
     </div>
   );
