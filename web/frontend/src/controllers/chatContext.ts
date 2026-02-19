@@ -1,7 +1,7 @@
 // Defines shared context contracts: state shape and action interface.
 
 import { createContext, type Dispatch } from "react";
-import type { Chat, VertexPromptExport } from "../lib/types";
+import type { Chat, Message, VertexPromptExport } from "../lib/types";
 import type { ChatAction, ChatState, GroupSelection } from "./chatStore";
 
 interface ChatContextActions {
@@ -18,6 +18,8 @@ interface ChatContextActions {
 
 interface ChatContextValue extends ChatState, ChatContextActions {
   activeChat: Chat | null;
+  messages: Message[];
+  isMessagesLoading: boolean;
   dispatch: Dispatch<ChatAction>;
 }
 

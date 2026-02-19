@@ -3,24 +3,26 @@ from __future__ import annotations
 import hmac
 import logging
 import os
+import uuid
 from contextlib import asynccontextmanager
+from datetime import datetime, timezone
 from typing import Annotated, Any
 
 from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from .datastore import delete_conversation, get_messages, save_messages
 from .vertex import generate_content, get_vertex_runtime_config
 
-class ChatMessage(BaseModel):
-    role: str
-    content: str
 
 class ChatRequest(BaseModel):
-    messages: list[ChatMessage]
+    chatId: str
+    message: str
     systemInstruction: str | None = None
     datastorePath: str | None = None
     parameters: dict[str, Any] | None = None
+
 
 class ChatResponse(BaseModel):
     text: str
@@ -82,6 +84,33 @@ async def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
+@app.get("/api/conversations/{chat_id}/messages")
+async def get_conversation_messages(
+    chat_id: str,
+    _: Annotated[None, Depends(require_auth)],
+) -> list[dict[str, Any]]:
+    return get_messages(chat_id)
+
+
+@app.post("/api/conversations/{chat_id}/messages")
+async def post_conversation_messages(
+    chat_id: str,
+    messages: list[dict[str, Any]],
+    _: Annotated[None, Depends(require_auth)],
+) -> dict[str, str]:
+    save_messages(chat_id, messages)
+    return {"status": "ok"}
+
+
+@app.delete("/api/conversations/{chat_id}")
+async def delete_conversation_endpoint(
+    chat_id: str,
+    _: Annotated[None, Depends(require_auth)],
+) -> dict[str, str]:
+    delete_conversation(chat_id)
+    return {"status": "ok"}
+
+
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(
     request: ChatRequest,
@@ -91,31 +120,48 @@ async def chat(
 
     if not datastore_path:
         raise HTTPException(status_code=400, detail="Missing datastorePath.")
-    if not request.messages:
-        raise HTTPException(status_code=400, detail="Missing messages.")
+    if not request.message.strip():
+        raise HTTPException(status_code=400, detail="Missing message.")
+
+    now = datetime.now(timezone.utc).isoformat()
+
+    messages = get_messages(request.chatId)
+
+    user_msg = {
+        "id": str(uuid.uuid4()),
+        "role": "user",
+        "content": request.message.strip(),
+        "createdAt": now,
+    }
+    messages.append(user_msg)
 
     try:
         text = generate_content(
             messages=[
-                {"role": "model" if m.role == "assistant" else "user", "content": m.content}
-                for m in request.messages if m.content.strip()
+                {"role": m["role"], "content": m["content"]}
+                for m in messages if m.get("content", "").strip()
             ],
             system_instruction=request.systemInstruction,
             datastore_path=datastore_path,
         )
-        
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
-    return ChatResponse(text=text)
+    assistant_msg = {
+        "id": str(uuid.uuid4()),
+        "role": "model",
+        "content": text.strip() if text else "No response generated.",
+        "createdAt": datetime.now(timezone.utc).isoformat(),
+    }
+    messages.append(assistant_msg)
+
+    save_messages(request.chatId, messages)
+
+    return ChatResponse(text=assistant_msg["content"])
 
 
 @app.post("/api/test", response_model=TestResponse)
 async def test_endpoint(
-    request: ChatRequest,
     _: Annotated[None, Depends(require_auth)],
 ) -> TestResponse:
-    content = request.messages[-1].content if request.messages else ""
-    if content.strip().lower() == "hello":
-        return TestResponse(text="Hi")
-    return TestResponse(text="Unsupported test message")
+    return TestResponse(text="ok")

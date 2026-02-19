@@ -53,7 +53,6 @@ export const createChat = (title = "New chat"): Chat => {
     title,
     createdAt: now,
     updatedAt: now,
-    messages: [],
   };
 };
 

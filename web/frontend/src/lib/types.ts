@@ -13,7 +13,6 @@ export interface Chat {
   createdAt: string
   updatedAt: string
   systemInstruction?: string
-  messages: Message[]
 }
 
 export interface VertexPromptExport {

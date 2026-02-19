@@ -1,8 +1,10 @@
 // Wires reducer-backed state and actions, then provides a unified chat context.
 
 import { useCallback, useMemo, useReducer, type ReactNode } from "react";
-import type { Chat, Message, VertexPromptExport } from "../lib/types";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import type { Message, VertexPromptExport } from "../lib/types";
 import { hydrateChatFromExport } from "../lib/storage";
+import { fetchMessages, sendMessage, saveMessages, deleteMessages } from "../lib/api";
 import {
   chatReducer,
   createInitialState,
@@ -14,12 +16,6 @@ import { ChatController } from "./chatController";
 
 const DATASTORE_PATH_GP2 = (import.meta.env.VITE_DATASTORE_PATH_GP2 ?? "").trim();
 const DATASTORE_PATH_GP3 = (import.meta.env.VITE_DATASTORE_PATH_GP3 ?? "").trim();
-const API_BASE_URL = (import.meta.env.VITE_BACKEND_URL ?? "").trim();
-
-const buildApiUrl = (path: string): string => {
-  if (!API_BASE_URL) return path;
-  return `${API_BASE_URL}${path}`;
-};
 
 export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(
@@ -27,11 +23,24 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     undefined,
     createInitialState,
   );
+  const queryClient = useQueryClient();
 
   const activeChat = useMemo(
     () => state.chats.find((chat) => chat.id === state.activeChatId) ?? null,
     [state.chats, state.activeChatId],
   );
+
+  const authKey = state.userKeyInput.trim();
+
+  const messagesQuery = useQuery({
+    queryKey: ["messages", state.activeChatId],
+    queryFn: () => fetchMessages(state.activeChatId!, authKey),
+    enabled: Boolean(state.activeChatId) && Boolean(authKey),
+    staleTime: Infinity,
+  });
+
+  const messages = messagesQuery.data ?? [];
+  const isMessagesLoading = messagesQuery.isLoading;
 
   const setInput = useCallback((value: string) => {
     dispatch({ type: "SET_INPUT", value });
@@ -56,16 +65,25 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const handleImport = useCallback(
-    (data: VertexPromptExport) => {
-      const imported = hydrateChatFromExport(data);
+    async (data: VertexPromptExport) => {
+      const { chat: imported, messages: importedMessages } = hydrateChatFromExport(data);
       dispatch({ type: "SET_CHATS", chats: [imported, ...state.chats] });
       dispatch({ type: "SET_ACTIVE_CHAT", chatId: imported.id });
+
+      if (importedMessages.length > 0 && authKey) {
+        try {
+          await saveMessages(imported.id, importedMessages, authKey);
+          queryClient.setQueryData(["messages", imported.id], importedMessages);
+        } catch {
+          // Messages will be fetched on next load
+        }
+      }
     },
-    [state.chats],
+    [state.chats, authKey, queryClient],
   );
 
   const handleDeleteChat = useCallback(
-    (chatId: string) => {
+    async (chatId: string) => {
       const remaining = state.chats.filter((chat) => chat.id !== chatId);
       dispatch({ type: "SET_CHATS", chats: remaining });
       if (state.activeChatId === chatId) {
@@ -74,8 +92,18 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
           chatId: remaining.length > 0 ? remaining[0].id : null,
         });
       }
+
+      queryClient.removeQueries({ queryKey: ["messages", chatId] });
+
+      if (authKey) {
+        try {
+          await deleteMessages(chatId, authKey);
+        } catch {
+          // Best-effort cleanup
+        }
+      }
     },
-    [state.chats, state.activeChatId],
+    [state.chats, state.activeChatId, authKey, queryClient],
   );
 
   const handleSetSystemInstruction = useCallback(
@@ -90,6 +118,7 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     const trimmed = state.input.trim();
     if (!trimmed || state.isLoading) return;
 
+    // Optimistically add user message to cache
     const userMessage: Message = {
       id: crypto.randomUUID(),
       role: "user",
@@ -97,54 +126,41 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
       createdAt: new Date().toISOString(),
     };
 
-    const updatedChat: Chat = {
-      ...activeChat,
-      title:
-        activeChat.title === "New chat"
-          ? titleFromMessage(trimmed)
-          : activeChat.title,
-      updatedAt: new Date().toISOString(),
-      messages: [...activeChat.messages, userMessage],
-    };
+    const currentMessages = queryClient.getQueryData<Message[]>(
+      ["messages", activeChat.id],
+    ) ?? [];
+    const withUserMsg = [...currentMessages, userMessage];
+    queryClient.setQueryData(["messages", activeChat.id], withUserMsg);
 
-    const updatedChats = state.chats.map((chat) =>
-      chat.id === activeChat.id ? updatedChat : chat,
-    );
+    // Update chat title if needed
+    if (activeChat.title === "New chat") {
+      const updatedChats = state.chats.map((chat) =>
+        chat.id === activeChat.id
+          ? { ...chat, title: titleFromMessage(trimmed), updatedAt: new Date().toISOString() }
+          : chat,
+      );
+      dispatch({ type: "SET_CHATS", chats: updatedChats });
+    }
 
-    dispatch({ type: "SET_CHATS", chats: updatedChats });
     dispatch({ type: "SET_INPUT", value: "" });
     dispatch({ type: "SET_LOADING", value: true });
 
     try {
-      const authKey = state.userKeyInput.trim();
-      const headers: Record<string, string> = {
-        "Content-Type": "application/json",
-      };
-      if (authKey) {
-        headers.Authorization = `Bearer ${authKey}`;
-      }
+      const datastorePath =
+        state.selectedGroup === "gp3"
+          ? DATASTORE_PATH_GP3
+          : DATASTORE_PATH_GP2;
 
-      const response = await fetch(buildApiUrl("/api/chat"), {
-        method: "POST",
-        headers,
-        body: JSON.stringify({
-          messages: updatedChat.messages.map((message) => ({
-            role: message.role,
-            content: message.content,
-          })),
+      const data = await sendMessage(
+        activeChat.id,
+        trimmed,
+        {
           systemInstruction: activeChat.systemInstruction ?? null,
-          datastorePath:
-            state.selectedGroup === "gp3"
-              ? DATASTORE_PATH_GP3
-              : DATASTORE_PATH_GP2,
-        }),
-      });
+          datastorePath,
+        },
+        authKey,
+      );
 
-      if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
-      }
-
-      const data = (await response.json()) as { text?: string };
       const assistantText = data.text?.trim() || "No response generated.";
 
       const assistantMessage: Message = {
@@ -154,19 +170,12 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
         createdAt: new Date().toISOString(),
       };
 
-      const finalChat: Chat = {
-        ...updatedChat,
-        updatedAt: new Date().toISOString(),
-        messages: [...updatedChat.messages, assistantMessage],
-      };
-
-      const finalChats = state.chats.map((chat) =>
-        chat.id === finalChat.id ? finalChat : chat,
+      queryClient.setQueryData(
+        ["messages", activeChat.id],
+        [...withUserMsg, assistantMessage],
       );
-
-      dispatch({ type: "SET_CHATS", chats: finalChats });
     } catch (error) {
-      const assistantMessage: Message = {
+      const errorMessage: Message = {
         id: crypto.randomUUID(),
         role: "model",
         content:
@@ -176,25 +185,20 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
         createdAt: new Date().toISOString(),
       };
 
-      const finalChat: Chat = {
-        ...updatedChat,
-        updatedAt: new Date().toISOString(),
-        messages: [...updatedChat.messages, assistantMessage],
-      };
-
-      const finalChats = state.chats.map((chat) =>
-        chat.id === finalChat.id ? finalChat : chat,
+      queryClient.setQueryData(
+        ["messages", activeChat.id],
+        [...withUserMsg, errorMessage],
       );
-
-      dispatch({ type: "SET_CHATS", chats: finalChats });
     } finally {
       dispatch({ type: "SET_LOADING", value: false });
     }
-  }, [activeChat, state]);
+  }, [activeChat, state, authKey, queryClient]);
 
   const value = {
     ...state,
     activeChat,
+    messages,
+    isMessagesLoading,
     dispatch,
     setInput,
     setUserKeyInput,

@@ -11,32 +11,6 @@ const normalizeRole = (value: unknown): Role => {
   return "model";
 };
 
-const normalizeMessages = (value: unknown): Message[] => {
-  if (!Array.isArray(value)) return [];
-
-  return value.reduce<Message[]>((acc, rawMessage) => {
-    if (!rawMessage || typeof rawMessage !== "object") return acc;
-    const message = rawMessage as Partial<Message>;
-
-    if (
-      typeof message.id !== "string" ||
-      typeof message.content !== "string" ||
-      typeof message.createdAt !== "string"
-    ) {
-      return acc;
-    }
-
-    acc.push({
-      id: message.id,
-      role: normalizeRole(message.role),
-      content: message.content,
-      createdAt: message.createdAt,
-    });
-
-    return acc;
-  }, []);
-};
-
 const normalizeChats = (value: unknown): Chat[] => {
   if (!Array.isArray(value)) return [];
 
@@ -62,7 +36,6 @@ const normalizeChats = (value: unknown): Chat[] => {
         typeof chat.systemInstruction === "string"
           ? chat.systemInstruction
           : undefined,
-      messages: normalizeMessages(chat.messages),
     });
 
     return acc;
@@ -137,7 +110,7 @@ const extractSystemInstruction = (
   return text.length > 0 ? text : undefined;
 };
 
-const extractMessages = (data: VertexPromptExport): Message[] => {
+export const extractMessages = (data: VertexPromptExport): Message[] => {
   const now = toIsoString();
   const messages = data.messages ?? [];
 
@@ -168,16 +141,19 @@ const extractMessages = (data: VertexPromptExport): Message[] => {
   }, []);
 };
 
-export const hydrateChatFromExport = (data: VertexPromptExport): Chat => {
+export const hydrateChatFromExport = (
+  data: VertexPromptExport,
+): { chat: Chat; messages: Message[] } => {
   const now = toIsoString();
   const title = data.title?.trim() || "Imported Chat";
 
-  return {
+  const chat: Chat = {
     id: crypto.randomUUID(),
     title,
     createdAt: now,
     updatedAt: now,
     systemInstruction: extractSystemInstruction(data),
-    messages: extractMessages(data),
   };
+
+  return { chat, messages: extractMessages(data) };
 };
