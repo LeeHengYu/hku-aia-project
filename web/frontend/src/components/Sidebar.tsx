@@ -1,15 +1,10 @@
 import { useRef, type ChangeEvent } from "react";
 import { useChatContext } from "../controllers/useChatStore";
+import GroupSelector from "./GroupSelector";
+import ChatList from "./ChatList";
 
 const Sidebar = () => {
-  const {
-    chats,
-    activeChatId,
-    handleSelectChat,
-    handleNewChat,
-    handleImport,
-    handleDeleteChat,
-  } = useChatContext();
+  const { handleNewChat, handleImport } = useChatContext();
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -57,37 +52,9 @@ const Sidebar = () => {
           accept="application/json"
           onChange={handleFileChange}
         />
+        <GroupSelector />
       </div>
-
-      <div className="sidebar-section">
-        <div className="sidebar-title">Chats</div>
-        <div className="chat-list">
-          {chats.map((chat) => (
-            <div
-              key={chat.id}
-              className={`chat-item ${
-                chat.id === activeChatId ? "active" : ""
-              }`}
-            >
-              <button
-                className="chat-select"
-                onClick={() => handleSelectChat(chat.id)}
-                type="button"
-              >
-                <div className="chat-title">{chat.title}</div>
-              </button>
-              <button
-                className="chat-delete"
-                type="button"
-                onClick={() => handleDeleteChat(chat.id)}
-                aria-label={`Delete ${chat.title}`}
-              >
-                ×
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
+      <ChatList />
     </aside>
   );
 };

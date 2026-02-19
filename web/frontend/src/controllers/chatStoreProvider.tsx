@@ -12,7 +12,8 @@ import {
 import { ChatContext } from "./chatContext";
 import { ChatController } from "./chatController";
 
-const DATASTORE_PATH = (import.meta.env.VITE_DATASTORE_PATH ?? "").trim();
+const DATASTORE_PATH_GP2 = (import.meta.env.VITE_DATASTORE_PATH_GP2 ?? "").trim();
+const DATASTORE_PATH_GP3 = (import.meta.env.VITE_DATASTORE_PATH_GP3 ?? "").trim();
 const API_BASE_URL = (import.meta.env.VITE_BACKEND_URL ?? "").trim();
 
 const buildApiUrl = (path: string): string => {
@@ -38,6 +39,10 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
 
   const setUserKeyInput = useCallback((value: string) => {
     dispatch({ type: "SET_USER_KEY_INPUT", value });
+  }, []);
+
+  const setSelectedGroup = useCallback((value: import("./chatStore").GroupSelection) => {
+    dispatch({ type: "SET_SELECTED_GROUP", value });
   }, []);
 
   const handleNewChat = useCallback(() => {
@@ -121,7 +126,10 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
             content: message.content,
           })),
           systemInstruction: activeChat.systemInstruction ?? null,
-          datastorePath: DATASTORE_PATH,
+          datastorePath:
+            state.selectedGroup === "gp3"
+              ? DATASTORE_PATH_GP3
+              : DATASTORE_PATH_GP2,
         }),
       });
 
@@ -183,6 +191,7 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     dispatch,
     setInput,
     setUserKeyInput,
+    setSelectedGroup,
     handleNewChat,
     handleSelectChat,
     handleImport,

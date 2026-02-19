@@ -2,11 +2,12 @@
 
 import { createContext, type Dispatch } from "react";
 import type { Chat, VertexPromptExport } from "../lib/types";
-import type { ChatAction, ChatState } from "./chatStore";
+import type { ChatAction, ChatState, GroupSelection } from "./chatStore";
 
 interface ChatContextActions {
   setInput: (value: string) => void;
   setUserKeyInput: (value: string) => void;
+  setSelectedGroup: (group: GroupSelection) => void;
   handleNewChat: () => void;
   handleSelectChat: (chatId: string) => void;
   handleImport: (data: VertexPromptExport) => void;

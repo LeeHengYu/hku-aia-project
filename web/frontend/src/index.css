@@ -93,6 +93,35 @@ button {
   overflow: hidden;
 }
 
+.sidebar-section:not(:last-child) {
+  flex: 0;
+}
+
+.sidebar-select-wrapper {
+  position: relative;
+}
+
+.sidebar-select {
+  appearance: none;
+  padding: 10px 36px 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  width: 100%;
+  font-size: 14px;
+}
+
+.sidebar-select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
 .sidebar-title {
   font-size: 12px;
   text-transform: uppercase;

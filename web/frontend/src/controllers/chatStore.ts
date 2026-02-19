@@ -2,6 +2,8 @@
 
 import type { Chat } from "../lib/types";
 
+export type GroupSelection = "gp2" | "gp3";
+
 export interface ChatState {
   isHydrated: boolean;
   chats: Chat[];
@@ -10,6 +12,7 @@ export interface ChatState {
   isLoading: boolean;
   userKeyInput: string;
   userKey: string;
+  selectedGroup: GroupSelection;
 }
 
 export interface HydratePayload {
@@ -26,7 +29,8 @@ export type ChatAction =
   | { type: "SET_ACTIVE_CHAT"; chatId: string | null }
   | { type: "SET_CHATS"; chats: Chat[] }
   | { type: "SET_USER_KEY_INPUT"; value: string }
-  | { type: "SET_USER_KEY"; value: string };
+  | { type: "SET_USER_KEY"; value: string }
+  | { type: "SET_SELECTED_GROUP"; value: GroupSelection };
 
 export const createInitialState = (): ChatState => {
   return {
@@ -37,6 +41,7 @@ export const createInitialState = (): ChatState => {
     isLoading: false,
     userKeyInput: "",
     userKey: "",
+    selectedGroup: "gp2",
   };
 };
 
@@ -83,6 +88,8 @@ export const chatReducer = (
       return { ...state, userKeyInput: action.value };
     case "SET_USER_KEY":
       return { ...state, userKey: action.value };
+    case "SET_SELECTED_GROUP":
+      return { ...state, selectedGroup: action.value };
     default:
       return state;
   }
