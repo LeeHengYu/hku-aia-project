@@ -1,6 +1,6 @@
 # HKU AIA Project
 
-This repository focuses on Phase 2. The current effort is to gather insurance-related information and insurance company financial reports (primarily PDFs) and prepare them for downstream indexing and analysis.
+This repository focuses on Phase 2. Most of the work has been finished.
 
 ## Installation & Setup
 
@@ -9,7 +9,7 @@ Prerequisites:
 - Python 3.11+
 - `pip`
 
-It is strongly recommended to use a virtual environment.
+It is strongly recommended to create a virtual environment.
 
 Clone the repository:
 
@@ -33,40 +33,43 @@ Some directories are packaged as installable Python modules (currently `insurers
 pip install -e .
 ```
 
-## Task 2 & 3 Documentation
+## Task 2 & 3 Common Architecture
 
-1. Crawl data using Firecrawl
+### Data
 
-- Scope: product brochures, economic indicators, company financial reports, etc.
-- Define a schema for Tasks 2 & 3 and output JSON
-- Prepare a complete, detailed guide for Firecrawl Agent for crawling. Make use of LLM to refine the prompt.
-- Parse the JSON to download files with `requests`, create temporary in-memory files, and upload directly to GCS buckets
+1. Firecrawl MCP server
 
-2. Google Cloud Storage (GCS)
+    To be used in Agent tools such as Openclaw or Codex/Claude code which can invoke MCP endpoints.
 
-- Intermediate storage before indexing
-- To download files, set up Google Cloud auth and use the script; direct browser downloads are clumsy because GCS paths do not render PDFs well
+2. File Download => GCS
 
-3. BigQuery (not used at the moment)
+    Download the file from given URLs and directly upload to GCS using a temporary in-memory object.
 
-- For CSV data, structured ingestion requires a schema
-- Auto-detected schemas default fields to NULLABLE
-- Tables should be overwritten with `id` marked as REQUIRED
+3. GCS => Vertex AI data stores
 
-4. Vertex AI Data Stores
+    Manual via console
 
-- Knowledge base for Tasks 2 & 3, data imported from GCS
-- Structured and unstructured data cannot be mixed in one data store
+### Testing Website
 
-5. Vertex AI Studio
+Link: https://hku-aia-project.vercel.app/
 
-- Testing playground
-- The playground can only ground to one source (system limit is 10); use the script to enable grounding with data stores and Google Search simultaneously
+- Frontend: React Typescript
 
-## Long-Term Plan (To Be Researched)
+- Backend: FastAPI (Python)
 
-Conversational agent (Vertex AI Agent Builder)
+- CI/CD: Vercel, Docker, Cloud Build, Google Cloud Run
 
-- aka Agentic RAG
-- Add each data store and google search as a tool
-- Define a playbook to instruct when to query each vector DB, with final decisions made by the LLM
+- Database: Firestore (GCP)
+
+
+## Long-Term Directions
+
+- AI agent Crawling tool integration
+
+- Prompt instructions refinement
+    - including writing `AGENT.md`, `SKILL.md`
+
+- Conversational agent (Vertex AI Agent Builder)
+    - aka Agentic RAG
+    - Add each data store and google search as a tool
+    - Define a playbook to instruct when to query each vector DB, with final decisions made by the LLM
