@@ -19,7 +19,7 @@ const AppLayout = () => {
   } = useChatContext();
 
   return (
-    <div className="app">
+    <div className="app bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
       <Sidebar />
       <main className="main">
         <MainHeader

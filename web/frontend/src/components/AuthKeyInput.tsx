@@ -12,10 +12,10 @@ const AuthKeyInput = ({
   placeholder = AUTH_PLACEHOLDER,
 }: AuthKeyInputProps) => {
   return (
-    <div className="auth-row">
+    <div className="auth-row bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
       <input
         id="auth-key"
-        className="auth-input"
+        className="auth-input placeholder-slate-400 dark:placeholder-slate-500"
         type="password"
         placeholder={placeholder}
         value={value}

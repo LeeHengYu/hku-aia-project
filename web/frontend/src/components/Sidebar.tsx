@@ -27,17 +27,17 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar bg-slate-100 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-700">
       <div className="sidebar-top">
         <button
-          className="sidebar-action"
+          className="sidebar-action bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100"
           onClick={handleNewChat}
           type="button"
         >
           New chat
         </button>
         <button
-          className="sidebar-secondary"
+          className="sidebar-secondary border border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800"
           onClick={() => {
             fileInputRef.current?.click();
           }}

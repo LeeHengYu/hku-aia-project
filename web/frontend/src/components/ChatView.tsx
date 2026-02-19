@@ -24,7 +24,7 @@ const ChatView = ({ messages, isLoading = false }: ChatViewProps) => {
   if (messages.length === 0 && !isLoading) {
     return (
       <div className="chat-empty">
-        <div className="chat-empty-subtitle">
+        <div className="chat-empty-subtitle text-slate-500 dark:text-slate-400">
           Import a prompt or send a message to begin.
         </div>
       </div>

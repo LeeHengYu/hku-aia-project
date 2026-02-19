@@ -13,7 +13,7 @@ const GroupSelector = () => {
     <div className="sidebar-section">
       <div className="sidebar-select-wrapper">
         <select
-          className="sidebar-select"
+          className="sidebar-select bg-lime-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100"
           value={selectedGroup}
           onChange={(e) => setSelectedGroup(e.target.value as GroupSelection)}
         >
@@ -24,7 +24,7 @@ const GroupSelector = () => {
           ))}
         </select>
         <svg
-          className="sidebar-select-arrow"
+          className="sidebar-select-arrow text-slate-500 dark:text-slate-400"
           xmlns="http://www.w3.org/2000/svg"
           width="12"
           height="12"

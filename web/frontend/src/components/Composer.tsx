@@ -32,10 +32,10 @@ const Composer = ({
   };
 
   return visible ? (
-    <div className="composer">
+    <div className="composer bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
       <textarea
         ref={textareaRef}
-        className="composer-input"
+        className="composer-input placeholder-slate-400 dark:placeholder-slate-500"
         placeholder="Ask Gemini 3 Pro"
         value={value}
         onChange={(event) => onChange(event.target.value)}
@@ -44,7 +44,7 @@ const Composer = ({
         disabled={disabled}
       />
       <button
-        className="composer-send"
+        className="composer-send bg-gradient-to-br from-teal-400 to-blue-400 dark:from-teal-500 dark:to-blue-500 text-slate-900"
         type="button"
         onClick={onSend}
         disabled={disabled || value.trim().length === 0}
