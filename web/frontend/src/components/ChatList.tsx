@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useChatContext } from "../controllers/useChatStore";
 import type { Chat } from "../lib/types";
 
@@ -13,14 +13,13 @@ interface ChatListItemProps {
 const ChatListItem = ({ chat, isActive, onSelect, onDelete, onRename }: ChatListItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(chat.title);
-  const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (isEditing) {
-      inputRef.current?.focus();
-      inputRef.current?.select();
+  const editingInputRef = (el: HTMLInputElement | null) => {
+    if (el) {
+      el.focus();
+      el.select();
     }
-  }, [isEditing]);
+  };
 
   const commitEdit = () => {
     const trimmed = editValue.trim();
@@ -50,7 +49,7 @@ const ChatListItem = ({ chat, isActive, onSelect, onDelete, onRename }: ChatList
     >
       {isEditing ? (
         <input
-          ref={inputRef}
+          ref={editingInputRef}
           className="chat-title-input text-slate-800 dark:text-slate-100"
           value={editValue}
           onChange={(e) => setEditValue(e.target.value)}

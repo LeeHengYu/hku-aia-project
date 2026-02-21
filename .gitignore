@@ -11,5 +11,6 @@ brochures/
 census/data
 firecrawl/*.csv
 secrets/
+*.agents*
 
 *.env
