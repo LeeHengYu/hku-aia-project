@@ -135,6 +135,27 @@ button {
   cursor: pointer;
 }
 
+.chat-edit {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.chat-title-input {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  border: none;
+  border-bottom: 1.5px solid currentColor;
+  background: transparent;
+  outline: none;
+  padding: 6px 8px;
+  min-width: 0;
+}
+
 .chat-delete {
   border: none;
   background: transparent;

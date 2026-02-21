@@ -113,6 +113,15 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     [],
   );
 
+  const handleRenameChat = useCallback(
+    (chatId: string, title: string) => {
+      const trimmed = title.trim();
+      if (!trimmed) return;
+      dispatch({ type: "SET_CHAT_TITLE", chatId, title: trimmed });
+    },
+    [],
+  );
+
   const handleSend = useCallback(async () => {
     if (!activeChat) return;
     const trimmed = state.input.trim();
@@ -209,6 +218,7 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     handleDeleteChat,
     handleSend,
     handleSetSystemInstruction,
+    handleRenameChat,
   };
 
   return (

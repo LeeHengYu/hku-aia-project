@@ -14,6 +14,7 @@ interface ChatContextActions {
   handleDeleteChat: (chatId: string) => void;
   handleSend: () => Promise<void>;
   handleSetSystemInstruction: (chatId: string, value: string | undefined) => void;
+  handleRenameChat: (chatId: string, title: string) => void;
 }
 
 interface ChatContextValue extends ChatState, ChatContextActions {

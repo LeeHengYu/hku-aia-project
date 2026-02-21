@@ -31,7 +31,8 @@ export type ChatAction =
   | { type: "SET_USER_KEY_INPUT"; value: string }
   | { type: "SET_USER_KEY"; value: string }
   | { type: "SET_SELECTED_GROUP"; value: GroupSelection }
-  | { type: "SET_SYSTEM_INSTRUCTION"; chatId: string; value: string | undefined };
+  | { type: "SET_SYSTEM_INSTRUCTION"; chatId: string; value: string | undefined }
+  | { type: "SET_CHAT_TITLE"; chatId: string; title: string };
 
 export const createInitialState = (): ChatState => {
   return {
@@ -96,6 +97,15 @@ export const chatReducer = (
         chats: state.chats.map((chat) =>
           chat.id === action.chatId
             ? { ...chat, systemInstruction: action.value, updatedAt: new Date().toISOString() }
+            : chat,
+        ),
+      };
+    case "SET_CHAT_TITLE":
+      return {
+        ...state,
+        chats: state.chats.map((chat) =>
+          chat.id === action.chatId
+            ? { ...chat, title: action.title, updatedAt: new Date().toISOString() }
             : chat,
         ),
       };
