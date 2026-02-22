@@ -321,6 +321,37 @@ button {
   border-radius: 6px;
 }
 
+.code-block-wrap {
+  position: relative;
+  margin: 12px 0;
+}
+
+.code-block-wrap .code-block {
+  margin: 0;
+}
+
+.code-block-copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.code-block-wrap:hover .code-block-copy {
+  opacity: 1;
+}
+
 .code-block {
   padding: 12px 14px;
   border-radius: 12px;
