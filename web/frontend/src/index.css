@@ -234,6 +234,39 @@ button {
   gap: 8px;
 }
 
+.chat-skeleton {
+  pointer-events: none;
+}
+
+.skeleton-bubble {
+  height: 48px;
+  border-radius: 16px;
+  max-width: 720px;
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+.dark .skeleton-bubble {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+}
+
+.skeleton-bubble--user {
+  align-self: flex-end;
+  width: 60%;
+}
+
+.skeleton-bubble--model {
+  align-self: flex-start;
+  width: 80%;
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 .message {
   max-width: 720px;
   padding: 8px 12px;

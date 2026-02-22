@@ -63,9 +63,6 @@ const setupProvider = () => {
   return { queryClient };
 };
 
-const waitForHydration = () =>
-  waitFor(() => expect(ctxRef.isHydrated).toBe(true));
-
 // ─── Shared setup ─────────────────────────────────────────────────────────────
 
 beforeEach(() => {
@@ -80,7 +77,6 @@ beforeEach(() => {
 describe("handleSend", () => {
   it("does nothing when there is no active chat", async () => {
     setupProvider();
-    await waitForHydration();
     // No chat created — activeChat is null
     await act(async () => { await ctxRef.handleSend(); });
     expect(api.sendMessage).not.toHaveBeenCalled();
@@ -88,7 +84,6 @@ describe("handleSend", () => {
 
   it("does nothing when the input is empty or whitespace-only", async () => {
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     await act(async () => { ctxRef.setUserKeyInput("test-key"); });
@@ -102,7 +97,6 @@ describe("handleSend", () => {
     vi.mocked(api.sendMessage).mockResolvedValue({ text: "AI response" });
 
     const { queryClient } = setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     await act(async () => { ctxRef.setUserKeyInput("test-key"); });
@@ -121,7 +115,6 @@ describe("handleSend", () => {
     vi.mocked(api.sendMessage).mockResolvedValue({ text: "ok" });
 
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     await act(async () => { ctxRef.setUserKeyInput("my-key"); });
@@ -142,7 +135,6 @@ describe("handleSend", () => {
     vi.mocked(api.sendMessage).mockRejectedValue(new Error("Network error"));
 
     const { queryClient } = setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     await act(async () => { ctxRef.setUserKeyInput("test-key"); });
@@ -164,7 +156,6 @@ describe("handleSend", () => {
     vi.mocked(api.sendMessage).mockResolvedValue({ text: "ok" });
 
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     await act(async () => { ctxRef.setUserKeyInput("test-key"); });
@@ -181,7 +172,6 @@ describe("handleSend", () => {
     vi.mocked(api.sendMessage).mockResolvedValue({ text: "ok" });
 
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     await act(async () => { ctxRef.setUserKeyInput("test-key"); });
@@ -195,7 +185,6 @@ describe("handleSend", () => {
     vi.mocked(api.sendMessage).mockResolvedValue({ text: "ok" });
 
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     await act(async () => { ctxRef.setUserKeyInput("test-key"); });
@@ -209,7 +198,6 @@ describe("handleSend", () => {
     vi.mocked(api.sendMessage).mockRejectedValue(new Error("oops"));
 
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     await act(async () => { ctxRef.setUserKeyInput("test-key"); });
@@ -225,7 +213,6 @@ describe("handleSend", () => {
 describe("handleImport", () => {
   it("adds the imported chat to the list and makes it active", async () => {
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.setUserKeyInput("test-key"); });
     await act(async () => { await ctxRef.handleImport({ title: "Import", messages: [] }); });
@@ -238,7 +225,6 @@ describe("handleImport", () => {
 
   it("calls saveMessages with the imported messages and auth key", async () => {
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.setUserKeyInput("test-key"); });
     await act(async () => { await ctxRef.handleImport({ title: "Import", messages: [] }); });
@@ -252,7 +238,6 @@ describe("handleImport", () => {
 
   it("seeds the query cache with the imported messages", async () => {
     const { queryClient } = setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.setUserKeyInput("test-key"); });
     await act(async () => { await ctxRef.handleImport({ title: "Import", messages: [] }); });
@@ -265,7 +250,6 @@ describe("handleImport", () => {
 
   it("skips saveMessages when authKey is not set", async () => {
     setupProvider();
-    await waitForHydration();
 
     // No userKeyInput set — authKey is ""
     await act(async () => { await ctxRef.handleImport({ title: "Import", messages: [] }); });
@@ -279,7 +263,6 @@ describe("handleImport", () => {
 describe("handleDeleteChat", () => {
   it("removes the deleted chat from the chats list", async () => {
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     const chatId = ctxRef.activeChatId!;
@@ -293,7 +276,6 @@ describe("handleDeleteChat", () => {
 
   it("calls deleteMessages on the server", async () => {
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     const chatId = ctxRef.activeChatId!;
@@ -305,7 +287,6 @@ describe("handleDeleteChat", () => {
 
   it("selects the next available chat when the active chat is deleted", async () => {
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     const firstId = ctxRef.activeChatId!;
@@ -320,7 +301,6 @@ describe("handleDeleteChat", () => {
 
   it("sets activeChatId to null when the last chat is deleted", async () => {
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     const chatId = ctxRef.activeChatId!;
@@ -332,7 +312,6 @@ describe("handleDeleteChat", () => {
 
   it("skips the deleteMessages API call when authKey is not set", async () => {
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     const chatId = ctxRef.activeChatId!;
@@ -344,7 +323,6 @@ describe("handleDeleteChat", () => {
 
   it("removes the chat's messages from the query cache", async () => {
     const { queryClient } = setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     const chatId = ctxRef.activeChatId!;
@@ -368,7 +346,6 @@ describe("handleDeleteChat", () => {
 describe("handleRenameChat", () => {
   it("updates the chat title", async () => {
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     const chatId = ctxRef.activeChatId!;
@@ -382,7 +359,6 @@ describe("handleRenameChat", () => {
 
   it("ignores a rename with a whitespace-only title", async () => {
     setupProvider();
-    await waitForHydration();
 
     await act(async () => { ctxRef.handleNewChat(); });
     const chatId = ctxRef.activeChatId!;
@@ -391,50 +367,5 @@ describe("handleRenameChat", () => {
     await act(async () => { ctxRef.handleRenameChat(chatId, "   "); });
 
     expect(ctxRef.chats.find((c) => c.id === chatId)?.title).toBe(originalTitle);
-  });
-});
-
-// ─── Messages query ───────────────────────────────────────────────────────────
-
-describe("messages query (useQuery integration)", () => {
-  it("calls fetchMessages when both activeChatId and authKey are set", async () => {
-    const mockMessages: Message[] = [
-      { id: "m1", role: "user", content: "Hey", createdAt: new Date().toISOString() },
-    ];
-    vi.mocked(api.fetchMessages).mockResolvedValue(mockMessages);
-
-    setupProvider();
-    await waitForHydration();
-
-    await act(async () => { ctxRef.handleNewChat(); });
-    const chatId = ctxRef.activeChatId!;
-    await act(async () => { ctxRef.setUserKeyInput("test-key"); });
-
-    await waitFor(() => {
-      expect(api.fetchMessages).toHaveBeenCalledWith(chatId, "test-key");
-    });
-  });
-
-  it("does NOT call fetchMessages when authKey is empty", async () => {
-    setupProvider();
-    await waitForHydration();
-
-    await act(async () => { ctxRef.handleNewChat(); });
-    // No userKeyInput — authKey is ""
-
-    // Give the query time to potentially fire (it should not)
-    await new Promise((r) => setTimeout(r, 50));
-    expect(api.fetchMessages).not.toHaveBeenCalled();
-  });
-
-  it("does NOT call fetchMessages when there is no active chat", async () => {
-    setupProvider();
-    await waitForHydration();
-
-    await act(async () => { ctxRef.setUserKeyInput("test-key"); });
-    // No chat created — activeChatId is null
-
-    await new Promise((r) => setTimeout(r, 50));
-    expect(api.fetchMessages).not.toHaveBeenCalled();
   });
 });

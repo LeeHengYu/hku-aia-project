@@ -69,6 +69,7 @@ describe("createChat", () => {
 
 // ─── chatReducer ──────────────────────────────────────────────────────────────
 
+// createInitialState reads from localStorage (empty in jsdom → safe defaults).
 const mkState = (overrides: Partial<ChatState> = {}): ChatState => ({
   ...createInitialState(),
   ...overrides,
@@ -76,29 +77,6 @@ const mkState = (overrides: Partial<ChatState> = {}): ChatState => ({
 
 const chat1 = createChat("Alpha");
 const chat2 = createChat("Beta");
-
-describe("chatReducer — HYDRATE", () => {
-  it("sets isHydrated to true and merges the payload", () => {
-    const next = chatReducer(mkState(), {
-      type: "HYDRATE",
-      payload: { chats: [chat1], activeChatId: chat1.id, userKeyInput: "k", userKey: "k" },
-    });
-    expect(next.isHydrated).toBe(true);
-    expect(next.chats).toEqual([chat1]);
-    expect(next.activeChatId).toBe(chat1.id);
-    expect(next.userKey).toBe("k");
-  });
-
-  it("does not mutate other state fields", () => {
-    const state = mkState({ selectedGroup: "gp3", input: "draft" });
-    const next = chatReducer(state, {
-      type: "HYDRATE",
-      payload: { chats: [], activeChatId: null, userKeyInput: "", userKey: "" },
-    });
-    expect(next.selectedGroup).toBe("gp3");
-    expect(next.input).toBe("draft");
-  });
-});
 
 describe("chatReducer — SET_INPUT", () => {
   it("updates input", () => {
@@ -152,13 +130,6 @@ describe("chatReducer — SET_USER_KEY_INPUT", () => {
   it("updates userKeyInput", () => {
     const next = chatReducer(mkState(), { type: "SET_USER_KEY_INPUT", value: "secret" });
     expect(next.userKeyInput).toBe("secret");
-  });
-});
-
-describe("chatReducer — SET_USER_KEY", () => {
-  it("updates userKey", () => {
-    const next = chatReducer(mkState(), { type: "SET_USER_KEY", value: "trimmed-secret" });
-    expect(next.userKey).toBe("trimmed-secret");
   });
 });
 

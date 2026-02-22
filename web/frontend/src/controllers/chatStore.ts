@@ -1,48 +1,46 @@
 // Chat domain model: reducer, action types, and pure state helpers.
 
 import type { Chat } from "../lib/types";
+import { loadChats, loadActiveChatId, loadUserKey } from "../lib/storage";
 
 export type GroupSelection = "gp2" | "gp3";
 
 export interface ChatState {
-  isHydrated: boolean;
   chats: Chat[];
   activeChatId: string | null;
   input: string;
   isLoading: boolean;
   userKeyInput: string;
-  userKey: string;
   selectedGroup: GroupSelection;
 }
 
-export interface HydratePayload {
-  chats: Chat[];
-  activeChatId: string | null;
-  userKeyInput: string;
-  userKey: string;
-}
-
 export type ChatAction =
-  | { type: "HYDRATE"; payload: HydratePayload }
   | { type: "SET_INPUT"; value: string }
   | { type: "SET_LOADING"; value: boolean }
   | { type: "SET_ACTIVE_CHAT"; chatId: string | null }
   | { type: "SET_CHATS"; chats: Chat[] }
   | { type: "SET_USER_KEY_INPUT"; value: string }
-  | { type: "SET_USER_KEY"; value: string }
   | { type: "SET_SELECTED_GROUP"; value: GroupSelection }
   | { type: "SET_SYSTEM_INSTRUCTION"; chatId: string; value: string | undefined }
   | { type: "SET_CHAT_TITLE"; chatId: string; title: string };
 
 export const createInitialState = (): ChatState => {
+  const chats = loadChats();
+  const userKeyInput = loadUserKey();
+
+  let activeChatId = loadActiveChatId();
+  if (chats.length === 0) {
+    activeChatId = null;
+  } else if (!activeChatId || !chats.some((c) => c.id === activeChatId)) {
+    activeChatId = chats[0].id;
+  }
+
   return {
-    isHydrated: false,
-    chats: [],
-    activeChatId: null,
+    chats,
+    activeChatId,
     input: "",
     isLoading: false,
-    userKeyInput: "",
-    userKey: "",
+    userKeyInput,
     selectedGroup: "gp2",
   };
 };
@@ -68,15 +66,6 @@ export const chatReducer = (
   action: ChatAction,
 ): ChatState => {
   switch (action.type) {
-    case "HYDRATE":
-      return {
-        ...state,
-        isHydrated: true,
-        chats: action.payload.chats,
-        activeChatId: action.payload.activeChatId,
-        userKeyInput: action.payload.userKeyInput,
-        userKey: action.payload.userKey,
-      };
     case "SET_INPUT":
       return { ...state, input: action.value };
     case "SET_LOADING":
@@ -87,8 +76,6 @@ export const chatReducer = (
       return { ...state, chats: action.chats };
     case "SET_USER_KEY_INPUT":
       return { ...state, userKeyInput: action.value };
-    case "SET_USER_KEY":
-      return { ...state, userKey: action.value };
     case "SET_SELECTED_GROUP":
       return { ...state, selectedGroup: action.value };
     case "SET_SYSTEM_INSTRUCTION":

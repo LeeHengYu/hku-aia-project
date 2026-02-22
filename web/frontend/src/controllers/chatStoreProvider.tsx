@@ -1,10 +1,10 @@
 // Wires reducer-backed state and actions, then provides a unified chat context.
 
 import { useCallback, useMemo, useReducer, type ReactNode } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import type { Message, VertexPromptExport } from "../lib/types";
 import { hydrateChatFromExport } from "../lib/storage";
-import { fetchMessages, sendMessage, saveMessages, deleteMessages } from "../lib/api";
+import { sendMessage, saveMessages, deleteMessages } from "../lib/api";
 import {
   chatReducer,
   createInitialState,
@@ -31,16 +31,6 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const authKey = state.userKeyInput.trim();
-
-  const messagesQuery = useQuery({
-    queryKey: ["messages", state.activeChatId],
-    queryFn: () => fetchMessages(state.activeChatId!, authKey),
-    enabled: Boolean(state.activeChatId) && Boolean(authKey),
-    staleTime: Infinity,
-  });
-
-  const messages = messagesQuery.data ?? [];
-  const isMessagesLoading = messagesQuery.isLoading;
 
   const setInput = useCallback((value: string) => {
     dispatch({ type: "SET_INPUT", value });
@@ -206,8 +196,6 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
   const value = {
     ...state,
     activeChat,
-    messages,
-    isMessagesLoading,
     dispatch,
     setInput,
     setUserKeyInput,
