@@ -34,25 +34,27 @@ client = genai.Client(
 )
 
 
-def build_default_tools(path: str) -> list[Tool]:
-    datastore_path = str(path or "").strip()
-    if not datastore_path:
-        raise ValueError("datastore_path is required.")
+def build_default_tools(paths: list[str]) -> list[Tool]:
+    if not paths:
+        raise ValueError("At least one datastore_path is required.")
 
     google_search_tool = Tool(google_search=GoogleSearch())
-    vertex_tool = Tool(
-        retrieval=Retrieval(
-            vertex_ai_search=VertexAISearch(datastore=datastore_path),
-        ),
-    )
-    return [vertex_tool, google_search_tool]
+    vertex_tools = [
+        Tool(
+            retrieval=Retrieval(
+                vertex_ai_search=VertexAISearch(datastore=path),
+            ),
+        )
+        for path in paths
+    ]
+    return [*vertex_tools, google_search_tool]
 
 
 def build_default_config(
-    datastore_path: str,
+    datastore_paths: list[str],
     system_instruction: str | None = None,
 ) -> GenerateContentConfig:
-    config_kwargs: dict[str, Any] = {"tools": build_default_tools(datastore_path)}
+    config_kwargs: dict[str, Any] = {"tools": build_default_tools(datastore_paths)}
     instruction = str(system_instruction or "").strip()
     if instruction:
         config_kwargs["system_instruction"] = instruction
@@ -69,16 +71,16 @@ def get_runtime_config() -> dict[str, str]:
 
 def send_to_gemini(
     contents: list[Content],
-    datastore_path: str,
+    datastore_paths: list[str],
     system_instruction: str | None = None,
 ) -> str:
-    path = str(datastore_path or "").strip()
-    if not path:
-        raise ValueError("datastore_path is required.")
+    paths = [p.strip() for p in (datastore_paths or []) if p.strip()]
+    if not paths:
+        raise ValueError("At least one datastore_path is required.")
 
     response = client.models.generate_content(
         model=DEFAULT_MODEL,
         contents=contents,
-        config=build_default_config(path, system_instruction),
+        config=build_default_config(paths, system_instruction),
     )
     return response.text
