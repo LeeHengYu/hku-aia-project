@@ -6,7 +6,7 @@ import SystemInstructionModal from "./SystemInstructionModal";
 import type { VertexPromptExport } from "../lib/types";
 
 interface ImportPromptButtonProps {
-  onImport: (data: VertexPromptExport) => void;
+  onImport: (data: VertexPromptExport) => Promise<void>;
 }
 
 const ImportPromptButton = ({ onImport }: ImportPromptButtonProps) => {
@@ -16,15 +16,24 @@ const ImportPromptButton = ({ onImport }: ImportPromptButtonProps) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
+    let data: VertexPromptExport;
     try {
       const text = await file.text();
-      const data = JSON.parse(text);
-      onImport(data);
+      data = JSON.parse(text);
     } catch (error) {
       console.error(error);
       alert(
         "Unable to parse the JSON file. Please use the prompt exported from Vertex AI Studio.",
       );
+      event.target.value = "";
+      return;
+    }
+
+    try {
+      await onImport(data);
+    } catch (error) {
+      console.error(error);
+      alert("Failed to save the imported messages to the database.");
     } finally {
       event.target.value = "";
     }

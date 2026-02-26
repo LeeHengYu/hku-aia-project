@@ -10,7 +10,7 @@ interface ChatContextActions {
   setSelectedGroup: (group: GroupSelection) => void;
   handleNewChat: () => void;
   handleSelectChat: (chatId: string) => void;
-  handleImport: (data: VertexPromptExport) => void;
+  handleImport: (data: VertexPromptExport) => Promise<void>;
   handleDeleteChat: (chatId: string) => void;
   handleSend: () => Promise<void>;
   handleSetSystemInstruction: (chatId: string, value: string | undefined) => void;

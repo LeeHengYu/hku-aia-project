@@ -14,8 +14,12 @@ import {
 import { ChatContext } from "./chatContext";
 import { ChatController } from "./chatController";
 
-const DATASTORE_PATH_GP2 = (import.meta.env.VITE_DATASTORE_PATH_GP2 ?? "").trim();
-const DATASTORE_PATH_GP3 = (import.meta.env.VITE_DATASTORE_PATH_GP3 ?? "").trim();
+const DATASTORE_PATH_GP2 = (
+  import.meta.env.VITE_DATASTORE_PATH_GP2 ?? ""
+).trim();
+const DATASTORE_PATH_GP3 = (
+  import.meta.env.VITE_DATASTORE_PATH_GP3 ?? ""
+).trim();
 
 export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(
@@ -40,9 +44,12 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: "SET_USER_KEY_INPUT", value });
   }, []);
 
-  const setSelectedGroup = useCallback((value: import("./chatStore").GroupSelection) => {
-    dispatch({ type: "SET_SELECTED_GROUP", value });
-  }, []);
+  const setSelectedGroup = useCallback(
+    (value: import("./chatStore").GroupSelection) => {
+      dispatch({ type: "SET_SELECTED_GROUP", value });
+    },
+    [],
+  );
 
   const handleNewChat = useCallback(() => {
     const nextChat = createChat();
@@ -56,16 +63,16 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
 
   const handleImport = useCallback(
     async (data: VertexPromptExport) => {
-      const { chat: imported, messages: importedMessages } = hydrateChatFromExport(data);
+      const { chat: imported, messages: importedMessages } =
+        hydrateChatFromExport(data);
       dispatch({ type: "SET_CHATS", chats: [imported, ...state.chats] });
       dispatch({ type: "SET_ACTIVE_CHAT", chatId: imported.id });
 
-      if (importedMessages.length > 0 && authKey) {
-        try {
+      if (importedMessages.length > 0) {
+        queryClient.setQueryData(["messages", imported.id], importedMessages);
+
+        if (authKey) {
           await saveMessages(imported.id, importedMessages, authKey);
-          queryClient.setQueryData(["messages", imported.id], importedMessages);
-        } catch {
-          // Messages will be fetched on next load
         }
       }
     },
@@ -103,14 +110,11 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     [],
   );
 
-  const handleRenameChat = useCallback(
-    (chatId: string, title: string) => {
-      const trimmed = title.trim();
-      if (!trimmed) return;
-      dispatch({ type: "SET_CHAT_TITLE", chatId, title: trimmed });
-    },
-    [],
-  );
+  const handleRenameChat = useCallback((chatId: string, title: string) => {
+    const trimmed = title.trim();
+    if (!trimmed) return;
+    dispatch({ type: "SET_CHAT_TITLE", chatId, title: trimmed });
+  }, []);
 
   const handleSend = useCallback(async () => {
     if (!activeChat) return;
@@ -125,9 +129,8 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
       createdAt: new Date().toISOString(),
     };
 
-    const currentMessages = queryClient.getQueryData<Message[]>(
-      ["messages", activeChat.id],
-    ) ?? [];
+    const currentMessages =
+      queryClient.getQueryData<Message[]>(["messages", activeChat.id]) ?? [];
     const withUserMsg = [...currentMessages, userMessage];
     queryClient.setQueryData(["messages", activeChat.id], withUserMsg);
 
@@ -135,7 +138,11 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     if (activeChat.title === "New chat") {
       const updatedChats = state.chats.map((chat) =>
         chat.id === activeChat.id
-          ? { ...chat, title: titleFromMessage(trimmed), updatedAt: new Date().toISOString() }
+          ? {
+              ...chat,
+              title: titleFromMessage(trimmed),
+              updatedAt: new Date().toISOString(),
+            }
           : chat,
       );
       dispatch({ type: "SET_CHATS", chats: updatedChats });
