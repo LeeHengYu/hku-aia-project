@@ -116,18 +116,20 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: "SET_CHAT_TITLE", chatId, title: trimmed });
   }, []);
 
+  const createMessage = (role: Message["role"], content: string): Message => ({
+    id: crypto.randomUUID(),
+    role,
+    content,
+    createdAt: new Date().toISOString(),
+  });
+
   const handleSend = useCallback(async () => {
     if (!activeChat) return;
     const trimmed = state.input.trim();
     if (!trimmed || state.isLoading) return;
 
     // Optimistically add user message to cache
-    const userMessage: Message = {
-      id: crypto.randomUUID(),
-      role: "user",
-      content: trimmed,
-      createdAt: new Date().toISOString(),
-    };
+    const userMessage = createMessage("user", trimmed);
 
     const currentMessages =
       queryClient.getQueryData<Message[]>(["messages", activeChat.id]) ?? [];
@@ -171,27 +173,19 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
 
       const assistantText = data.text?.trim() || "No response generated.";
 
-      const assistantMessage: Message = {
-        id: crypto.randomUUID(),
-        role: "model",
-        content: assistantText,
-        createdAt: new Date().toISOString(),
-      };
+      const assistantMessage = createMessage("model", assistantText);
 
       queryClient.setQueryData(
         ["messages", activeChat.id],
         [...withUserMsg, assistantMessage],
       );
     } catch (error) {
-      const errorMessage: Message = {
-        id: crypto.randomUUID(),
-        role: "model",
-        content:
-          error instanceof Error
-            ? `Error: ${error.message}`
-            : "Error: Unable to reach the backend.",
-        createdAt: new Date().toISOString(),
-      };
+      const errorMessage = createMessage(
+        "model",
+        error instanceof Error
+          ? `Error: ${error.message}`
+          : "Error: Unable to reach the backend.",
+      );
 
       queryClient.setQueryData(
         ["messages", activeChat.id],
