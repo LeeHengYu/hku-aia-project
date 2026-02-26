@@ -20,7 +20,7 @@ class ChatRequest(BaseModel):
     chatId: str
     message: str
     systemInstruction: str | None = None
-    datastorePath: str | None = None
+    datastorePaths: list[str] | None = None
     parameters: dict[str, Any] | None = None
 
 
@@ -116,10 +116,10 @@ async def chat(
     request: ChatRequest,
     _: Annotated[None, Depends(require_auth)],
 ) -> ChatResponse:
-    datastore_path = str(request.datastorePath or "").strip()
+    datastore_paths = [p.strip() for p in (request.datastorePaths or []) if p.strip()]
 
-    if not datastore_path:
-        raise HTTPException(status_code=400, detail="Missing datastorePath.")
+    if not datastore_paths:
+        raise HTTPException(status_code=400, detail="Missing datastorePaths.")
     if not request.message.strip():
         raise HTTPException(status_code=400, detail="Missing message.")
 
@@ -142,7 +142,7 @@ async def chat(
                 for m in messages if m.get("content", "").strip()
             ],
             system_instruction=request.systemInstruction,
-            datastore_path=datastore_path,
+            datastore_paths=datastore_paths,
         )
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc

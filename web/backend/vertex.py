@@ -9,7 +9,6 @@ from .vertex_grounding import (
     send_to_gemini,
 )
 
-
 def get_vertex_runtime_config() -> dict[str, str]:
     return get_runtime_config()
 
@@ -36,18 +35,18 @@ def _build_contents(
 def generate_content(
     messages: Iterable[dict[str, Any]],
     system_instruction: str | None = None,
-    datastore_path: str | None = None,
+    datastore_paths: list[str] | None = None,
 ) -> str:
     contents = _build_contents(messages)
     if not contents:
         return ""
 
-    path = str(datastore_path or "").strip()
-    if not path:
-        raise RuntimeError("Missing datastore path.")
+    paths = [p.strip() for p in (datastore_paths or []) if p.strip()]
+    if not paths:
+        raise RuntimeError("Missing datastore paths.")
 
     return send_to_gemini(
         contents=contents,
-        datastore_path=path,
+        datastore_paths=paths,
         system_instruction=system_instruction,
     )
