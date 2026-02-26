@@ -102,6 +102,35 @@ button {
   pointer-events: none;
 }
 
+.group-selector {
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid;
+  @apply border-slate-300 dark:border-slate-700;
+}
+
+.group-selector-btn {
+  flex: 1;
+  padding: 8px 4px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  @apply text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800;
+  transition: background 0.15s, color 0.15s;
+}
+
+.group-selector-btn + .group-selector-btn {
+  border-left: 1px solid;
+  @apply border-slate-300 dark:border-slate-700;
+}
+
+.group-selector-btn--active {
+  @apply bg-lime-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100 font-medium;
+}
+
 .sidebar-title {
   font-size: 12px;
   text-transform: uppercase;

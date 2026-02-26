@@ -145,17 +145,19 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: "SET_LOADING", value: true });
 
     try {
-      const datastorePath =
-        state.selectedGroup === "gp3"
-          ? DATASTORE_PATH_GP3
-          : DATASTORE_PATH_GP2;
+      const datastorePaths =
+        state.selectedGroup === "both"
+          ? [DATASTORE_PATH_GP2, DATASTORE_PATH_GP3]
+          : state.selectedGroup === "product"
+            ? [DATASTORE_PATH_GP3]
+            : [DATASTORE_PATH_GP2];
 
       const data = await sendMessage(
         activeChat.id,
         trimmed,
         {
           systemInstruction: activeChat.systemInstruction ?? null,
-          datastorePath,
+          datastorePaths,
         },
         authKey,
       );

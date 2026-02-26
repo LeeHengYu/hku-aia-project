@@ -26,7 +26,7 @@ export async function sendMessage(
   message: string,
   metadata: {
     systemInstruction?: string | null;
-    datastorePath?: string | null;
+    datastorePaths?: string[] | null;
     parameters?: Record<string, unknown> | null;
   },
   authKey: string,
@@ -38,7 +38,7 @@ export async function sendMessage(
       chatId,
       message,
       systemInstruction: metadata.systemInstruction ?? null,
-      datastorePath: metadata.datastorePath ?? null,
+      datastorePaths: metadata.datastorePaths ?? null,
       parameters: metadata.parameters ?? null,
     }),
   });

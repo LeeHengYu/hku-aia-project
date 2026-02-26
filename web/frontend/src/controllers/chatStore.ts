@@ -3,7 +3,7 @@
 import type { Chat } from "../lib/types";
 import { loadChats, loadActiveChatId, loadUserKey } from "../lib/storage";
 
-export type GroupSelection = "gp2" | "gp3";
+export type GroupSelection = "market" | "product" | "both";
 
 export interface ChatState {
   chats: Chat[];
@@ -41,7 +41,7 @@ export const createInitialState = (): ChatState => {
     input: "",
     isLoading: false,
     userKeyInput,
-    selectedGroup: "gp2",
+    selectedGroup: "market",
   };
 };
 

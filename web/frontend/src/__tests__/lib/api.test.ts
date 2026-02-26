@@ -34,7 +34,12 @@ beforeEach(() => {
 describe("fetchMessages", () => {
   it("calls the correct endpoint and returns parsed messages", async () => {
     const messages: Message[] = [
-      { id: "1", role: "user", content: "hi", createdAt: "2024-01-01T00:00:00Z" },
+      {
+        id: "1",
+        role: "user",
+        content: "hi",
+        createdAt: "2024-01-01T00:00:00Z",
+      },
     ];
     stubFetch(200, messages);
 
@@ -52,7 +57,9 @@ describe("fetchMessages", () => {
     await fetchMessages(CHAT_ID, "");
 
     const [, opts] = lastCall();
-    expect((opts.headers as Record<string, string>)["Authorization"]).toBeUndefined();
+    expect(
+      (opts.headers as Record<string, string>)["Authorization"],
+    ).toBeUndefined();
   });
 
   it("throws when the response is not ok", async () => {
@@ -77,7 +84,11 @@ describe("sendMessage", () => {
     const result = await sendMessage(
       CHAT_ID,
       "Hello",
-      { systemInstruction: "Be helpful", datastorePath: "/store/v1", parameters: null },
+      {
+        systemInstruction: "Be helpful",
+        datastorePaths: ["/store/v1"],
+        parameters: null,
+      },
       AUTH_KEY,
     );
 
@@ -90,7 +101,7 @@ describe("sendMessage", () => {
       chatId: CHAT_ID,
       message: "Hello",
       systemInstruction: "Be helpful",
-      datastorePath: "/store/v1",
+      datastorePaths: ["/store/v1"],
       parameters: null,
     });
     expect(result).toEqual({ text: "AI reply" });
@@ -104,7 +115,7 @@ describe("sendMessage", () => {
     const [, opts] = lastCall();
     const body = JSON.parse(opts.body as string);
     expect(body.systemInstruction).toBeNull();
-    expect(body.datastorePath).toBeNull();
+    expect(body.datastorePaths).toBeNull();
     expect(body.parameters).toBeNull();
   });
 
@@ -120,7 +131,9 @@ describe("sendMessage", () => {
   it("throws on a non-ok response", async () => {
     stubFetch(500, {});
 
-    await expect(sendMessage(CHAT_ID, "Hello", {}, AUTH_KEY)).rejects.toThrow("500");
+    await expect(sendMessage(CHAT_ID, "Hello", {}, AUTH_KEY)).rejects.toThrow(
+      "500",
+    );
   });
 });
 
@@ -128,7 +141,12 @@ describe("sendMessage", () => {
 
 describe("saveMessages", () => {
   const messages: Message[] = [
-    { id: "m1", role: "user", content: "hi", createdAt: "2024-01-01T00:00:00Z" },
+    {
+      id: "m1",
+      role: "user",
+      content: "hi",
+      createdAt: "2024-01-01T00:00:00Z",
+    },
   ];
 
   it("POSTs messages to the conversations endpoint", async () => {

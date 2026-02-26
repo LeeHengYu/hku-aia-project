@@ -80,7 +80,9 @@ const chat2 = createChat("Beta");
 
 describe("chatReducer — SET_INPUT", () => {
   it("updates input", () => {
-    expect(chatReducer(mkState(), { type: "SET_INPUT", value: "Hello" }).input).toBe("Hello");
+    expect(
+      chatReducer(mkState(), { type: "SET_INPUT", value: "Hello" }).input,
+    ).toBe("Hello");
   });
 
   it("allows clearing input to empty string", () => {
@@ -91,18 +93,25 @@ describe("chatReducer — SET_INPUT", () => {
 
 describe("chatReducer — SET_LOADING", () => {
   it("sets isLoading to true", () => {
-    expect(chatReducer(mkState(), { type: "SET_LOADING", value: true }).isLoading).toBe(true);
+    expect(
+      chatReducer(mkState(), { type: "SET_LOADING", value: true }).isLoading,
+    ).toBe(true);
   });
 
   it("sets isLoading to false", () => {
     const state = mkState({ isLoading: true });
-    expect(chatReducer(state, { type: "SET_LOADING", value: false }).isLoading).toBe(false);
+    expect(
+      chatReducer(state, { type: "SET_LOADING", value: false }).isLoading,
+    ).toBe(false);
   });
 });
 
 describe("chatReducer — SET_ACTIVE_CHAT", () => {
   it("updates activeChatId", () => {
-    const next = chatReducer(mkState(), { type: "SET_ACTIVE_CHAT", chatId: chat1.id });
+    const next = chatReducer(mkState(), {
+      type: "SET_ACTIVE_CHAT",
+      chatId: chat1.id,
+    });
     expect(next.activeChatId).toBe(chat1.id);
   });
 
@@ -122,25 +131,36 @@ describe("chatReducer — SET_CHATS", () => {
 
   it("accepts an empty array", () => {
     const state = mkState({ chats: [chat1] });
-    expect(chatReducer(state, { type: "SET_CHATS", chats: [] }).chats).toEqual([]);
+    expect(chatReducer(state, { type: "SET_CHATS", chats: [] }).chats).toEqual(
+      [],
+    );
   });
 });
 
 describe("chatReducer — SET_USER_KEY_INPUT", () => {
   it("updates userKeyInput", () => {
-    const next = chatReducer(mkState(), { type: "SET_USER_KEY_INPUT", value: "secret" });
+    const next = chatReducer(mkState(), {
+      type: "SET_USER_KEY_INPUT",
+      value: "secret",
+    });
     expect(next.userKeyInput).toBe("secret");
   });
 });
 
 describe("chatReducer — SET_SELECTED_GROUP", () => {
   it("switches from gp2 to gp3", () => {
-    expect(chatReducer(mkState(), { type: "SET_SELECTED_GROUP", value: "gp3" }).selectedGroup).toBe("gp3");
+    expect(
+      chatReducer(mkState(), { type: "SET_SELECTED_GROUP", value: "product" })
+        .selectedGroup,
+    ).toBe("product");
   });
 
   it("switches from gp3 back to gp2", () => {
-    const state = mkState({ selectedGroup: "gp3" });
-    expect(chatReducer(state, { type: "SET_SELECTED_GROUP", value: "gp2" }).selectedGroup).toBe("gp2");
+    const state = mkState({ selectedGroup: "product" });
+    expect(
+      chatReducer(state, { type: "SET_SELECTED_GROUP", value: "market" })
+        .selectedGroup,
+    ).toBe("market");
   });
 });
 
@@ -152,8 +172,12 @@ describe("chatReducer — SET_SYSTEM_INSTRUCTION", () => {
       chatId: chat1.id,
       value: "Be brief",
     });
-    expect(next.chats.find((c) => c.id === chat1.id)?.systemInstruction).toBe("Be brief");
-    expect(next.chats.find((c) => c.id === chat2.id)?.systemInstruction).toBeUndefined();
+    expect(next.chats.find((c) => c.id === chat1.id)?.systemInstruction).toBe(
+      "Be brief",
+    );
+    expect(
+      next.chats.find((c) => c.id === chat2.id)?.systemInstruction,
+    ).toBeUndefined();
   });
 
   it("accepts undefined to clear the instruction", () => {
@@ -205,7 +229,9 @@ describe("chatReducer — SET_CHAT_TITLE", () => {
 describe("chatReducer — unknown actions", () => {
   it("returns the same state reference for unrecognised action types", () => {
     const state = mkState();
-    const next = chatReducer(state, { type: "UNKNOWN" } as unknown as ChatAction);
+    const next = chatReducer(state, {
+      type: "UNKNOWN",
+    } as unknown as ChatAction);
     expect(next).toBe(state);
   });
 });

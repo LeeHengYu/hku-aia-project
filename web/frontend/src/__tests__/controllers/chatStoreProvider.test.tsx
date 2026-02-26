@@ -126,7 +126,7 @@ describe("handleSend", () => {
     expect(api.sendMessage).toHaveBeenCalledWith(
       chatId,
       "What is AI?",
-      expect.objectContaining({ datastorePath: expect.any(String) }),
+      expect.objectContaining({ datastorePaths: expect.any(Array) }),
       "my-key",
     );
   });
