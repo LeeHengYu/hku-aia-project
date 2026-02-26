@@ -28,12 +28,10 @@ class ChatResponse(BaseModel):
     text: str
 
 
-class TestResponse(BaseModel):
-    text: str
-
-
 EXPECTED_AUTH_KEY = os.getenv("HKU_KEY_DEV", "").strip()
 LOGGER = logging.getLogger(__name__)
+allow_origins = ["http://localhost:5173", "http://127.0.0.1:5173", "https://hku-aia-project.vercel.app"]
+
 
 async def require_auth(authorization: str | None = Header(default=None)) -> None:
     if not authorization:
@@ -67,8 +65,6 @@ async def lifespan(_app: FastAPI):
 
 
 app = FastAPI(title="Gemini Lite", lifespan=lifespan)
-
-allow_origins = ["http://localhost:5173", "http://127.0.0.1:5173", "https://hku-aia-project.vercel.app"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -111,6 +107,15 @@ async def delete_conversation_endpoint(
     return {"status": "ok"}
 
 
+def _create_message(role: str, content: str) -> dict[str, Any]:
+    return {
+        "id": str(uuid.uuid4()),
+        "role": role,
+        "content": content,
+        "createdAt": datetime.now(timezone.utc).isoformat(),
+    }
+
+
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(
     request: ChatRequest,
@@ -123,16 +128,9 @@ async def chat(
     if not request.message.strip():
         raise HTTPException(status_code=400, detail="Missing message.")
 
-    now = datetime.now(timezone.utc).isoformat()
-
     messages = get_messages(request.chatId)
 
-    user_msg = {
-        "id": str(uuid.uuid4()),
-        "role": "user",
-        "content": request.message.strip(),
-        "createdAt": now,
-    }
+    user_msg = _create_message("user", request.message.strip())
     messages.append(user_msg)
 
     try:
@@ -147,12 +145,7 @@ async def chat(
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
-    assistant_msg = {
-        "id": str(uuid.uuid4()),
-        "role": "model",
-        "content": text.strip() if text else "No response generated.",
-        "createdAt": datetime.now(timezone.utc).isoformat(),
-    }
+    assistant_msg = _create_message("model", text.strip() if text else "No response generated.")
     messages.append(assistant_msg)
 
     save_messages(request.chatId, messages)
@@ -160,8 +153,8 @@ async def chat(
     return ChatResponse(text=assistant_msg["content"])
 
 
-@app.post("/api/test", response_model=TestResponse)
+@app.post("/api/test", response_model=ChatResponse)
 async def test_endpoint(
     _: Annotated[None, Depends(require_auth)],
-) -> TestResponse:
-    return TestResponse(text="ok")
+) -> ChatResponse:
+    return ChatResponse(text="ok")
