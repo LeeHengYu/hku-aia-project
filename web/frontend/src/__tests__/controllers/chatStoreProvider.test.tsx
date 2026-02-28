@@ -2,7 +2,7 @@ import { render, act, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { ChatStoreProvider } from "../../controllers/chatStoreProvider";
-import { useChatContext } from "../../controllers/useChatStore";
+import { useChatState, useChatActions } from "../../controllers/useChatStore";
 import * as api from "../../lib/api";
 import type { Message } from "../../lib/types";
 
@@ -40,10 +40,13 @@ vi.mock("../../lib/storage", () => ({
 // ─── Test harness ─────────────────────────────────────────────────────────────
 
 /** Captures the latest context value on every render. */
-let ctxRef: ReturnType<typeof useChatContext>;
+type CombinedCtx = ReturnType<typeof useChatState> & ReturnType<typeof useChatActions>;
+let ctxRef: CombinedCtx;
 
 function ContextCapture() {
-  ctxRef = useChatContext();
+  const state = useChatState();
+  const actions = useChatActions();
+  ctxRef = { ...state, ...actions };
   return null;
 }
 

@@ -11,7 +11,7 @@ import {
   createChat,
   titleFromMessage,
 } from "./chatStore";
-import { ChatContext } from "./chatContext";
+import { ChatStateContext, ChatActionsContext } from "./chatContext";
 import { ChatController } from "./chatController";
 
 const DATASTORE_PATH_GP2 = (
@@ -196,9 +196,12 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [activeChat, state, authKey, queryClient]);
 
-  const value = {
+  const stateValue = useMemo(() => ({
     ...state,
     activeChat,
+  }), [state, activeChat]);
+
+  const actionsValue = useMemo(() => ({
     dispatch,
     setInput,
     setUserKeyInput,
@@ -210,12 +213,25 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     handleSend,
     handleSetSystemInstruction,
     handleRenameChat,
-  };
+  }), [
+    setInput,
+    setUserKeyInput,
+    setSelectedGroup,
+    handleNewChat,
+    handleSelectChat,
+    handleImport,
+    handleDeleteChat,
+    handleSend,
+    handleSetSystemInstruction,
+    handleRenameChat,
+  ]);
 
   return (
-    <ChatContext.Provider value={value}>
-      {children}
-      <ChatController />
-    </ChatContext.Provider>
+    <ChatStateContext.Provider value={stateValue}>
+      <ChatActionsContext.Provider value={actionsValue}>
+        {children}
+        <ChatController />
+      </ChatActionsContext.Provider>
+    </ChatStateContext.Provider>
   );
 };

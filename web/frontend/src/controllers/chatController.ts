@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 import { saveActiveChatId, saveChats, saveUserKey } from "../lib/storage";
-import { useChatContext } from "./useChatStore";
+import { useChatState } from "./useChatStore";
 
 export const ChatController = () => {
-  const { chats, activeChatId, userKeyInput } = useChatContext();
+  const { chats, activeChatId, userKeyInput } = useChatState();
 
   useEffect(() => {
     saveChats(chats);
