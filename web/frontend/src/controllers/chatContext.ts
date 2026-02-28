@@ -4,7 +4,12 @@ import { createContext, type Dispatch } from "react";
 import type { Chat, VertexPromptExport } from "../lib/types";
 import type { ChatAction, ChatState, GroupSelection } from "./chatStore";
 
-interface ChatContextActions {
+export interface ChatStateContextValue extends ChatState {
+  activeChat: Chat | null;
+}
+
+export interface ChatActionsContextValue {
+  dispatch: Dispatch<ChatAction>;
   setInput: (value: string) => void;
   setUserKeyInput: (value: string) => void;
   setSelectedGroup: (group: GroupSelection) => void;
@@ -17,9 +22,5 @@ interface ChatContextActions {
   handleRenameChat: (chatId: string, title: string) => void;
 }
 
-interface ChatContextValue extends ChatState, ChatContextActions {
-  activeChat: Chat | null;
-  dispatch: Dispatch<ChatAction>;
-}
-
-export const ChatContext = createContext<ChatContextValue | null>(null);
+export const ChatStateContext = createContext<ChatStateContextValue | null>(null);
+export const ChatActionsContext = createContext<ChatActionsContextValue | null>(null);

@@ -1,4 +1,4 @@
-import { useChatContext } from "../controllers/useChatStore";
+import { useChatState, useChatActions } from "../controllers/useChatStore";
 import type { GroupSelection } from "../controllers/chatStore";
 
 const GROUP_OPTIONS: { value: GroupSelection; label: string }[] = [
@@ -8,7 +8,8 @@ const GROUP_OPTIONS: { value: GroupSelection; label: string }[] = [
 ];
 
 const GroupSelector = () => {
-  const { selectedGroup, setSelectedGroup } = useChatContext();
+  const { selectedGroup } = useChatState();
+  const { setSelectedGroup } = useChatActions();
 
   return (
     <div className="sidebar-section">

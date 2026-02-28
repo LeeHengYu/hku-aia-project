@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useChatContext } from "../controllers/useChatStore";
+import { useChatState, useChatActions } from "../controllers/useChatStore";
 import type { Chat } from "../lib/types";
 
 interface ChatListItemProps {
@@ -85,8 +85,8 @@ const ChatListItem = ({ chat, isActive, onSelect, onDelete, onRename }: ChatList
 };
 
 const ChatList = () => {
-  const { chats, activeChatId, handleSelectChat, handleDeleteChat, handleRenameChat } =
-    useChatContext();
+  const { chats, activeChatId } = useChatState();
+  const { handleSelectChat, handleDeleteChat, handleRenameChat } = useChatActions();
 
   return (
     <div className="sidebar-section">

@@ -1,5 +1,5 @@
 import { useRef, useState, type ChangeEvent } from "react";
-import { useChatContext } from "../controllers/useChatStore";
+import { useChatState, useChatActions } from "../controllers/useChatStore";
 import GroupSelector from "./GroupSelector";
 import ChatList from "./ChatList";
 import SystemInstructionModal from "./SystemInstructionModal";
@@ -62,12 +62,8 @@ const ImportPromptButton = ({ onImport }: ImportPromptButtonProps) => {
 };
 
 const Sidebar = () => {
-  const {
-    handleNewChat,
-    handleImport,
-    activeChat,
-    handleSetSystemInstruction,
-  } = useChatContext();
+  const { activeChat } = useChatState();
+  const { handleNewChat, handleImport, handleSetSystemInstruction } = useChatActions();
   const [modalOpen, setModalOpen] = useState(false);
 
   return (

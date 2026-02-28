@@ -6,7 +6,7 @@ import Composer from "./components/Composer";
 import MainHeader from "./components/MainHeader";
 import AuthKeyInput from "./components/AuthKeyInput";
 import { ChatStoreProvider } from "./controllers/chatStoreProvider";
-import { useChatContext } from "./controllers/useChatStore";
+import { useChatState, useChatActions } from "./controllers/useChatStore";
 import { fetchMessages } from "./lib/api";
 import type { Message } from "./lib/types";
 import { APP_TITLE } from "./constants/uiText";
@@ -67,7 +67,7 @@ class ChatLoadErrorBoundary extends Component<
 }
 
 const ConversationView = ({ chatId, isLoading }: { chatId: string; isLoading: boolean }) => {
-  const { userKeyInput } = useChatContext();
+  const { userKeyInput } = useChatState();
   const { data: messages } = useSuspenseQuery<Message[]>({
     queryKey: ["messages", chatId],
     queryFn: () => fetchMessages(chatId, userKeyInput.trim()),
@@ -78,15 +78,8 @@ const ConversationView = ({ chatId, isLoading }: { chatId: string; isLoading: bo
 };
 
 const AppLayout = () => {
-  const {
-    activeChat,
-    input,
-    isLoading,
-    userKeyInput,
-    setInput,
-    setUserKeyInput,
-    handleSend,
-  } = useChatContext();
+  const { activeChat, input, isLoading, userKeyInput } = useChatState();
+  const { setInput, setUserKeyInput, handleSend } = useChatActions();
 
   const authKey = userKeyInput.trim();
 
