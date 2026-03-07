@@ -1,4 +1,5 @@
 import type { Chat, Message, Role, VertexPromptExport } from "./types";
+import { IMPORTED_CHAT_TITLE } from "../constants/uiText";
 
 const CHATS_KEY = "gemini-lite.chats";
 const ACTIVE_CHAT_KEY = "gemini-lite.activeChat";
@@ -145,7 +146,7 @@ export const hydrateChatFromExport = (
   data: VertexPromptExport,
 ): { chat: Chat; messages: Message[] } => {
   const now = toIsoString();
-  const title = data.title?.trim() || "Imported Chat";
+  const title = data.title?.trim() || IMPORTED_CHAT_TITLE;
 
   const chat: Chat = {
     id: crypto.randomUUID(),

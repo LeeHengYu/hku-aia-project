@@ -11,6 +11,7 @@ import {
   createChat,
   titleFromMessage,
 } from "./chatStore";
+import { DEFAULT_CHAT_TITLE } from "../constants/uiText";
 import { ChatStateContext, ChatActionsContext } from "./chatContext";
 import { ChatController } from "./chatController";
 
@@ -137,17 +138,8 @@ export const ChatStoreProvider = ({ children }: { children: ReactNode }) => {
     queryClient.setQueryData(["messages", activeChat.id], withUserMsg);
 
     // Update chat title if needed
-    if (activeChat.title === "New chat") {
-      const updatedChats = state.chats.map((chat) =>
-        chat.id === activeChat.id
-          ? {
-              ...chat,
-              title: titleFromMessage(trimmed),
-              updatedAt: new Date().toISOString(),
-            }
-          : chat,
-      );
-      dispatch({ type: "SET_CHATS", chats: updatedChats });
+    if (activeChat.title === DEFAULT_CHAT_TITLE) {
+      dispatch({ type: "SET_CHAT_TITLE", chatId: activeChat.id, title: titleFromMessage(trimmed) });
     }
 
     dispatch({ type: "SET_INPUT", value: "" });

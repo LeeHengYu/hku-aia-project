@@ -71,7 +71,6 @@ const ConversationView = ({ chatId, isLoading }: { chatId: string; isLoading: bo
   const { data: messages } = useSuspenseQuery<Message[]>({
     queryKey: ["messages", chatId],
     queryFn: () => fetchMessages(chatId, userKeyInput.trim()),
-    staleTime: Infinity,
   });
 
   return <ChatView messages={messages} isLoading={isLoading} />;

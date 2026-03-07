@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
 
 interface MarkdownProps {
   content: string;
@@ -42,11 +42,15 @@ const extractText = (node: ReactNode): string => {
 
 const CodeBlockCopyButton = ({ text }: { text: string }) => {
   const [copied, setCopied] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  useEffect(() => () => clearTimeout(timerRef.current), []);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
     setCopied(true);
-    setTimeout(() => setCopied(false), 1000);
+    clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setCopied(false), 1000);
   };
 
   return (
@@ -104,17 +108,17 @@ const MarkdownInlineCode = ({
   );
 };
 
+const mdRemarkPlugins = [remarkGfm];
+const mdComponents = {
+  table: MarkdownTable,
+  th: MarkdownTh,
+  td: MarkdownTd,
+  pre: MarkdownCodeBlock,
+  code: MarkdownInlineCode,
+};
+
 const Markdown = ({ content }: MarkdownProps) => (
-  <ReactMarkdown
-    remarkPlugins={[remarkGfm]}
-    components={{
-      table: MarkdownTable,
-      th: MarkdownTh,
-      td: MarkdownTd,
-      pre: MarkdownCodeBlock,
-      code: MarkdownInlineCode,
-    }}
-  >
+  <ReactMarkdown remarkPlugins={mdRemarkPlugins} components={mdComponents}>
     {content}
   </ReactMarkdown>
 );

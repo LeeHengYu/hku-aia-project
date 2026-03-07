@@ -2,6 +2,7 @@
 
 import type { Chat } from "../lib/types";
 import { loadChats, loadActiveChatId, loadUserKey } from "../lib/storage";
+import { DEFAULT_CHAT_TITLE } from "../constants/uiText";
 
 export type GroupSelection = "market" | "product" | "both";
 
@@ -45,7 +46,7 @@ export const createInitialState = (): ChatState => {
   };
 };
 
-export const createChat = (title = "New chat"): Chat => {
+export const createChat = (title = DEFAULT_CHAT_TITLE): Chat => {
   const now = new Date().toISOString();
   return {
     id: crypto.randomUUID(),
@@ -57,8 +58,8 @@ export const createChat = (title = "New chat"): Chat => {
 
 export const titleFromMessage = (value: string) => {
   const trimmed = value.trim();
-  if (!trimmed) return "New chat";
-  return trimmed.slice(0, Math.min(44, trimmed.length));
+  if (!trimmed) return DEFAULT_CHAT_TITLE;
+  return trimmed.slice(0, 44);
 };
 
 export const chatReducer = (
