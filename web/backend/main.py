@@ -12,7 +12,7 @@ from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from .datastore import delete_conversation, get_messages, save_messages
+from .datastore import delete_conversation, get_client, get_messages, save_messages
 from .vertex import generate_content, get_vertex_runtime_config
 
 
@@ -52,6 +52,7 @@ async def lifespan(_app: FastAPI):
     if not EXPECTED_AUTH_KEY:
         raise RuntimeError("Missing required environment variable: HKU_KEY_DEV")
 
+    get_client()
     vertex_config = get_vertex_runtime_config()
     LOGGER.info(
         "Startup config loaded: cors_origins=%s, vertex_project=%s, "
