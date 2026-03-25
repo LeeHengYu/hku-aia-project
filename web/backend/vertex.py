@@ -25,7 +25,7 @@ def _required_env(name: str) -> str:
 
 VERTEX_PROJECT_ID = _required_env("VERTEX_PROJECT_ID")
 VERTEX_LOCATION = _required_env("VERTEX_LOCATION")
-DEFAULT_MODEL = "gemini-3.1-pro-preview"
+DEFAULT_MODEL = "gemini-3-flash-preview"
 
 client = genai.Client(
     http_options=HttpOptions(api_version="v1"),
