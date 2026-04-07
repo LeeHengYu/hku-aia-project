@@ -65,9 +65,11 @@ def _build_config(
     system_instruction: str | None = None,
 ) -> GenerateContentConfig:
     config_kwargs: dict[str, Any] = {"tools": _build_tools(datastore_paths)}
-    instruction = str(system_instruction or "").strip()
-    if instruction:
-        config_kwargs["system_instruction"] = instruction
+    INITIAL = """
+    When you refer to a source from vector database or google search, make sure you include the source in a list at the end of your response.
+    """
+    instruction = INITIAL + str(system_instruction or "").strip()
+    config_kwargs["system_instruction"] = instruction
     return GenerateContentConfig(**config_kwargs)
 
 
